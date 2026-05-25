@@ -172,6 +172,87 @@
                 height: 50vh;
             }
         }
+
+        /* --- ABOUT INTRO SECTION --- */
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background-color: #A6A182;
+            margin-left: 4px;
+            vertical-align: middle;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .about-text-box {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border-left: 2px solid #A6A182;
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-image-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .about-image-container.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* --- DESIGN LIVING SECTION --- */
+        .ghost-text {
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            text-transform: uppercase;
+            line-height: 0.8;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .vision-card {
+            background: #131610;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 4rem 3rem;
+            transition: all 0.5s ease;
+            height: 100%;
+        }
+
+        .vision-card:hover {
+            border-color: rgba(166, 161, 130, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .vision-border-l {
+            border-left: 1px solid #A6A182;
+            padding-left: 1.5rem;
+        }
+
+        .center-image-box {
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
     </style>
 </head>
 
@@ -235,12 +316,215 @@
         <!-- Hero Text Content (bottom-left) -->
         <div id="services-hero-content">
             <p class="hero-label" id="hero-label">Business Models you Can Consider</p>
-            <h1 class="hero-title" id="hero-title">ABOUT US </h1>
+            <h1 class="hero-title" id="hero-title">ABOUT US</h1>
         </div>
     </section>
 
+    <!-- ============================
+         ABOUT INTRO SECTION
+    ================================ -->
+    <section id="about-intro" class="py-24 px-6 md:px-12 bg-customBg overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-col gap-10">
 
+            <!-- Header Block -->
+            <div class="space-y-4">
+                <span
+                    class="text-white/30 uppercase tracking-[0.2em] text-[10px] md:text-xs font-medium block reveal-text">Our
+                    Services</span>
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] max-w-2xl reveal-text">
+                    What We Create for Your Perfect Space
+                </h2>
+            </div>
 
+            <!-- Typing Description Box -->
+            <div class="about-text-box mt-4 md:mt-8">
+                <p id="typing-content"
+                    class="text-white/60 leading-relaxed text-sm md:text-[15px] font-sans font-light"></p>
+            </div>
+
+            <!-- Secondary Image -->
+            <div class="about-image-container mt-6 md:mt-10">
+                <img src="images/Frame 2147225437.png" alt="Craftsmanship Detail"
+                    class="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-1000">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================
+         DESIGN LIVING SECTION
+    ================================ -->
+    <section id="design-living" class="py-32 bg-customBg relative overflow-hidden">
+
+        <!-- Ghost Title Backdrop -->
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 z-0">
+            <h2 class="ghost-text">What we Design</h2>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+
+            <!-- Context Header -->
+            <div class="text-center mb-20 space-y-4">
+                <h3 class="text-4xl md:text-6xl font-bold text-white tracking-tight reveal-up">Inspired Interior Living
+                </h3>
+                <p class="text-white/40 text-sm md:text-base max-w-2xl mx-auto font-light leading-relaxed reveal-up">
+                    Explore sophisticated spaces where timeless furniture, natural textures, and modern elegance come
+                    together to create a refined living experience.
+                </p>
+            </div>
+
+            <!-- Vision Grid -->
+            <div
+                class="grid grid-cols-1 lg:grid-cols-[1fr_0.7fr_1fr] gap-0 items-stretch max-w-6xl mx-auto border border-white/5 rounded-2xl overflow-hidden lg:h-[30rem]">
+
+                <!-- Left Card -->
+                <div class="vision-card flex flex-col gap-8 reveal-left">
+                    <div class="w-16 h-16">
+                        <img src="images/Layer_1 (13).png" alt="Vision Icon" class="w-full h-full object-contain">
+                    </div>
+                    <div class="space-y-6">
+                        <h4 class="text-xl font-bold text-white tracking-widest">OUR VISION</h4>
+                        <div class="vision-border-l">
+                            <p class="text-white/50 text-[13px] md:text-sm leading-relaxed font-light">
+                                To become Khaled El Hefnawy's leading brand in the world of furniture and custom
+                                manufacturing in the Egyptian and Saudi markets, by offering designs that combine
+                                quality, luxury, and innovation to meet the diverse needs of modern homes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Image -->
+                <div class="center-image-box reveal-up h-full">
+                    <img src="images/Frame 2147225443.png" alt="Living Interior" class="w-full h-full">
+                </div>
+
+                <!-- Right Card -->
+                <div class="vision-card flex flex-col gap-8 reveal-right">
+                    <div class="w-16 h-16">
+                        <img src="images/Layer_1 (13).png" alt="Vision Icon" class="w-full h-full object-contain">
+                    </div>
+                    <div class="space-y-6">
+                        <h4 class="text-xl font-bold text-white tracking-widest">OUR VISION</h4>
+                        <div class="vision-border-l">
+                            <p class="text-white/50 text-[13px] md:text-sm leading-relaxed font-light">
+                                We strive to provide a comprehensive furniture experience by manufacturing custom pieces
+                                that reflect our clients' tastes and perfectly suit their spaces, while adhering to the
+                                highest standards of quality and professional finishing. Our goal is to be the first
+                                choice for anyone seeking practical, elegant, and custom-made furniture in Egypt and
+                                Saudi Arabia.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Stats Section -->
+    <section class="relative py-20 md:py-28 overflow-hidden" style="background-color: #050604;" id="stats-section">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+
+                <!-- Stat Column 1 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #F9F9F9;">
+                        <span class="stat-number" data-target="30">0</span><span>+</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #F9F9F9;">
+                        Years of Experience in<br />the Furniture Industry
+                    </p>
+                </div>
+
+                <!-- Stat Column 2 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #F9F9F9;">
+                        <span class="stat-number" data-target="100">0</span><span>%</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #F9F9F9;">
+                        Quality and Excellence<br />We Always Guarantee
+                    </p>
+                </div>
+
+                <!-- Stat Column 3 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #F9F9F9;">
+                        <span class="stat-number" data-target="90">0</span><span>+</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #F9F9F9;">
+                        Customers Trust the<br />Quality of Our Products
+                    </p>
+                </div>
+
+                <!-- Stat Column 4 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #F9F9F9;">
+                        <span class="stat-number" data-target="24">0</span><span>/7</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #F9F9F9;">
+                        Always Available<br />to Support You
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Cinematic CTA Banner -->
+    <section class="relative w-full overflow-hidden" id="cta-section" style="height: 540px;">
+
+        <!-- Cinematic letterbox bars -->
+        <!--          
+        <div class="absolute top-0 left-0 w-full z-20" style="height: 42px; background: #0A0B08;"></div>
+        <div class="absolute bottom-0 left-0 w-full z-20" style="height: 42px; background: #0A0B08;"></div> -->
+
+        <!-- Background Image with dark overlay -->
+        <div class="absolute inset-0 bg-cover bg-center" id="cta-bg"
+            style="background-image: url('images/Card\ \(11\).png');"></div>
+        <!-- <div class="absolute inset-0"
+            style="background: linear-gradient(to bottom, rgba(10,11,8,0.65) 0%, rgba(10,11,8,0.52) 50%, rgba(10,11,8,0.72) 100%);">
+        </div> -->
+
+        <!-- Content — centered -->
+        <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 md:px-12"
+            id="cta-content">
+
+            <!-- Pill Tag -->
+            <div class="mb-6 opacity-0" id="cta-tag">
+                <span
+                    class="inline-block px-6 py-2 rounded-full border border-white/30 text-white/90 text-[11px] sm:text-xs tracking-[0.18em] font-normal uppercase backdrop-blur-sm">
+                    we care About Environment
+                </span>
+            </div>
+
+            <!-- Main Title -->
+            <h2 class="text-white font-bold font-sans leading-[1.18] mb-5 opacity-0" id="cta-title"
+                style="font-size: clamp(1.8rem, 4.5vw, 3.5rem); max-width: 800px;">
+                Create the Space<br />You've Always Imagined
+            </h2>
+
+            <!-- Subtitle -->
+            <p class="text-white/55 font-light font-sans leading-relaxed mb-10 opacity-0" id="cta-desc"
+                style="font-size: clamp(0.75rem, 1.4vw, 0.92rem); max-width: 480px;">
+                From bedrooms to salons and custom furniture pieces, we bring your<br class="hidden sm:inline" />
+                vision to life with elegance and precision.
+            </p>
+
+            <!-- CTA Button -->
+            <div class="opacity-0" id="cta-btn">
+                <a href="#contact"
+                    class="inline-block font-semibold font-sans tracking-widest uppercase transition-all duration-300 transform hover:scale-[1.04]"
+                    style="background:#0A0B08; color:#fff; font-size:0.78rem; padding: 1rem 2.4rem; border-radius: 0.35rem; letter-spacing: 0.12em;">
+                    Get Your Design Now
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer Section -->
     <footer class="relative bg-customBg pt-32 pb-8 overflow-hidden" id="main-footer">
@@ -428,6 +712,81 @@
             }, { threshold: 0.12 });
 
             scItems.forEach(el => scObserver.observe(el));
+
+            // ── Typing Animation Logic ──
+            const typingTarget = document.getElementById('typing-content');
+            const fullText = "At Khaled El Hefnawy, we believe that furniture is more than just pieces placed inside a home — it is a reflection of style, comfort, and personality. We specialize in crafting premium furniture with exceptional quality, combining timeless elegance with modern designs to create spaces that inspire |";
+            let charIndex = 0;
+            let isTypingStarted = false;
+
+            function typeWriter() {
+                if (charIndex < fullText.length) {
+                    // If the character is the cursor, check if it's the last one
+                    if (fullText.charAt(charIndex) === '|') {
+                        typingTarget.innerHTML += '<span class="typing-cursor"></span>';
+                    } else {
+                        typingTarget.innerHTML += fullText.charAt(charIndex);
+                    }
+                    charIndex++;
+                    setTimeout(typeWriter, 15); // Adjust typing speed here
+                }
+            }
+
+            const typingObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !isTypingStarted) {
+                        isTypingStarted = true;
+                        typeWriter();
+                        typingObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            if (typingTarget) typingObserver.observe(typingTarget);
+
+            // ── Reveal Animations for About Section ──
+            const aboutImage = document.querySelector('.about-image-container');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            if (aboutImage) revealObserver.observe(aboutImage);
+
+            // ── Reveal Animations for Design Living Section ──
+            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+            const elementObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const type = entry.target.classList.contains('reveal-left') ? 'left'
+                            : entry.target.classList.contains('reveal-right') ? 'right'
+                                : 'up';
+
+                        gsap.to(entry.target, {
+                            opacity: 1,
+                            x: 0,
+                            y: 0,
+                            duration: 1.2,
+                            ease: 'power4.out'
+                        });
+                        elementObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealElements.forEach(el => {
+                const isLeft = el.classList.contains('reveal-left');
+                const isRight = el.classList.contains('reveal-right');
+                gsap.set(el, {
+                    opacity: 0,
+                    y: (isLeft || isRight) ? 0 : 40,
+                    x: isLeft ? -40 : isRight ? 40 : 0
+                });
+                elementObserver.observe(el);
+            });
         });
     </script>
     <script src="js/script.js"></script>
