@@ -1,0 +1,740 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #0A0B08;
+    --color-btn: #252B20;
+    --color-dark-olive: #131610;
+    --color-text-white: #FFFFFF;
+    --color-text-gray: #A1A1AA;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-white);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-olive);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-btn);
+}
+
+/* Glassmorphism Navigation */
+.header-glass {
+  background: #0A0B08 !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Nav links underline animation */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 50%;
+  background-color: var(--color-btn);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: #d1d5db;
+}
+
+/* Interactive Slider Transitions */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Image Ken Burns Zoom Effect */
+.slide-bg {
+  transform: scale(1.15);
+  transition: transform 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slide.active .slide-bg {
+  transform: scale(1);
+}
+
+/* Magnetic Button Hover Glow */
+.btn-premium {
+  background-color: var(--color-btn);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+}
+
+.btn-premium:hover {
+  box-shadow: 0 0 25px rgba(37, 43, 32, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.15),
+      transparent);
+  transition: 0.5s;
+}
+
+.btn-premium:hover::before {
+  left: 100%;
+}
+
+/* Custom left/right circular buttons */
+.btn-arrow-left {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-arrow-left:hover {
+  background: var(--color-btn);
+  border-color: var(--color-btn);
+  box-shadow: 0 0 15px rgba(37, 43, 32, 0.4);
+}
+
+.btn-arrow-right {
+  background: rgba(37, 43, 32, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-arrow-right:hover {
+  background: var(--color-btn);
+  box-shadow: 0 0 15px rgba(37, 43, 32, 0.6);
+  transform: scale(1.05);
+}
+
+/* Indicator dots styling */
+.dot-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+}
+
+.dot-indicator.active {
+  background: var(--color-text-white);
+  border-color: var(--color-text-white);
+  transform: scale(1.2);
+}
+
+/* Mobile Menu Fullscreen Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 11, 8, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-menu-link {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-text-white);
+  margin: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-link:hover {
+  color: var(--color-btn);
+  transform: translateX(10px);
+}
+
+/* Custom Text Line Mask for Entrance Animation */
+.text-line-mask {
+  overflow: hidden;
+  display: block;
+}
+
+.text-line-content {
+  display: block;
+  transform: translateY(100%);
+}
+
+/* Custom Gradients on Hero Backgrounds to match design precisely */
+.hero-gradient {
+  background: linear-gradient(to bottom,
+      rgba(10, 11, 8, 0.55) 0%,
+      rgba(10, 11, 8, 0.45) 40%,
+      rgba(10, 11, 8, 0.9) 90%,
+      #0A0B08 100%);
+}
+
+/* Arabic Text Direction Support */
+[dir="rtl"] {
+  font-family: 'Outfit', 'Cairo', sans-serif;
+}
+
+/* Category grid cards styling */
+.category-card {
+  position: relative;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center,
+      rgba(37, 43, 32, 0.15) 0%,
+      transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.category-card:hover::before,
+.category-card.active::before {
+  opacity: 1;
+}
+
+/* Precise CSS Filter to turn White outline PNG into the elegant gold #c5a880 */
+.category-card img {
+  filter: brightness(1) contrast(1) opacity(0.5);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.category-card:hover img,
+.category-card.active img {
+  transform: scale(1.08) translateY(-4px);
+  filter: invert(72%) sepia(26%) saturate(601%) hue-rotate(357deg) brightness(91%) contrast(85%) opacity(1) drop-shadow(0 0 8px rgba(197, 168, 128, 0.2));
+}
+
+.category-card span {
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.category-card:hover span,
+.category-card.active span {
+  color: #c5a880 !important;
+  transform: translateY(-2px);
+  letter-spacing: 0.15em;
+}
+
+.category-card:hover,
+.category-card.active {
+  background-color: #131610 !important;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ====================================================
+   TAKE A LOOK SECTION — Split Cards
+   ==================================================== */
+
+/* Animated underline on links inside look cards */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.7);
+  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.look-card:hover .link-underline::after {
+  width: 100%;
+}
+
+/* Ensure look card image zooms are GPU-accelerated */
+.look-card>div:first-child {
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* Vertical divider line between cards on desktop */
+#look-grid {
+  border-left: none;
+  border-right: none;
+}
+
+/* ====================================================
+   SECTION 4: CRAFTED AROUND YOU
+   ==================================================== */
+
+.crafted-link {
+  position: relative;
+}
+
+.crafted-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.6);
+  transition: width 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.crafted-card:hover .crafted-link::after {
+  width: calc(100% - 22px);
+}
+
+.crafted-card>div:first-child {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* ====================================================
+   SECTION 6: PREMIUM SLIDER
+   ==================================================== */
+.slide {
+  pointer-events: none;
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
+}
+
+.slide.active {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.slide .slide-bg {
+  transform: scale(1.01);
+  will-change: transform;
+}
+
+.slide.active .slide-bg {
+  transform: scale(1.07);
+}
+
+/* ====================================================
+   BEFORE & AFTER SECTION — Comparison Slider
+   ==================================================== */
+#before-after-slider {
+  position: relative;
+  will-change: transform;
+}
+
+#before-after-slider img {
+  pointer-events: none;
+  user-select: none;
+}
+
+#before-image {
+  will-change: clip-path;
+  transition: clip-path 0.05s ease-out;
+  /* Premium micro-smooth drag inertia */
+}
+
+#slider-handle {
+  pointer-events: none;
+  transition: left 0.05s ease-out;
+  will-change: left;
+}
+
+/* Invisible range input spanning container for effortless mouse/touch interaction */
+#slider-range {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+#slider-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 48px;
+  height: 100%;
+  cursor: ew-resize;
+  background: transparent;
+}
+
+#slider-range::-moz-range-thumb {
+  width: 48px;
+  height: 100%;
+  cursor: ew-resize;
+  background: transparent;
+  border: none;
+}
+
+/* ====================================================
+   TESTIMONIALS SECTION
+   ==================================================== */
+#testimonials-section {
+  isolation: isolate;
+}
+
+/* Track width is default for flex, items will overflow */
+#testimonials-track {
+  width: 100%;
+}
+
+.testimonial-card {
+  width: 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive widths: 1 on mobile, 2 on tablet, 3 on desktop */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .testimonial-card {
+    flex: 0 0 calc(100% / 2);
+    max-width: calc(100% / 2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonial-card {
+    flex: 0 0 calc(100% / 3);
+    max-width: calc(100% / 3);
+  }
+
+  #testimonials-track-outer {
+    overflow: hidden;
+  }
+}
+
+/* Ensure no unexpected gaps from the track */
+#testimonials-track {
+  gap: 0;
+}
+
+/* Right image panel — subtle parallax hover */
+#testimonials-img-panel img {
+  transition: transform 6s ease-out;
+}
+
+#testimonials-img-panel:hover img {
+  transform: scale(1.04);
+}
+
+/* Prev arrow — filled dark */
+#testi-prev:hover {
+  background: rgba(50, 52, 46, 0.95) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  color: #fff !important;
+}
+
+/* Next arrow — outline only */
+#testi-next:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* GSAP will-change hints */
+#testimonials-header,
+#testimonials-img-panel,
+#testimonials-slider-area {
+  will-change: opacity, transform;
+}
+
+/* Dots (pagination) */
+.testi-dot {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  border-radius: 9999px;
+  background: rgba(158, 149, 114, 0.85);
+  opacity: 0.35;
+  transition: width 0.28s ease, opacity 0.28s ease, transform 0.28s ease;
+}
+
+.testi-dot.is-active {
+  width: 28px;
+  opacity: 1;
+}
+
+/* ====================================================
+   SECTION: INSPIRED INTERIOR LIVING SLIDER
+   ==================================================== */
+
+/* Slider track smooth animation */
+#inspired-track {
+  transition: transform 0.72s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+
+/* Card base */
+.inspired-card {
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Before/after image crossfade */
+.inspired-img-before,
+.inspired-img-after {
+  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1), transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+  transform: scale(1);
+}
+
+/* On hover: hide muted before, show vivid after */
+.inspired-card:hover .inspired-img-before {
+  opacity: 0 !important;
+}
+
+.inspired-card:hover .inspired-img-after {
+  opacity: 1 !important;
+}
+
+/* Card image scale on hover (both images scale synchronously) */
+.inspired-card:hover .inspired-img-before,
+.inspired-card:hover .inspired-img-after {
+  transform: scale(1.06);
+}
+
+
+/* Yellow arrow glow */
+.inspired-arrow {
+  will-change: opacity, transform;
+  /* Arrow color set to white */
+  color: #ffffff !important;
+}
+
+/* Ensure arrow SVGs use the current text color */
+.inspired-arrow svg {
+  stroke: currentColor !important;
+  fill: none !important;
+}
+
+/* Active dot styling */
+.inspired-dot.active {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  transform: scale(1.35);
+}
+
+/* Responsive card sizing */
+@media (max-width: 640px) {
+  .inspired-card {
+    height: 280px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .inspired-card {
+    height: 340px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .inspired-card {
+    height: 360px !important;
+  }
+}
+
+/* ====================================================
+   FOOTER SECTION STYLING
+   ==================================================== */
+#main-footer {
+  background-color: #0A0B08;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+#footer-logo-block {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  transition: all 0.5s ease;
+}
+
+#footer-logo-block:hover {
+  border-bottom-color: #ffffff;
+  box-shadow: 0 15px 50px rgba(166, 161, 130, 0.15);
+}
+
+.footer-col h3 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.footer-col ul li a {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: inline-block;
+  text-align: left;
+}
+
+.footer-col ul li a:hover {
+  color: #A6A182 !important;
+  transform: translateX(6px);
+}
+
+/* Get In Touch interactive SVG icons */
+.footer-col svg {
+  transition: all 0.3s ease;
+}
+
+.footer-col li:hover svg {
+  color: #ffffff !important;
+  transform: scale(1.15) rotate(5deg);
+  filter: drop-shadow(0 0 5px rgba(166, 161, 130, 0.5));
+}
+
+/* Bottom Bar Social Links */
+#footer-bottom a {
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#footer-bottom a:hover {
+  color: #ffffff !important;
+  transform: translateY(-5px) scale(1.12);
+  filter: drop-shadow(0 4px 10px rgba(166, 161, 130, 0.4));
+}
+
+#footer-bottom p {
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.3s ease;
+}
+
+#footer-bottom:hover p {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ====================================================
+   SECTION 15: LUXURY STATEMENT (CRAFT)
+   ==================================================== */
+#luxury-meets-craft {
+  background-color: #0A0B08;
+  position: relative;
+}
+
+.luxury-bg-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+#luxury-bg {
+  width: 100%;
+  height: 100%;
+  object-position: center bottom;
+  /* Ensures chairs/bottom are visible */
+}
+
+.luxury-title-main {
+  font-size: clamp(2.5rem, 5vw, 70px);
+  color: #D7D7D7;
+  font-weight: 700;
+
+}
+
+.luxury-title-script {
+  font-size: clamp(1.8rem, 4vw, 50px);
+  font-weight: 600;
+  color: #D7D7D7;
+  opacity: 0.9;
+}
+
+.luxury-title-sub {
+  font-size: clamp(1.8rem, 4vw, 50px);
+  font-weight: 600;
+  color: #D7D7D7;
+}
+
+.luxury-quote-text {
+  font-size: 14px !important;
+  font-weight: 400;
+  color: #9E9572;
+  line-height: 1.8;
+}
+
+.luxury-quote-icon {
+  width: 40px;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .luxury-quote-icon {
+    width: 32px;
+  }
+}

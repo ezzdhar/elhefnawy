@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Premium SEO Meta Tags -->
+    <title>Khalid El-Hefnawy - Timeless Elegance & Premium Furniture</title>
+    <meta name="description"
+        content="Transform your living space with the timeless elegance of Khalid El-Hefnawy. Custom interior architecture and state-of-the-art luxury furniture.">
+    <meta name="keywords"
+        content="Khalid El-Hefnawy, Luxury Furniture, Premium Design, Sofa, Modern Interiors, Egypt, Cairo">
+    <meta name="author" content="Khalid El-Hefnawy">
+
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="Khalid El-Hefnawy - Timeless Elegance Furniture">
+    <meta property="og:description"
+        content="Discover premium custom furniture and luxurious spaces crafted with absolute precision.">
+    <meta property="og:image" content="images/slide1.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Cairo:wght@400;600;700;800&family=Playfair+Display:ital,wght@1,300;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS (Play CDN for instant local rendering) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        customBg: '#0A0B08',
+                        customBtn: '#252B20',
+                        customOlive: '#131610'
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- GSAP for World-Class Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="bg-customBg text-white overflow-x-hidden font-sans select-none">
+
+    <!-- Loader Screen -->
+    <div id="loader" class="fixed inset-0 bg-customBg z-[9999] flex flex-col justify-center items-center">
+        <div class="relative overflow-hidden w-48 h-16 flex justify-center items-center">
+            <img src="images/logo.png" alt="Khalid El-Hefnawy Logo" class="h-10 object-contain w-auto opacity-0"
+                id="loader-logo">
+        </div>
+        <div class="w-40 h-[2px] bg-white/10 rounded-full mt-4 overflow-hidden relative">
+            <div class="absolute top-0 left-0 h-full bg-customBtn w-0" id="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header
+        class="fixed top-0 left-0 w-full z-[1001] transition-all duration-500 py-4 bg-customBg border-b border-white/[0.03]"
+        id="main-header">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+
+            <!-- Logo Section -->
+            <a href="#" class="flex items-center space-x-2 header-item group relative overflow-hidden"
+                id="logo-container">
+                <div
+                    class="bg-black/90 px-3.5 py-1.5 border border-white/5 rounded-sm shadow-xl transition-all duration-300 group-hover:border-customBtn/50">
+                    <img src="images/logo.png" alt="Khalid El-Hefnawy Furniture Logo"
+                        class="h-7 md:h-7.5 object-contain w-auto transition-transform duration-500 group-hover:scale-105">
+                </div>
+            </a>
+
+            <!-- Center Navigation Links -->
+            <nav class="hidden lg:flex items-center space-x-8 xl:space-x-10 header-item" id="desktop-nav">
+                <a href="#" class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/95 active"
+                    data-index="0">Home</a>
+                <a href="#"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="1">About Us</a>
+                <a href="#"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="2">Our Services</a>
+                <a href="#"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="3">Furniture</a>
+                <a href="#"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="4">Contact Us</a>
+            </nav>
+
+            <!-- Right CTA Button (Desktop) -->
+            <div class="hidden lg:block header-item" id="desktop-cta">
+                <a href="#contact"
+                    class="btn-premium px-6 py-2.5 rounded-sm text-[11px] font-semibold uppercase tracking-[0.2em] border border-customBtn text-white/90 block hover:text-white">
+                    Request Your Design
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button
+                class="lg:hidden flex flex-col justify-between items-end w-8 h-5 focus:outline-none z-[1000] header-item cursor-pointer"
+                id="menu-toggle" aria-label="Toggle Navigation">
+                <span class="w-8 h-[2px] bg-white rounded-full transition-all duration-300 origin-center"></span>
+                <span class="w-6 h-[2px] bg-white rounded-full transition-all duration-300 origin-center"></span>
+                <span class="w-7 h-[2px] bg-white rounded-full transition-all duration-300 origin-center"></span>
+            </button>
+
+        </div>
+    </header>
+
+    <!-- Mobile Fullscreen Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <div class="flex flex-col items-center justify-between h-[75%] px-6 py-12">
+            <!-- Mobile Navigation Links -->
+            <nav class="flex flex-col items-center text-center mt-8">
+                <a href="#" class="mobile-menu-link opacity-0 text-xl" data-index="0">Home</a>
+                <a href="#" class="mobile-menu-link opacity-0 text-xl" data-index="1">About Us</a>
+                <a href="#" class="mobile-menu-link opacity-0 text-xl" data-index="2">Our Services</a>
+                <a href="#" class="mobile-menu-link opacity-0 text-xl" data-index="3">Furniture</a>
+                <a href="#" class="mobile-menu-link opacity-0 text-xl" data-index="4">Contact Us</a>
+            </nav>
+            <!-- Mobile CTA Button -->
+            <a href="#contact"
+                class="btn-premium px-8 py-3 rounded-sm text-xs font-semibold uppercase tracking-[0.2em] border border-customBtn text-white opacity-0 mt-8"
+                id="mobile-menu-cta">
+                Request Your Design
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Hero Slider Section -->
+    <section class="relative w-full h-screen overflow-hidden bg-customBg flex items-center justify-center"
+        id="hero-section">
+
+        <!-- Background Slider Container -->
+        <div class="absolute inset-0 z-0" id="slider-container">
+
+            <!-- Slide 1 (Active by default) -->
+            <div class="slide active">
+                <div class="absolute inset-0 bg-cover bg-center slide-bg"
+                    style="background-image: url('images/slide1.png');"></div>
+                <div class="absolute inset-0 hero-gradient"></div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide">
+                <div class="absolute inset-0 bg-cover bg-center slide-bg"
+                    style="background-image: url('images/slide2.png');"></div>
+                <div class="absolute inset-0 hero-gradient"></div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide">
+                <div class="absolute inset-0 bg-cover bg-center slide-bg"
+                    style="background-image: url('images/slide3.png');"></div>
+                <div class="absolute inset-0 hero-gradient"></div>
+            </div>
+
+        </div>
+
+        <!-- Hero Text and Main Content (Left Center) -->
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pointer-events-none mt-20 md:mt-24">
+            <div class="max-w-4xl text-left pl-0 md:pl-6">
+                <h1 class="text-white text-[2.75rem] sm:text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.08] tracking-tight uppercase"
+                    id="hero-title">
+                    <span class="text-line-mask mb-1"><span class="text-line-content block">Transform Your</span></span>
+                    <span class="text-line-mask mb-1"><span class="text-line-content block text-white/90">Space
+                            With</span></span>
+                    <span class="text-line-mask"><span
+                            class="text-line-content block text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-white/40">Timeless
+                            Elegance.</span></span>
+                </h1>
+            </div>
+        </div>
+
+        <!-- Left Slider Navigation Arrow -->
+        <button
+            class="btn-arrow-left absolute left-4 md:left-10 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center z-30 cursor-pointer pointer-events-auto"
+            id="prev-slide" aria-label="Previous Slide">
+            <svg class="w-4 h-4 md:w-5 md:h-5 text-white transform transition-transform duration-300 group-hover:-translate-x-1"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+        </button>
+
+        <!-- Right Slider Navigation Arrow -->
+        <button
+            class="btn-arrow-right absolute right-4 md:right-10 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center z-30 cursor-pointer pointer-events-auto"
+            id="next-slide" aria-label="Next Slide">
+            <svg class="w-4 h-4 md:w-5 md:h-5 text-white transform transition-transform duration-300 group-hover:translate-x-1"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+        </button>
+
+        <!-- Bottom Pagination Dots -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center space-x-3 z-30 pointer-events-auto"
+            id="slider-dots">
+            <div class="dot-indicator active" data-slide="0"></div>
+            <div class="dot-indicator" data-slide="1"></div>
+            <div class="dot-indicator" data-slide="2"></div>
+        </div>
+
+    </section>
+
+    <!-- Categories Section (What We Design) -->
+    <section class="relative bg-customBg py-24 md:py-32 overflow-hidden border-t border-white/[0.03]"
+        id="categories-section">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+
+            <!-- Section Header -->
+            <div class="relative flex flex-col items-center text-center mb-20 md:mb-28" id="categories-header">
+                <!-- Large low opacity background text -->
+                <span
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-extrabold uppercase tracking-[0.18em] text-white/[0.015] select-none pointer-events-none whitespace-nowrap"
+                    id="bg-text-design">
+                    What we Design
+                </span>
+                <!-- Main Title with reveal mask -->
+                <h2 class="relative z-10 text-white text-3xl md:text-5xl font-bold uppercase tracking-[0.08em] font-sans"
+                    id="cat-title">
+                    <span class="text-line-mask"><span class="text-line-content block">What we Design</span></span>
+                </h2>
+                <!-- Subtitle with delay fade -->
+                <p class="relative z-10 text-xs md:text-sm text-white/50 tracking-[0.22em] uppercase mt-6 font-light font-sans max-w-2xl px-4"
+                    id="cat-subtitle">
+                    { Where comfort meets modern elegance in every detail }
+                </p>
+            </div>
+
+            <!-- Categories Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border border-white/[0.06] divide-x divide-y md:divide-y-0 divide-white/[0.06] bg-black/[0.15] rounded-sm overflow-hidden"
+                id="categories-grid">
+
+                <!-- Category 1: Bed Room -->
+                <div class="category-card flex flex-col items-center justify-between p-8 md:p-12 text-center aspect-[4/5] sm:aspect-square lg:aspect-[4/5]"
+                    data-index="0">
+                    <div class="flex-1 flex items-center justify-center">
+                        <img src="images/cat-bedroom.png" alt="Bed Room Icon"
+                            class="w-12 h-12 md:w-14 md:h-14 object-contain opacity-80">
+                    </div>
+                    <span class="text-xs md:text-sm font-medium tracking-[0.1em] text-white/70 uppercase">Bed
+                        Room</span>
+                </div>
+
+                <!-- Category 2: Dining Room -->
+                <div class="category-card flex flex-col items-center justify-between p-8 md:p-12 text-center aspect-[4/5] sm:aspect-square lg:aspect-[4/5]"
+                    data-index="1">
+                    <div class="flex-1 flex items-center justify-center">
+                        <img src="images/cat-dining.png" alt="Dining Room Icon"
+                            class="w-12 h-12 md:w-14 md:h-14 object-contain opacity-80">
+                    </div>
+                    <span class="text-xs md:text-sm font-medium tracking-[0.1em] text-white/70 uppercase">Dining
+                        room</span>
+                </div>
+
+                <!-- Category 3: Living Room (Active by Default) -->
+                <div class="category-card active flex flex-col items-center justify-between p-8 md:p-12 text-center aspect-[4/5] sm:aspect-square lg:aspect-[4/5]"
+                    data-index="2">
+                    <div class="flex-1 flex items-center justify-center">
+                        <img src="images/cat-living.png" alt="Living Room Icon"
+                            class="w-12 h-12 md:w-14 md:h-14 object-contain opacity-80">
+                    </div>
+                    <span class="text-xs md:text-sm font-medium tracking-[0.1em] text-white/70 uppercase">Living
+                        room</span>
+                </div>
+
+                <!-- Category 4: Salon -->
+                <div class="category-card flex flex-col items-center justify-between p-8 md:p-12 text-center aspect-[4/5] sm:aspect-square lg:aspect-[4/5]"
+                    data-index="3">
+                    <div class="flex-1 flex items-center justify-center">
+                        <img src="images/cat-salon.png" alt="Salon Icon"
+                            class="w-12 h-12 md:w-14 md:h-14 object-contain opacity-80">
+                    </div>
+                    <span class="text-xs md:text-sm font-medium tracking-[0.1em] text-white/70 uppercase">Salon</span>
+                </div>
+
+                <!-- Category 5: Corner Sofa -->
+                <div class="category-card flex flex-col items-center justify-between p-8 md:p-12 text-center aspect-[4/5] sm:aspect-square lg:aspect-[4/5]"
+                    data-index="4">
+                    <div class="flex-1 flex items-center justify-center">
+                        <img src="images/cat-cornersofa.png" alt="Corner Sofa Icon"
+                            class="w-12 h-12 md:w-14 md:h-14 object-contain opacity-80">
+                    </div>
+                    <span class="text-xs md:text-sm font-medium tracking-[0.1em] text-white/70 uppercase">Corner
+                        sofa</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Split Features Section (Take A Look) -->
+    <section class="relative bg-customBg pt-24 pb-0 overflow-hidden border-t border-white/[0.03]" id="look-section">
+
+        <!-- Section Header Container -->
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10 mb-16 md:mb-20">
+            <div class="relative max-w-2xl" id="look-header">
+                <!-- Large background text -->
+                <span
+                    class="absolute top-1/2 left-0 -translate-y-1/2 text-5xl sm:text-7xl md:text-8xl font-extrabold uppercase tracking-[0.15em] text-white/[0.015] select-none pointer-events-none whitespace-nowrap"
+                    id="bg-text-look">
+                    Take A Look
+                </span>
+
+                <!-- Main Header Title -->
+                <h2 class="relative z-10 text-white text-4xl sm:text-5xl md:text-6xl font-bold uppercase leading-[1.1] tracking-[0.02em] font-sans"
+                    id="look-title">
+                    <span class="text-line-mask"><span class="text-line-content block">Take</span></span>
+                    <span class="text-line-mask"><span
+                            class="text-line-content block flex items-center flex-wrap gap-4">
+                            A Look
+                            <span
+                                class="text-[11px] sm:text-xs md:text-sm font-normal text-white/50 tracking-[0.1em] lowercase px-3.5 py-1.5 border border-white/10 rounded-full bg-black/30 backdrop-blur-md inline-flex items-center justify-center font-sans ml-2 md:ml-4">{
+                                ? }</span>
+                        </span></span>
+                </h2>
+
+                <!-- Subtitle / Paragraph -->
+                <p class="relative z-10 text-xs sm:text-sm text-white/50 tracking-[0.15em] mt-6 font-light font-sans max-w-md"
+                    id="look-desc">
+                    Discover timeless furniture pieces crafted to elevate every corner of your home.
+                </p>
+            </div>
+        </div>
+
+        <!-- Split 50/50 Grid Cards -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 border-t border-white/[0.06]" id="look-grid">
+
+            <!-- Left Card: Natural Warmth -->
+            <div class="group relative w-full h-[500px] sm:h-[600px] lg:h-[700px] overflow-hidden cursor-pointer look-card"
+                data-side="left">
+                <!-- Smooth Zooming Background Image -->
+                <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center transition-transform duration-[1.8s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
+                    style="background-image: url('images/look-left.png');"></div>
+                <!-- Card Gradient Overlay -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/15 transition-opacity duration-700 group-hover:opacity-90">
+                </div>
+
+                <!-- Card Content -->
+                <div
+                    class="absolute inset-0 flex flex-col justify-center items-center p-8 sm:p-12 text-center z-10 transition-transform duration-700 look-card-content">
+                    <h3
+                        class="text-white text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[0.05em] uppercase font-sans mb-4 transform translate-y-4 transition-transform duration-700 group-hover:translate-y-0">
+                        Natural Warmth
+                    </h3>
+                    <p
+                        class="text-white/70 text-xs sm:text-sm tracking-[0.1em] font-light font-sans max-w-md mb-8 transform translate-y-4 transition-all duration-700 delay-75 opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                        Furniture designed to bring serenity, balance, and elegance into your home.
+                    </p>
+                    <a href="#shop"
+                        class="relative text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-white/90 group-hover:text-white font-sans link-underline transform translate-y-4 transition-all duration-700 delay-150 group-hover:translate-y-0">
+                        Shop Now <span
+                            class="inline-block ml-1 transition-transform duration-300 group-hover:translate-x-2">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Card: Contemporary Luxury -->
+            <div class="group relative w-full h-[500px] sm:h-[600px] lg:h-[700px] overflow-hidden cursor-pointer look-card border-t lg:border-t-0 lg:border-l border-white/[0.06]"
+                data-side="right">
+                <!-- Smooth Zooming Background Image -->
+                <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center transition-transform duration-[1.8s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
+                    style="background-image: url('images/look-right.png');"></div>
+                <!-- Card Gradient Overlay -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/15 transition-opacity duration-700 group-hover:opacity-90">
+                </div>
+
+                <!-- Card Content -->
+                <div
+                    class="absolute inset-0 flex flex-col justify-center items-center p-8 sm:p-12 text-center z-10 transition-transform duration-700 look-card-content">
+                    <h3
+                        class="text-white text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[0.05em] uppercase font-sans mb-4 transform translate-y-4 transition-transform duration-700 group-hover:translate-y-0">
+                        Contemporary Luxury
+                    </h3>
+                    <p
+                        class="text-white/70 text-xs sm:text-sm tracking-[0.1em] font-light font-sans max-w-md mb-8 transform translate-y-4 transition-all duration-700 delay-75 opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                        Crafted for those who appreciate bold aesthetics and refined living.
+                    </p>
+                    <a href="#discover"
+                        class="relative text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-white/90 group-hover:text-white font-sans link-underline transform translate-y-4 transition-all duration-700 delay-150 group-hover:translate-y-0">
+                        Discover More <span
+                            class="inline-block ml-1 transition-transform duration-300 group-hover:translate-x-2">→</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Before & After Section -->
+    <section class="relative bg-customBg py-24 md:py-32 overflow-hidden border-t border-white/[0.03]"
+        id="before-after-section">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+
+            <!-- Section Header (Left-Aligned, Matching Screenshot) -->
+            <div class="relative mb-16 md:mb-20 text-left pl-0 md:pl-6" id="before-after-header">
+                <!-- Large low opacity background text (Watermark) -->
+                <span
+                    class="absolute -top-8 sm:-top-12 md:-top-16 lg:-top-20 left-0 text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-extrabold uppercase tracking-[0.04em] text-white/[0.015] select-none pointer-events-none whitespace-nowrap"
+                    id="bg-text-before-after">
+                    Before & After
+                </span>
+
+                <!-- Main Title with reveal mask -->
+                <h2 class="relative z-10 text-white text-3xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold uppercase leading-[1.1] tracking-[0.02em] font-sans"
+                    id="before-after-title">
+                    <span class="text-line-mask block"><span class="text-line-content block">From A Simple Idea
+                            To</span></span>
+                    <span class="text-line-mask block"><span class="text-line-content block text-white/90 mt-1">An
+                            Exceptional Space</span></span>
+                </h2>
+
+                <!-- Subtitle with delay fade -->
+                <p class="relative z-10 text-xs sm:text-sm text-white/50 tracking-[0.15em] mt-6 font-light font-sans max-w-3xl leading-relaxed"
+                    id="before-after-subtitle">
+                    At Khaled El Hefnawy, every concept begins with creativity and becomes a masterpiece crafted with
+                    precision,<br class="hidden md:inline" /> luxury, and exceptional attention to detail.
+                </p>
+            </div>
+
+            <!-- Slider Wrapper (Enlarged) -->
+            <div class="max-w-7xl mx-auto pl-0 md:pl-6" id="before-after-slider-wrapper">
+                <div id="before-after-slider"
+                    class="relative w-full h-[380px] sm:h-[500px] md:h-[600px] lg:h-[700px] rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.85)] border border-white/10 select-none group">
+
+                    <!-- Base Image: Before Sketch -->
+                    <img src="images/craft-left.png" alt="Before Sketch"
+                        class="absolute top-0 left-0 w-full h-full object-cover">
+
+                    <!-- Clipped Overlay Image: After Design (Photo) -->
+                    <img src="images/craft-right.png" alt="After Design"
+                        class="absolute top-0 left-0 w-full h-full object-cover z-10 pointer-events-none"
+                        id="before-image" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);">
+
+                    <!-- Vertical Divider Line & Central Drag Handle -->
+                    <div class="absolute top-0 bottom-0 left-1/2 w-[2px] bg-white/40 backdrop-blur-sm z-20 pointer-events-none -translate-x-1/2"
+                        id="slider-handle">
+                        <!-- Circle Button -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-black shadow-[0_4px_20px_rgba(0,0,0,0.4)] flex items-center justify-center border border-white/80 select-none transform transition-transform duration-300 group-hover:scale-105"
+                            id="slider-handle-button">
+                            <!-- Premium custom icon representing comparison / drag (Arrows) -->
+                            <div class="flex items-center space-x-1 pointer-events-none">
+                                <svg class="w-3.5 h-3.5 text-zinc-800" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                                </svg>
+                                <svg class="w-3.5 h-3.5 text-zinc-800" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Range Input Overlay covering slider container for drag interactions -->
+                    <input type="range" min="0" max="100" value="50"
+                        class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30 pointer-events-auto"
+                        id="slider-range" aria-label="Before and after comparison slider">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 4: Crafted Around You / Furniture Made Personal -->
+    <section class="relative overflow-hidden" id="crafted-section">
+
+        <!-- TOP TEXT BLOCK — LIGHT CREAM background, dark text (matching reference) -->
+        <div class="bg-[#EEEBE4] w-full" id="crafted-header">
+            <div class="max-w-7xl mx-auto px-6 md:px-12 pt-16 md:pt-24 pb-14 md:pb-20">
+
+                <!-- Ghost title "Crafted Around You" — solid medium grey -->
+                <p class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.6rem] font-extrabold uppercase tracking-[0.04em] leading-tight select-none font-sans"
+                    style="color: #9E9E9D;" id="crafted-ghost-title">
+                    Crafted Around You
+                </p>
+
+                <!-- Main bold title — hollow outline style text as in the reference image, wrapped for GSAP animation -->
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.6rem] font-extrabold uppercase tracking-[0.025em] leading-tight font-sans -mt-2"
+                    id="crafted-title">
+                    <span class="text-line-mask block overflow-hidden"><span class="text-line-content block"
+                            style="color: transparent; -webkit-text-stroke: 1.5px #0A0B08; text-stroke: 1.5px #0A0B08;">Furniture
+                            Made Personal</span></span>
+                </h2>
+
+                <!-- Spacer -->
+                <div class="mt-8 mb-7 w-14 h-px" style="background-color: rgba(10,11,8,0.15);" id="crafted-divider">
+                </div>
+
+                <!-- Description paragraph — dark grey -->
+                <p class="text-xs sm:text-[13px] leading-[1.85] tracking-[0.04em] font-normal font-sans max-w-[480px]"
+                    style="color: rgba(10,11,8,0.55);" id="crafted-desc">
+                    Discover furniture collections thoughtfully crafted to reflect your personality, elevate your
+                    lifestyle, and bring timeless elegance into every corner of your home. From customized details to
+                    modern designs, every piece is created with comfort, quality, and sophistication in mind.
+                </p>
+            </div>
+        </div>
+
+        <!-- SPLIT IMAGE PANELS — full width, dark, below light block -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 w-full" id="crafted-grid">
+
+            <!-- Left Panel: Where Our Collections Begin -->
+            <div class="group relative w-full h-[440px] sm:h-[520px] lg:h-[580px] overflow-hidden cursor-pointer crafted-card"
+                data-crafted="left">
+                <div class="absolute inset-0 transition-transform duration-[2.2s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.07]"
+                    style="background-image: url('images/craft-alt1.png'); background-size: cover; background-position: center;">
+                </div>
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent transition-opacity duration-700 group-hover:from-black/90">
+                </div>
+                <div class="absolute bottom-0 left-0 px-8 sm:px-10 md:px-12 pb-8 sm:pb-10 z-10">
+                    <h3
+                        class="text-white text-xl sm:text-2xl lg:text-[1.7rem] font-bold uppercase font-sans tracking-[0.03em] mb-3 transition-transform duration-500 translate-y-1 group-hover:translate-y-0">
+                        Where Our Collections Begin
+                    </h3>
+                    <a href="#discover"
+                        class="crafted-link inline-flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-white/60 group-hover:text-white font-sans transition-all duration-400">
+                        Discover more <span
+                            class="transition-transform duration-300 group-hover:translate-x-1.5 inline-block">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Panel: Customize Your Products -->
+            <div class="group relative w-full h-[440px] sm:h-[520px] lg:h-[580px] overflow-hidden cursor-pointer crafted-card border-t lg:border-t-0 lg:border-l border-white/[0.06]"
+                data-crafted="right">
+                <div class="absolute inset-0 transition-transform duration-[2.2s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.07]"
+                    style="background-image: url('images/craft-alt2.png'); background-size: cover; background-position: center;">
+                </div>
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent transition-opacity duration-700 group-hover:from-black/90">
+                </div>
+                <div class="absolute bottom-0 left-0 px-8 sm:px-10 md:px-12 pb-8 sm:pb-10 z-10">
+                    <h3
+                        class="text-white text-xl sm:text-2xl lg:text-[1.7rem] font-bold uppercase font-sans tracking-[0.03em] mb-3 transition-transform duration-500 translate-y-1 group-hover:translate-y-0">
+                        Customize Your Products
+                    </h3>
+                    <a href="#configurator"
+                        class="crafted-link inline-flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-white/60 group-hover:text-white font-sans transition-all duration-400">
+                        Configurator <span
+                            class="transition-transform duration-300 group-hover:translate-x-1.5 inline-block">→</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 5: Stats Section -->
+    <section class="relative py-20 md:py-28 overflow-hidden" style="background-color: #F5F2EB;" id="stats-section">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+
+                <!-- Stat Column 1 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #1A2016;">
+                        <span class="stat-number" data-target="30">0</span><span>+</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #4C5549;">
+                        Years of Experience in<br />the Furniture Industry
+                    </p>
+                </div>
+
+                <!-- Stat Column 2 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #1A2016;">
+                        <span class="stat-number" data-target="100">0</span><span>%</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #4C5549;">
+                        Quality and Excellence<br />We Always Guarantee
+                    </p>
+                </div>
+
+                <!-- Stat Column 3 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #1A2016;">
+                        <span class="stat-number" data-target="90">0</span><span>+</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #4C5549;">
+                        Customers Trust the<br />Quality of Our Products
+                    </p>
+                </div>
+
+                <!-- Stat Column 4 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #1A2016;">
+                        <span class="stat-number" data-target="24">0</span><span>/7</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #4C5549;">
+                        Always Available<br />to Support You
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Premium Slider Section -->
+    <section class="relative py-16 md:py-24 overflow-hidden" style="background-color: #EEEBE4;" id="slider-section">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+
+            <!-- Slider Container with Rounded Corners -->
+            <div class="relative w-full h-[450px] sm:h-[520px] md:h-[600px] rounded-[1.8rem] overflow-hidden shadow-2xl group/slider"
+                id="premium-slider">
+
+                <!-- Slide Wrapper -->
+                <div class="absolute inset-0 w-full h-full" id="slide-wrapper">
+
+                    <!-- Slide 1 -->
+                    <div class="slide absolute inset-0 w-full h-full" data-index="0" style="opacity:1; z-index:1;">
+                        <!-- Image Container with zoom -->
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-[8s] scale-100 slide-bg"
+                            style="background-image: url('images/slide1.png');"></div>
+                        <!-- Gradient Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent"></div>
+
+                        <!-- Slide Content -->
+                        <div class="absolute inset-0 flex flex-col justify-center px-8 sm:px-16 md:px-24 z-10">
+                            <!-- Pill Tag -->
+                            <div class="inline-flex items-center self-start mb-6">
+                                <span
+                                    class="px-5 py-1.5 rounded-full border border-white/20 text-white/95 text-[11px] sm:text-xs tracking-[0.15em] font-normal uppercase backdrop-blur-sm">
+                                    we care About Environment
+                                </span>
+                            </div>
+
+                            <!-- Main Title -->
+                            <h2
+                                class="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sans tracking-wide leading-[1.15] max-w-2xl mb-4">
+                                Transform Your<br />Space With<br />Timeless Elegance.
+                            </h2>
+
+                            <!-- Subtitle -->
+                            <p class="text-white/70 text-sm sm:text-base tracking-[0.05em] font-light mb-8">
+                                Furniture For the Modern Home.
+                            </p>
+
+                            <!-- Button -->
+                            <div class="self-start">
+                                <a href="#about"
+                                    class="inline-block bg-white text-black text-xs sm:text-sm font-semibold tracking-wider px-8 py-3.5 rounded-full hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-[1.03]">
+                                    About Khaled Hefnawy
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slide absolute inset-0 w-full h-full" data-index="1" style="opacity:0; z-index:0;">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-[8s] scale-100 slide-bg"
+                            style="background-image: url('images/slide2.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent"></div>
+
+                        <div class="absolute inset-0 flex flex-col justify-center px-8 sm:px-16 md:px-24 z-10">
+                            <div class="inline-flex items-center self-start mb-6">
+                                <span
+                                    class="px-5 py-1.5 rounded-full border border-white/20 text-white/95 text-[11px] sm:text-xs tracking-[0.15em] font-normal uppercase backdrop-blur-sm">
+                                    exclusive collections
+                                </span>
+                            </div>
+
+                            <h2
+                                class="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sans tracking-wide leading-[1.15] max-w-2xl mb-4">
+                                Crafted To<br />Reflect Your<br />Timeless Taste.
+                            </h2>
+
+                            <p class="text-white/70 text-sm sm:text-base tracking-[0.05em] font-light mb-8">
+                                Luxury details designed for you.
+                            </p>
+
+                            <div class="self-start">
+                                <a href="#collections"
+                                    class="inline-block bg-white text-black text-xs sm:text-sm font-semibold tracking-wider px-8 py-3.5 rounded-full hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-[1.03]">
+                                    View Collections
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slide absolute inset-0 w-full h-full" data-index="2" style="opacity:0; z-index:0;">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-[8s] scale-100 slide-bg"
+                            style="background-image: url('images/slide3.png');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent"></div>
+
+                        <div class="absolute inset-0 flex flex-col justify-center px-8 sm:px-16 md:px-24 z-10">
+                            <div class="inline-flex items-center self-start mb-6">
+                                <span
+                                    class="px-5 py-1.5 rounded-full border border-white/20 text-white/95 text-[11px] sm:text-xs tracking-[0.15em] font-normal uppercase backdrop-blur-sm">
+                                    bespoke designs
+                                </span>
+                            </div>
+
+                            <h2
+                                class="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sans tracking-wide leading-[1.15] max-w-2xl mb-4">
+                                Personalized<br />Luxury For<br />Modern Living.
+                            </h2>
+
+                            <p class="text-white/70 text-sm sm:text-base tracking-[0.05em] font-light mb-8">
+                                Custom tailoring for every room.
+                            </p>
+
+                            <div class="self-start">
+                                <a href="#contact"
+                                    class="inline-block bg-white text-black text-xs sm:text-sm font-semibold tracking-wider px-8 py-3.5 rounded-full hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-[1.03]">
+                                    Contact Designer
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Left/Right Nav Arrows (thin border circles matching the image) -->
+                <button
+                    class="absolute left-6 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/30 hover:border-white flex items-center justify-center text-white/70 hover:text-white bg-black/15 hover:bg-white/10 transition-all duration-300 z-20"
+                    id="s6-prev" aria-label="Previous slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                    </svg>
+                </button>
+                <button
+                    class="absolute right-6 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/30 hover:border-white flex items-center justify-center text-white/70 hover:text-white bg-black/15 hover:bg-white/10 transition-all duration-300 z-20"
+                    id="s6-next" aria-label="Next slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </button>
+
+                <!-- Bottom Dot Navigation -->
+                <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3.5 z-20" id="s6-dots">
+                    <button class="w-2.5 h-2.5 rounded-full bg-white transition-all duration-300 s6-dot" data-index="0"
+                        aria-label="Go to slide 1"></button>
+                    <button
+                        class="w-2 h-2 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300 s6-dot"
+                        data-index="1" aria-label="Go to slide 2"></button>
+                    <button
+                        class="w-2 h-2 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300 s6-dot"
+                        data-index="2" aria-label="Go to slide 3"></button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 7: Inspired Interior Living Showcase Slider -->
+    <section class="relative bg-customBg py-20 md:py-28 overflow-hidden border-t border-white/[0.03]"
+        id="inspired-section">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+
+            <!-- Section Header Row -->
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 md:mb-16"
+                id="inspired-header">
+
+                <!-- Left: Title + Description -->
+                <div class="max-w-xl">
+                    <!-- Watermark bg text -->
+                    <div class="relative">
+                        <span
+                            class="absolute -top-8 left-0 text-5xl sm:text-7xl md:text-8xl font-extrabold uppercase tracking-[0.12em] text-white/[0.015] select-none pointer-events-none whitespace-nowrap"
+                            id="bg-text-inspired">What we Design</span>
+                        <h2 class="relative z-10 text-white text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight font-sans"
+                            id="inspired-title">
+                            <span class="text-line-mask"><span class="text-line-content block">Inspired
+                                    Interior</span></span>
+                            <span class="text-line-mask"><span class="text-line-content block">Living</span></span>
+                        </h2>
+                    </div>
+                    <p class="mt-5 text-xs sm:text-sm text-white/50 font-light leading-relaxed max-w-md"
+                        id="inspired-desc">
+                        Explore sophisticated spaces where timeless furniture, natural textures, and modern elegance
+                        come together to create a refined living experience.
+                    </p>
+                </div>
+
+                <!-- Right: Navigation Arrows -->
+                <div class="flex items-center gap-3 flex-shrink-0" id="inspired-nav">
+                    <button id="inspired-prev" aria-label="Previous"
+                        class="w-11 h-11 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 transition-all duration-300 hover:bg-white/5 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                        </svg>
+                    </button>
+                    <button id="inspired-next" aria-label="Next"
+                        class="w-11 h-11 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 transition-all duration-300 hover:bg-white/5 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Slider Track Wrapper -->
+            <div class="relative overflow-hidden pt-4 pb-4" id="inspired-slider-outer">
+                <div class="flex gap-4 md:gap-5" id="inspired-track" style="will-change: transform;">
+
+                    <!-- Card 1: Elegant Bedrooms -->
+                    <a href="#bedroom"
+                        class="inspired-card group flex-shrink-0 relative overflow-hidden rounded-md cursor-pointer block"
+                        style="width: 460px; height: 340px;" data-index="0">
+                        <!-- Before image (Colored/Main) -->
+                        <div class="inspired-img-before absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+                            style="background-image: url('images/Frame 2147225397.png'); opacity:1;"></div>
+                        <!-- After image (Yellow tinted/Hover) -->
+                        <div class="inspired-img-after absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+                            style="background-image: url('images/Frame 2147225375.png'); opacity:0;"></div>
+                        <!-- Dark overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent transition-opacity duration-500 group-hover:opacity-0"
+                            style="z-index:2;"></div>
+                        <!-- Yellow arrow (top-right, hidden by default) -->
+                        <div class="inspired-arrow absolute top-4 right-4 w-9 h-9 rounded-full bg-[#A6A182] flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out"
+                            style="z-index:4;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="w-4 h-4 text-black -rotate-45">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </div>
+                        <!-- Text Content with hover background -->
+                        <div class="absolute bottom-0 left-0 right-0 p-5 transition-all duration-500 group-hover:bg-[#131610]/90 group-hover:backdrop-blur-md"
+                            style="z-index:3;">
+                            <h3
+                                class="text-white font-bold text-lg leading-tight font-sans mb-1 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                Elegant Bedrooms</h3>
+                            <p
+                                class="text-[#E8C84A] text-sm font-light tracking-wide opacity-0 h-0 overflow-hidden group-hover:h-auto group-hover:opacity-100 group-hover:mt-2 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                                Soft comfort, timeless elegance</p>
+                        </div>
+                    </a>
+
+                    <!-- Card 2: Luxury Dining -->
+                    <a href="#dining"
+                        class="inspired-card group flex-shrink-0 relative overflow-hidden rounded-md cursor-pointer block"
+                        style="width: 260px; height: 340px;" data-index="1">
+                        <div class="inspired-img-before absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+                            style="background-image: url('images/Frame 2147225398.png'); opacity:1;"></div>
+                        <div class="inspired-img-after absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+                            style="background-image: url('images/Frame 2147225393.png'); opacity:0;"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent transition-opacity duration-500 group-hover:opacity-0"
+                            style="z-index:2;"></div>
+                        <div class="inspired-arrow absolute top-4 right-4 w-9 h-9 rounded-full bg-[#E8C84A] flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out"
+                            style="z-index:4;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="w-4 h-4 text-black -rotate-45">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-5 transition-all duration-500 group-hover:bg-[#131610]/90 group-hover:backdrop-blur-md"
+                            style="z-index:3;">
+                            <h3
+                                class="text-white font-bold text-lg leading-tight font-sans mb-1 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                Luxury Dining</h3>
+                            <p
+                                class="text-[#E8C84A] text-sm font-light tracking-wide opacity-0 h-0 overflow-hidden group-hover:h-auto group-hover:opacity-100 group-hover:mt-2 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                                Where elegance meets every meal</p>
+                        </div>
+                    </a>
+
+                    <!-- Card 3: Refined Living -->
+                    <a href="#living"
+                        class="inspired-card group flex-shrink-0 relative overflow-hidden rounded-md cursor-pointer block"
+                        style="width: 260px; height: 340px;" data-index="2">
+                        <div class="inspired-img-before absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+                            style="background-image: url('images/Frame 2147225399.png'); opacity:1;"></div>
+                        <div class="inspired-img-after absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+                            style="background-image: url('images/Frame 2147225394.png'); opacity:0;"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent transition-opacity duration-500 group-hover:opacity-0"
+                            style="z-index:2;"></div>
+                        <div class="inspired-arrow absolute top-4 right-4 w-9 h-9 rounded-full bg-[#E8C84A] flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out"
+                            style="z-index:4;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="w-4 h-4 text-black -rotate-45">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-5 transition-all duration-500 group-hover:bg-[#131610]/90 group-hover:backdrop-blur-md"
+                            style="z-index:3;">
+                            <h3
+                                class="text-white font-bold text-lg leading-tight font-sans mb-1 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                Refined Living</h3>
+                            <p
+                                class="text-[#E8C84A] text-sm font-light tracking-wide opacity-0 h-0 overflow-hidden group-hover:h-auto group-hover:opacity-100 group-hover:mt-2 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                                Classic charm, modern serenity</p>
+                        </div>
+                    </a>
+
+                    <!-- Card 4: Modern Lounge -->
+                    <a href="#lounge"
+                        class="inspired-card group flex-shrink-0 relative overflow-hidden rounded-md cursor-pointer block"
+                        style="width: 260px; height: 340px;" data-index="3">
+                        <div class="inspired-img-before absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+                            style="background-image: url('images/Frame 2147225400.png'); opacity:1;"></div>
+                        <div class="inspired-img-after absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+                            style="background-image: url('images/Frame 2147225395.png'); opacity:0;"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent transition-opacity duration-500 group-hover:opacity-0"
+                            style="z-index:2;"></div>
+                        <div class="inspired-arrow absolute top-4 right-4 w-9 h-9 rounded-full bg-[#E8C84A] flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out"
+                            style="z-index:4;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="w-4 h-4 text-black -rotate-45">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-5 transition-all duration-500 group-hover:bg-[#131610]/90 group-hover:backdrop-blur-md"
+                            style="z-index:3;">
+                            <h3
+                                class="text-white font-bold text-lg leading-tight font-sans mb-1 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                Modern Lounge</h3>
+                            <p
+                                class="text-[#E8C84A] text-sm font-light tracking-wide opacity-0 h-0 overflow-hidden group-hover:h-auto group-hover:opacity-100 group-hover:mt-2 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                                Minimal lines, maximal comfort</p>
+                        </div>
+                    </a>
+
+                    <!-- Card 5: Corner Comfort -->
+                    <a href="#corner"
+                        class="inspired-card group flex-shrink-0 relative overflow-hidden rounded-md cursor-pointer block"
+                        style="width: 260px; height: 340px;" data-index="4">
+                        <div class="inspired-img-before absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+                            style="background-image: url('images/Frame 2147225401.png'); opacity:1;"></div>
+                        <div class="inspired-img-after absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+                            style="background-image: url('images/Frame 2147225396.png'); opacity:0;"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent transition-opacity duration-500 group-hover:opacity-0"
+                            style="z-index:2;"></div>
+                        <div class="inspired-arrow absolute top-4 right-4 w-9 h-9 rounded-full bg-[#E8C84A] flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out"
+                            style="z-index:4;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="w-4 h-4 text-black -rotate-45">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-5 transition-all duration-500 group-hover:bg-[#131610]/90 group-hover:backdrop-blur-md"
+                            style="z-index:3;">
+                            <h3
+                                class="text-white font-bold text-lg leading-tight font-sans mb-1 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                Corner Comfort</h3>
+                            <p
+                                class="text-[#E8C84A] text-sm font-light tracking-wide opacity-0 h-0 overflow-hidden group-hover:h-auto group-hover:opacity-100 group-hover:mt-2 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                                Relaxed style, pure sophistication</p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Bottom Row: Dots + Discover More -->
+            <div class="flex items-center justify-between mt-8 md:mt-10" id="inspired-bottom-row">
+                <!-- Pagination Dots -->
+                <div class="flex items-center gap-2" id="inspired-dots">
+                    <button class="inspired-dot w-2 h-2 rounded-full bg-white/80 transition-all duration-300"
+                        data-index="0" aria-label="Go to slide 1"></button>
+                    <button class="inspired-dot w-2 h-2 rounded-full bg-white/30 transition-all duration-300"
+                        data-index="1" aria-label="Go to slide 2"></button>
+                    <button class="inspired-dot w-2 h-2 rounded-full bg-white/30 transition-all duration-300"
+                        data-index="2" aria-label="Go to slide 3"></button>
+                </div>
+                <!-- Discover More Link -->
+                <a href="#collections"
+                    class="group inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase font-medium text-white/60 hover:text-white transition-colors duration-300">
+                    Discover More
+                    <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- سكشن 8: آراء العملاء -->
+    <section class="relative py-24 overflow-hidden" id="testimonials-section"
+        style="background-color: var(--color-bg);">
+
+        <!-- Section Header -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 text-center mb-16" id="testimonials-header">
+            <!-- Watermark -->
+            <div
+                class="absolute left-1/2 -translate-x-1/2 top-[-1rem] sm:top-[-2.5rem] md:top-[-3.5rem] z-[-1] w-full flex justify-center pointer-events-none select-none">
+                <span id="bg-text-testimonials"
+                    style="font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 800; color: rgba(255,255,255,0.03); white-space: nowrap; letter-spacing: 0.05em; font-family: 'Outfit', sans-serif; line-height: 1;">
+                    our testimonials
+                </span>
+            </div>
+
+            <h2 class="text-white font-bold font-sans leading-[1.1] relative z-10" id="testimonials-title"
+                style="font-size: clamp(2.5rem, 5vw, 4rem);">
+                What Our Clients Say
+            </h2>
+            <p class="mt-5 mx-auto max-w-3xl text-white/50 font-light font-sans leading-relaxed relative z-10"
+                id="testimonials-sub" style="font-size: clamp(0.9rem, 1.1vw, 1.05rem);">
+                Discover why our customers trust Khaled El Hefnawy Furniture for premium quality, elegant<br
+                    class="hidden md:block" /> craftsmanship, and custom-made furniture designed to elevate every space
+                with comfort and style.
+            </p>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+            <!-- Content Wrapper -->
+            <div class="relative flex flex-col lg:flex-row items-end lg:h-[580px]">
+
+                <!-- Image Panel (Right side) -->
+                <div class="w-full lg:w-[68%] h-[350px] lg:h-[520px] rounded-2xl overflow-hidden relative lg:absolute lg:right-0 lg:bottom-0 z-0 shadow-2xl"
+                    id="testimonials-img-panel">
+                    <img src="images/WhatsApp Image 2026-05-23 at 5.09.14 AM.jpeg" alt="Luxury interior background"
+                        class="w-full h-full object-cover">
+                </div>
+
+                <!-- Slider Card (Overlapping left side) -->
+                <div class="w-full lg:w-[48%] relative z-10 mt-[-50px] lg:mt-0 mx-auto lg:mx-0 lg:mb-10"
+                    id="testimonials-slider-area">
+
+                    <!-- Card Outer -->
+                    <div class="overflow-hidden" id="testimonials-track-outer" style="border-radius: 0.75rem;">
+
+                        <!-- Sliding Track -->
+                        <div class="flex" id="testimonials-track"
+                            style="will-change: transform; transition: transform 0.72s cubic-bezier(0.77,0,0.175,1);">
+
+                            <!-- Card 1 -->
+                            <div class="testimonial-card min-w-full"
+                                style="background: rgba(14,15,12,0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.06); border-radius: 0.75rem; padding: 2.5rem 2.8rem 2.2rem; box-sizing: border-box;">
+                                <p
+                                    style="color: rgba(255,255,255,0.75); font-size: clamp(0.88rem, 1.2vw, 1rem); line-height: 1.85; font-weight: 300; margin-bottom: 2.2rem;">
+                                    "The quality exceeded my expectations. The finishing details are incredibly elegant,
+                                    and the delivery was right on time. Highly recommended & I sent them a reference
+                                    image for a dining room, and the final result looked even better than the picture.
+                                    Amazing craftsmanship and professional service."
+                                </p>
+                                <div style="display:flex; align-items:center; gap: 0.85rem;">
+                                    <div
+                                        style="width:38px; height:38px; border-radius:50%; overflow:hidden; flex-shrink:0; border: 1.5px solid rgba(255,255,255,0.12); background:#111;">
+                                        <img src="images/WhatsApp Image 2026-05-23 at 5.09.14 AM.jpeg"
+                                            alt="Shahd Mohamed"
+                                            style="width:100%; height:100%; object-fit:cover; object-position:center top; filter:grayscale(60%) brightness(0.75);">
+                                    </div>
+                                    <span
+                                        style="color: rgba(255,255,255,0.88); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.02em;">Shahd
+                                        Mohamed</span>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="testimonial-card min-w-full"
+                                style="background: rgba(14,15,12,0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.06); border-radius: 0.75rem; padding: 2.5rem 2.8rem 2.2rem; box-sizing: border-box;">
+                                <p
+                                    style="color: rgba(255,255,255,0.75); font-size: clamp(0.88rem, 1.2vw, 1rem); line-height: 1.85; font-weight: 300; margin-bottom: 2.2rem;">
+                                    "Khalid transformed our living room into an absolute masterpiece. The attention to
+                                    detail, the choice of materials, and the overall design exceeded everything we had
+                                    imagined."
+                                </p>
+                                <div style="display:flex; align-items:center; gap: 0.85rem;">
+                                    <div
+                                        style="width:38px; height:38px; border-radius:50%; overflow:hidden; flex-shrink:0; border: 1.5px solid rgba(255,255,255,0.12); background:#1a1b18; display:flex; align-items:center; justify-content:center;">
+                                        <span style="color:#fff; font-size:0.72rem; font-weight:600;">SM</span>
+                                    </div>
+                                    <span
+                                        style="color: rgba(255,255,255,0.88); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.02em;">Sarah
+                                        Mahmoud</span>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="testimonial-card min-w-full"
+                                style="background: rgba(14,15,12,0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.06); border-radius: 0.75rem; padding: 2.5rem 2.8rem 2.2rem; box-sizing: border-box;">
+                                <p
+                                    style="color: rgba(255,255,255,0.75); font-size: clamp(0.88rem, 1.2vw, 1rem); line-height: 1.85; font-weight: 300; margin-bottom: 2.2rem;">
+                                    "Working with Khalid El-Hefnawy was an experience unlike any other. Every material,
+                                    every finish, every curve was executed with a precision that speaks to true mastery
+                                    of the craft."
+                                </p>
+                                <div style="display:flex; align-items:center; gap: 0.85rem;">
+                                    <div
+                                        style="width:38px; height:38px; border-radius:50%; overflow:hidden; flex-shrink:0; border: 1.5px solid rgba(255,255,255,0.12); background:#1a1b18; display:flex; align-items:center; justify-content:center;">
+                                        <span style="color:#fff; font-size:0.72rem; font-weight:600;">OR</span>
+                                    </div>
+                                    <span
+                                        style="color: rgba(255,255,255,0.88); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.02em;">Omar
+                                        Rashad</span>
+                                </div>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="testimonial-card min-w-full"
+                                style="background: rgba(14,15,12,0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.06); border-radius: 0.75rem; padding: 2.5rem 2.8rem 2.2rem; box-sizing: border-box;">
+                                <p
+                                    style="color: rgba(255,255,255,0.75); font-size: clamp(0.88rem, 1.2vw, 1rem); line-height: 1.85; font-weight: 300; margin-bottom: 2.2rem;">
+                                    "From the first consultation to the final reveal, the journey with Khalid was
+                                    seamless, creative, and deeply personal. Our home now feels like a 5-star
+                                    sanctuary."
+                                </p>
+                                <div style="display:flex; align-items:center; gap: 0.85rem;">
+                                    <div
+                                        style="width:38px; height:38px; border-radius:50%; overflow:hidden; flex-shrink:0; border: 1.5px solid rgba(255,255,255,0.12); background:#1a1b18; display:flex; align-items:center; justify-content:center;">
+                                        <span style="color:#fff; font-size:0.72rem; font-weight:600;">NH</span>
+                                    </div>
+                                    <span
+                                        style="color: rgba(255,255,255,0.88); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.02em;">Nadia
+                                        Hassan</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Navigation Arrows — below the card, left-aligned -->
+                    <div class="flex items-center gap-3 mt-6" id="testimonials-nav">
+                        <!-- Prev — dark filled circle -->
+                        <button id="testi-prev"
+                            style="width:46px; height:46px; border-radius:50%; border:1px solid rgba(255,255,255,0.1); background:rgba(30,31,27,0.9); color:rgba(255,255,255,0.8); display:flex; align-items:center; justify-content:center; cursor:pointer; transition: background 0.3s, border-color 0.3s;"
+                            aria-label="Previous testimonial">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
+                                stroke="currentColor" style="width:18px;height:18px;">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                            </svg>
+                        </button>
+                        <!-- Next — transparent circle outline -->
+                        <button id="testi-next"
+                            style="width:46px; height:46px; border-radius:50%; border:1px solid rgba(255,255,255,0.18); background:transparent; color:rgba(255,255,255,0.5); display:flex; align-items:center; justify-content:center; cursor:pointer; transition: background 0.3s, border-color 0.3s, color 0.3s;"
+                            aria-label="Next testimonial">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
+                                stroke="currentColor" style="width:18px;height:18px;">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Cinematic CTA Banner -->
+    <section class="relative w-full overflow-hidden" id="cta-section" style="height: 540px;">
+
+        <!-- Cinematic letterbox bars -->
+        <!--          
+        <div class="absolute top-0 left-0 w-full z-20" style="height: 42px; background: #0A0B08;"></div>
+        <div class="absolute bottom-0 left-0 w-full z-20" style="height: 42px; background: #0A0B08;"></div> -->
+
+        <!-- Background Image with dark overlay -->
+        <div class="absolute inset-0 bg-cover bg-center" id="cta-bg"
+            style="background-image: url('images/Card\ \(11\).png');"></div>
+        <!-- <div class="absolute inset-0"
+            style="background: linear-gradient(to bottom, rgba(10,11,8,0.65) 0%, rgba(10,11,8,0.52) 50%, rgba(10,11,8,0.72) 100%);">
+        </div> -->
+
+        <!-- Content — centered -->
+        <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 md:px-12"
+            id="cta-content">
+
+            <!-- Pill Tag -->
+            <div class="mb-6 opacity-0" id="cta-tag">
+                <span
+                    class="inline-block px-6 py-2 rounded-full border border-white/30 text-white/90 text-[11px] sm:text-xs tracking-[0.18em] font-normal uppercase backdrop-blur-sm">
+                    we care About Environment
+                </span>
+            </div>
+
+            <!-- Main Title -->
+            <h2 class="text-white font-bold font-sans leading-[1.18] mb-5 opacity-0" id="cta-title"
+                style="font-size: clamp(1.8rem, 4.5vw, 3.5rem); max-width: 800px;">
+                Create the Space<br />You've Always Imagined
+            </h2>
+
+            <!-- Subtitle -->
+            <p class="text-white/55 font-light font-sans leading-relaxed mb-10 opacity-0" id="cta-desc"
+                style="font-size: clamp(0.75rem, 1.4vw, 0.92rem); max-width: 480px;">
+                From bedrooms to salons and custom furniture pieces, we bring your<br class="hidden sm:inline" />
+                vision to life with elegance and precision.
+            </p>
+
+            <!-- CTA Button -->
+            <div class="opacity-0" id="cta-btn">
+                <a href="#contact"
+                    class="inline-block font-semibold font-sans tracking-widest uppercase transition-all duration-300 transform hover:scale-[1.04]"
+                    style="background:#0A0B08; color:#fff; font-size:0.78rem; padding: 1rem 2.4rem; border-radius: 0.35rem; letter-spacing: 0.12em;">
+                    Get Your Design Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 15: Luxury Statement -->
+    <section class="relative overflow-hidden border-t border-white/10" id="luxury-meets-craft">
+        <!-- Background Image (defines height) -->
+        <img src="images/slide2.png" alt="Luxury Interior" class="w-full h-auto block min-h-[500px] object-cover"
+            id="luxury-bg">
+        <div class="absolute inset-0 "></div>
+
+        <div class="absolute inset-0 flex items-start pt-16 md:pt-24 z-10">
+            <div class="container mx-auto px-8 md:px-12">
+                <div class="max-w-6xl">
+                    <h2 class="text-white font-bold leading-[1.1] mb-10 overflow-hidden">
+                        <div class="overflow-hidden mb-2">
+                            <div class="luxury-reveal flex flex-wrap items-baseline gap-x-4">
+                                <span class="luxury-title-main">Where</span>
+                                <span class="luxury-title-script">Luxury</span>
+                            </div>
+                        </div>
+                        <div class="overflow-hidden">
+                            <div class="luxury-reveal luxury-title-sub">Meets Master Craftsmanship</div>
+                        </div>
+                    </h2>
+
+                    <div class="relative max-w-3xl mt-10 md:mt-16 pl-10 md:pl-16 pr-10 md:pr-16 luxury-fade">
+                        <!-- Quote Start -->
+                        <img src="images/oi_double-quote-serif-right (1).png" alt="Quote"
+                            class="absolute top-0 left-0 luxury-quote-icon ">
+
+                        <p class=" italic font-sans luxury-quote-text">
+                            At Khaled El Hefnawy, we create more than furniture — we craft statements of elegance.
+                            Premium
+                            materials, flawless finishes, and exceptional craftsmanship designed for those who value
+                            true
+                            luxury.
+                        </p>
+
+                        <!-- Quote End -->
+                        <img src="images/oi_double-quote-serif-right.png" alt="Quote"
+                            class="absolute bottom-0 right-0 luxury-quote-icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="relative bg-customBg pt-32 pb-8 overflow-hidden" id="main-footer">
+        <!-- Background Sketch Overlay -->
+        <div class="absolute inset-0 z-0 pointer-events-none bg-cover bg-center"
+            style="background-image: url('images/banner (8).png'); opacity: 1;"></div>
+
+        <!-- Top Center Logo Block -->
+        <div id="footer-logo-block"
+            class="absolute top-[2px] left-1/2 -translate-x-1/2 z-20 flex justify-center items-center"
+            style="opacity: 0; transform: translate(-50%, -100%);">
+            <img src="images/ChatGPT Image May 20, 2026, 04_06_22 AM 1 (2).png" alt="Khaled El-Hefnawy Furniture"
+                class="h-20 md:h-40 w-auto object-contain" id="footer-logo">
+        </div>
+
+        <!-- Main Footer Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20 text-white/70 mt-16"
+            id="footer-content">
+
+            <!-- Column 1: About Us -->
+            <div class="flex flex-col gap-5 footer-col" style="opacity: 0; transform: translateY(40px);">
+                <h3 class="text-white text-lg font-bold font-sans tracking-wide">About us</h3>
+                <p class="text-[13px] sm:text-sm font-light leading-relaxed max-w-sm font-sans">
+                    At Khaled El Hefnawy Furniture, we design premium furniture that combines modern elegance, comfort,
+                    and lasting quality to transform your home into a stylish masterpiece.
+                </p>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="flex flex-col md:items-center gap-5 footer-col"
+                style="opacity: 0; transform: translateY(40px);">
+                <div class="flex flex-col items-start gap-5">
+                    <h3 class="text-white text-lg font-bold font-sans tracking-wide">Quick Links</h3>
+                    <ul class="flex flex-col items-start gap-3 text-[13px] sm:text-sm font-light w-full font-sans">
+                        <li><a href="#" class="hover:text-[#A6A182] transition-colors duration-300">Home</a></li>
+                        <li><a href="#" class="hover:text-[#A6A182] transition-colors duration-300">About Us</a></li>
+                        <li><a href="#" class="hover:text-[#A6A182] transition-colors duration-300">Our Services</a>
+                        </li>
+                        <li><a href="#" class="hover:text-[#A6A182] transition-colors duration-300">Latest Designs</a>
+                        </li>
+                        <li><a href="#" class="hover:text-[#A6A182] transition-colors duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Column 3: Get In Touch -->
+            <div class="flex flex-col gap-5 footer-col" style="opacity: 0; transform: translateY(40px);">
+                <h3 class="text-white text-lg font-bold font-sans tracking-wide">Get In Touch</h3>
+                <ul class="flex flex-col gap-5 text-[13px] sm:text-sm font-light">
+                    <li class="flex items-center gap-4 group">
+                        <div class="w-6 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                            <img src="images/mdi-light_email (1).png" alt="Email"
+                                class="w-6 h-auto transition-transform duration-300 group-hover:scale-110">
+                        </div>
+                        <a href="mailto:info@khaledelhefnawy.com"
+                            class="hover:text-[#A6A182] underline underline-offset-4 decoration-white/20 hover:decoration-[#A6A182]/50 transition-all duration-300">info@khaledelhefnawy.com</a>
+                    </li>
+                    <li class="flex items-center gap-4 group">
+                        <div class="w-6 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                            <!-- Use handset icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5 text-[#A6A182]">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.48-4.18-7.076-7.076l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                            </svg>
+                        </div>
+                        <a href="tel:+201000000000"
+                            class="hover:text-[#A6A182] transition-colors duration-300 font-sans">+20 100 000 0000</a>
+                    </li>
+                    <li class="flex items-start gap-4 group">
+                        <div class="w-6 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                            <img src="images/Text input (1).png" alt="Location"
+                                class="w-6 h-auto transition-transform duration-300 group-hover:scale-110">
+                        </div>
+                        <span class="hover:text-white transition-colors duration-300">Cairo, Egypt,New Damietta</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/[0.04]"
+            id="footer-bottom" style="opacity: 0; transform: translateY(20px);">
+            <p class="text-[11px] sm:text-xs text-white/40 font-light tracking-wide font-sans">© 2026 Khaled El Hefnawy
+                Furniture. All Rights Reserved.</p>
+            <div class="flex gap-6 items-center">
+                <a href="#"
+                    class="w-5 h-5 flex items-center justify-center opacity-80 hover:opacity-100 transition-all hover:-translate-y-1 transform duration-300">
+                    <img src="images/Group (18).png" alt="Facebook" class="w-6 h-auto">
+                </a>
+                <a href="#"
+                    class="w-5 h-5 flex items-center justify-center opacity-80 hover:opacity-100 transition-all hover:-translate-y-1 transform duration-300">
+                    <img src="images/Group (17).png" alt="TikTok" class="w-6 h-auto">
+                </a>
+                <a href="#"
+                    class="w-5 h-5 flex items-center justify-center opacity-80 hover:opacity-100 transition-all hover:-translate-y-1 transform duration-300">
+                    <img src="images/Group (16).png" alt="WhatsApp" class="w-6 h-auto">
+                </a>
+                <a href="#"
+                    class="w-5 h-5 flex items-center justify-center opacity-80 hover:opacity-100 transition-all hover:-translate-y-1 transform duration-300">
+                    <img src="images/Group (15).png" alt="YouTube" class="w-6 h-auto">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Execution -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
