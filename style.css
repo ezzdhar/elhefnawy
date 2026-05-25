@@ -55,10 +55,10 @@
   content: '';
   position: absolute;
   width: 0;
-  height: 2px;
-  bottom: -4px;
+  height: 1.5px;
+  bottom: -5px;
   left: 50%;
-  background-color: var(--color-btn);
+  background-color: #A6A182;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   transform: translateX(-50%);
 }

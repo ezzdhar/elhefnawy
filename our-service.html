@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services - Khaled El-Hefnawy Furniture</title>
+    <title>Khalid El-Hefnawy - Timeless Elegance & Premium Furniture</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
     <meta name="description"
         content="Explore our premium furniture services including interior design, custom furniture, bedroom sets, living rooms, and more — by Khaled El-Hefnawy.">
 
@@ -48,62 +49,7 @@
            SERVICES PAGE — LOCAL STYLES
            ============================================ */
 
-        /* --- NAVBAR --- */
-        #services-navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: transparent;
-            transition: background 0.4s ease, box-shadow 0.4s ease;
-        }
 
-        #services-navbar.scrolled {
-            background: rgba(10, 11, 8, 0.95);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-link {
-            font-size: 0.82rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.75);
-            letter-spacing: 0.04em;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: #ffffff;
-        }
-
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            right: 0;
-            height: 1.5px;
-            background: #A6A182;
-        }
-
-        .nav-cta {
-            font-size: 0.78rem;
-            font-weight: 500;
-            letter-spacing: 0.06em;
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            padding: 0.55rem 1.4rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-cta:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.7);
-        }
 
         /* --- HERO SECTION --- */
         #services-hero {
@@ -150,8 +96,8 @@
 
         /* Main hero title */
         .hero-title {
-            font-size: clamp(2.4rem, 7vw, 5rem);
-            font-weight: 800;
+            font-size: 60px;
+            font-weight: 700;
             color: #ffffff;
             letter-spacing: 0.04em;
             text-transform: uppercase;
@@ -177,50 +123,80 @@
 
 <body class="bg-customBg text-white font-sans antialiased">
 
-    <!-- ============================
-         NAVBAR
-    ================================ -->
-    <nav id="services-navbar" aria-label="Main Navigation">
-        <div class="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-[68px]">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center shrink-0">
-                <img src="images/ChatGPT Image May 20, 2026, 04_06_22 AM 1 (2).png"
-                    alt="Khaled El-Hefnawy Furniture Logo" class="h-8 w-auto object-contain">
+    <!-- Header Navigation -->
+    <header
+        class="fixed top-0 left-0 w-full z-[1001] transition-all duration-500 py-4 bg-customBg border-b border-white/[0.03]"
+        id="main-header">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+
+            <!-- Logo Section -->
+            <a href="index.html" class="flex items-center space-x-2 header-item group relative overflow-hidden"
+                id="logo-container">
+                <div
+                    class="bg-black/90 px-3.5 py-1.5 border border-white/5 rounded-sm shadow-xl transition-all duration-300 group-hover:border-customBtn/50">
+                    <img src="images/logo.png" alt="Khalid El-Hefnawy Furniture Logo"
+                        class="h-7 md:h-7.5 object-contain w-auto transition-transform duration-500 group-hover:scale-105">
+                </div>
             </a>
 
-            <!-- Desktop Nav Links -->
-            <ul class="hidden md:flex items-center gap-8 lg:gap-10">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="#" class="nav-link">About Us</a></li>
-                <li><a href="our-service.html" class="nav-link active">Our Services</a></li>
-                <li><a href="#" class="nav-link">Latest Designs</a></li>
-                <li><a href="#" class="nav-link">Contact Us</a></li>
-            </ul>
+            <!-- Center Navigation Links -->
+            <nav class="hidden lg:flex items-center space-x-8 xl:space-x-10 header-item" id="desktop-nav">
+                <a href="index.html"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="0">Home</a>
+                <a href="about-us.html"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="1">About Us</a>
+                <a href="our-service.html"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/95 active"
+                    data-index="2">Our Services</a>
+                <a href="our-furniture.html"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="3">Furniture</a>
+                <a href="contact-us.html"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="4">Contact Us</a>
+            </nav>
 
-            <!-- CTA Button -->
-            <a href="#" class="hidden md:inline-block nav-cta">
+            <!-- Right CTA Button (Desktop) -->
+            <div class="hidden lg:block header-item" id="desktop-cta">
+                <a href="contact-us.html"
+                    class="btn-premium px-6 py-2.5 rounded-sm text-[11px] font-semibold uppercase tracking-[0.2em] border border-customBtn text-white/90 block hover:text-white">
+                    Request Your Design
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button
+                class="lg:hidden flex flex-col justify-between items-end w-8 h-5 focus:outline-none z-[1000] header-item cursor-pointer"
+                id="menu-toggle" aria-label="Toggle Navigation">
+                <span class="w-8 h-[2px] bg-white rounded-full transition-all duration-300 origin-center"></span>
+                <span class="w-6 h-[2px] bg-white rounded-full transition-all duration-300 origin-center"></span>
+                <span class="w-7 h-[2px] bg-white rounded-full transition-all duration-300 origin-center"></span>
+            </button>
+
+        </div>
+    </header>
+
+    <!-- Mobile Fullscreen Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <div class="flex flex-col items-center justify-between h-[75%] px-6 py-12">
+            <!-- Mobile Navigation Links -->
+            <nav class="flex flex-col items-center text-center mt-8">
+                <a href="index.html" class="mobile-menu-link opacity-0 text-xl" data-index="0">Home</a>
+                <a href="about-us.html" class="mobile-menu-link opacity-0 text-xl" data-index="1">About Us</a>
+                <a href="our-service.html" class="mobile-menu-link opacity-0 text-xl active" data-index="2">Our Services</a>
+                <a href="our-furniture.html" class="mobile-menu-link opacity-0 text-xl" data-index="3">Furniture</a>
+                <a href="contact-us.html" class="mobile-menu-link opacity-0 text-xl" data-index="4">Contact Us</a>
+            </nav>
+            <!-- Mobile CTA Button -->
+            <a href="contact-us.html"
+                class="btn-premium px-8 py-3 rounded-sm text-xs font-semibold uppercase tracking-[0.2em] border border-customBtn text-white opacity-0 mt-8"
+                id="mobile-menu-cta">
                 Request Your Design
             </a>
-
-            <!-- Mobile Hamburger -->
-            <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-[5px] p-2" aria-label="Toggle menu">
-                <span class="block w-6 h-[1.5px] bg-white/80 transition-all duration-300" id="hb-line1"></span>
-                <span class="block w-6 h-[1.5px] bg-white/80 transition-all duration-300" id="hb-line2"></span>
-                <span class="block w-4 h-[1.5px] bg-white/80 transition-all duration-300" id="hb-line3"></span>
-            </button>
         </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu"
-            class="md:hidden hidden flex-col bg-customBg/98 backdrop-blur-sm px-6 pb-6 pt-2 gap-4 border-t border-white/5">
-            <a href="index.html" class="nav-link py-2 border-b border-white/5">Home</a>
-            <a href="#" class="nav-link py-2 border-b border-white/5">About Us</a>
-            <a href="our-service.html" class="nav-link active py-2 border-b border-white/5">Our Services</a>
-            <a href="#" class="nav-link py-2 border-b border-white/5">Latest Designs</a>
-            <a href="#" class="nav-link py-2 border-b border-white/5">Contact Us</a>
-            <a href="#" class="nav-cta text-center mt-2">Request Your Design</a>
-        </div>
-    </nav>
+    </div>
 
     <!-- ============================
          HERO SECTION
@@ -248,7 +224,8 @@
             <!-- Section Header -->
             <div class="mb-12 md:mb-16 sc-header-block" id="sc-header">
                 <p class="text-white/40 text-sm font-light tracking-widest uppercase mb-3 sc-label">Our Services</p>
-                <h2 class="text-white font-bold leading-tight sc-title" style="font-size: clamp(1.7rem, 4vw, 2.75rem); max-width: 680px;">
+                <h2 class="text-white font-bold leading-tight sc-title"
+                    style="font-size: clamp(1.7rem, 4vw, 2.75rem); max-width: 680px;">
                     What We Create for Your Perfect Space
                 </h2>
                 <p class="text-white/45 text-xs sm:text-sm font-light leading-relaxed mt-4 max-w-lg sc-desc">
@@ -263,23 +240,31 @@
                 <!-- Card 1: Luxury Bedroom Sets -->
                 <div class="sc-card group relative border border-white/10 rounded-sm p-8 flex flex-col gap-6 cursor-pointer overflow-hidden transition-all duration-500 hover:border-white/20"
                     style="background: #0f100d;">
-                    <div class="absolute inset-0 bg-[#131610] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 rounded-sm"></div>
+                    <div
+                        class="absolute inset-0 bg-[#131610] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 rounded-sm">
+                    </div>
 
                     <!-- Icon block -->
-                    <div class="relative z-10 w-16 h-16 flex items-center justify-center border border-white/10 rounded-sm transition-all duration-500 group-hover:border-white/25">
+                    <div
+                        class="relative z-10 w-16 h-16 flex items-center justify-center border border-white/10 rounded-sm transition-all duration-500 group-hover:border-white/25">
                         <img src="images/cat-bedroom.png" alt="Bedroom icon" class="w-9 h-auto">
                     </div>
 
                     <!-- Separator line -->
-                    <div class="relative z-10 w-full h-px bg-white/8 group-hover:bg-white/15 transition-colors duration-500"></div>
+                    <div
+                        class="relative z-10 w-full h-px bg-white/8 group-hover:bg-white/15 transition-colors duration-500">
+                    </div>
 
                     <!-- Text -->
                     <div class="relative z-10 flex flex-col gap-3">
-                        <h3 class="text-white font-bold text-base sm:text-lg font-sans leading-snug group-hover:text-white transition-colors duration-300">
+                        <h3
+                            class="text-white font-bold text-base sm:text-lg font-sans leading-snug group-hover:text-white transition-colors duration-300">
                             Luxury Bedroom Sets
                         </h3>
-                        <p class="text-white/45 group-hover:text-white/60 text-xs sm:text-[13px] font-light leading-relaxed transition-colors duration-300">
-                            Elegant bedroom furniture crafted with premium materials and refined details, designed to bring comfort and sophistication to your space.
+                        <p
+                            class="text-white/45 group-hover:text-white/60 text-xs sm:text-[13px] font-light leading-relaxed transition-colors duration-300">
+                            Elegant bedroom furniture crafted with premium materials and refined details, designed to
+                            bring comfort and sophistication to your space.
                         </p>
                     </div>
                 </div>
@@ -287,20 +272,28 @@
                 <!-- Card 2: Dining Room Manufacturing -->
                 <div class="sc-card group relative border border-white/10 rounded-sm p-8 flex flex-col gap-6 cursor-pointer overflow-hidden transition-all duration-500 hover:border-white/20"
                     style="background: #0f100d;">
-                    <div class="absolute inset-0 bg-[#131610] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 rounded-sm"></div>
+                    <div
+                        class="absolute inset-0 bg-[#131610] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 rounded-sm">
+                    </div>
 
-                    <div class="relative z-10 w-16 h-16 flex items-center justify-center border border-white/10 rounded-sm transition-all duration-500 group-hover:border-white/25">
+                    <div
+                        class="relative z-10 w-16 h-16 flex items-center justify-center border border-white/10 rounded-sm transition-all duration-500 group-hover:border-white/25">
                         <img src="images/cat-dining.png" alt="Dining icon" class="w-9 h-auto">
                     </div>
 
-                    <div class="relative z-10 w-full h-px bg-white/8 group-hover:bg-white/15 transition-colors duration-500"></div>
+                    <div
+                        class="relative z-10 w-full h-px bg-white/8 group-hover:bg-white/15 transition-colors duration-500">
+                    </div>
 
                     <div class="relative z-10 flex flex-col gap-3">
-                        <h3 class="text-white font-bold text-base sm:text-lg font-sans leading-snug group-hover:text-white transition-colors duration-300">
+                        <h3
+                            class="text-white font-bold text-base sm:text-lg font-sans leading-snug group-hover:text-white transition-colors duration-300">
                             Dining Room Manufacturing
                         </h3>
-                        <p class="text-white/45 group-hover:text-white/60 text-xs sm:text-[13px] font-light leading-relaxed transition-colors duration-300">
-                            Custom dining rooms designed with precision and style, creating a perfect space for memorable gatherings and everyday elegance.
+                        <p
+                            class="text-white/45 group-hover:text-white/60 text-xs sm:text-[13px] font-light leading-relaxed transition-colors duration-300">
+                            Custom dining rooms designed with precision and style, creating a perfect space for
+                            memorable gatherings and everyday elegance.
                         </p>
                     </div>
                 </div>
@@ -308,20 +301,28 @@
                 <!-- Card 3: Salon Manufacturing -->
                 <div class="sc-card group relative border border-white/10 rounded-sm p-8 flex flex-col gap-6 cursor-pointer overflow-hidden transition-all duration-500 hover:border-white/20"
                     style="background: #0f100d;">
-                    <div class="absolute inset-0 bg-[#131610] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 rounded-sm"></div>
+                    <div
+                        class="absolute inset-0 bg-[#131610] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 rounded-sm">
+                    </div>
 
-                    <div class="relative z-10 w-16 h-16 flex items-center justify-center border border-white/10 rounded-sm transition-all duration-500 group-hover:border-white/25">
+                    <div
+                        class="relative z-10 w-16 h-16 flex items-center justify-center border border-white/10 rounded-sm transition-all duration-500 group-hover:border-white/25">
                         <img src="images/cat-salon.png" alt="Salon icon" class="w-9 h-auto">
                     </div>
 
-                    <div class="relative z-10 w-full h-px bg-white/8 group-hover:bg-white/15 transition-colors duration-500"></div>
+                    <div
+                        class="relative z-10 w-full h-px bg-white/8 group-hover:bg-white/15 transition-colors duration-500">
+                    </div>
 
                     <div class="relative z-10 flex flex-col gap-3">
-                        <h3 class="text-white font-bold text-base sm:text-lg font-sans leading-snug group-hover:text-white transition-colors duration-300">
+                        <h3
+                            class="text-white font-bold text-base sm:text-lg font-sans leading-snug group-hover:text-white transition-colors duration-300">
                             Salon Manufacturing
                         </h3>
-                        <p class="text-white/45 group-hover:text-white/60 text-xs sm:text-[13px] font-light leading-relaxed transition-colors duration-300">
-                            Luxury salon furniture crafted with sophisticated details and exceptional craftsmanship to add class and character to your space.
+                        <p
+                            class="text-white/45 group-hover:text-white/60 text-xs sm:text-[13px] font-light leading-relaxed transition-colors duration-300">
+                            Luxury salon furniture crafted with sophisticated details and exceptional craftsmanship to
+                            add class and character to your space.
                         </p>
                     </div>
                 </div>
@@ -333,20 +334,28 @@
                 <!-- Card 4: Manufacturing (Antre) -->
                 <div class="sc-card group relative border border-white/10 rounded-sm p-8 flex flex-col gap-6 cursor-pointer overflow-hidden transition-all duration-500 hover:border-white/20"
                     style="background: #0f100d;">
-                    <div class="absolute inset-0 bg-[#131610] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 rounded-sm"></div>
+                    <div
+                        class="absolute inset-0 bg-[#131610] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 rounded-sm">
+                    </div>
 
-                    <div class="relative z-10 w-16 h-16 flex items-center justify-center border border-white/10 rounded-sm transition-all duration-500 group-hover:border-white/25">
+                    <div
+                        class="relative z-10 w-16 h-16 flex items-center justify-center border border-white/10 rounded-sm transition-all duration-500 group-hover:border-white/25">
                         <img src="images/cat-living.png" alt="Living icon" class="w-9 h-auto">
                     </div>
 
-                    <div class="relative z-10 w-full h-px bg-white/8 group-hover:bg-white/15 transition-colors duration-500"></div>
+                    <div
+                        class="relative z-10 w-full h-px bg-white/8 group-hover:bg-white/15 transition-colors duration-500">
+                    </div>
 
                     <div class="relative z-10 flex flex-col gap-3">
-                        <h3 class="text-white font-bold text-base sm:text-lg font-sans leading-snug group-hover:text-white transition-colors duration-300">
+                        <h3
+                            class="text-white font-bold text-base sm:text-lg font-sans leading-snug group-hover:text-white transition-colors duration-300">
                             Manufacturing (Antre)
                         </h3>
-                        <p class="text-white/45 group-hover:text-white/60 text-xs sm:text-[13px] font-light leading-relaxed transition-colors duration-300">
-                            Modern and comfortable living room furniture designed to blend functionality with premium aesthetics and lasting quality.
+                        <p
+                            class="text-white/45 group-hover:text-white/60 text-xs sm:text-[13px] font-light leading-relaxed transition-colors duration-300">
+                            Modern and comfortable living room furniture designed to blend functionality with premium
+                            aesthetics and lasting quality.
                         </p>
                     </div>
                 </div>
@@ -354,20 +363,28 @@
                 <!-- Card 5: Corner Sofa Manufacturing -->
                 <div class="sc-card group relative border border-white/10 rounded-sm p-8 flex flex-col gap-6 cursor-pointer overflow-hidden transition-all duration-500 hover:border-white/20"
                     style="background: #0f100d;">
-                    <div class="absolute inset-0 bg-[#131610] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 rounded-sm"></div>
+                    <div
+                        class="absolute inset-0 bg-[#131610] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 rounded-sm">
+                    </div>
 
-                    <div class="relative z-10 w-16 h-16 flex items-center justify-center border border-white/10 rounded-sm transition-all duration-500 group-hover:border-white/25">
+                    <div
+                        class="relative z-10 w-16 h-16 flex items-center justify-center border border-white/10 rounded-sm transition-all duration-500 group-hover:border-white/25">
                         <img src="images/cat-cornersofa.png" alt="Corner sofa icon" class="w-9 h-auto">
                     </div>
 
-                    <div class="relative z-10 w-full h-px bg-white/8 group-hover:bg-white/15 transition-colors duration-500"></div>
+                    <div
+                        class="relative z-10 w-full h-px bg-white/8 group-hover:bg-white/15 transition-colors duration-500">
+                    </div>
 
                     <div class="relative z-10 flex flex-col gap-3">
-                        <h3 class="text-white font-bold text-base sm:text-lg font-sans leading-snug group-hover:text-white transition-colors duration-300">
+                        <h3
+                            class="text-white font-bold text-base sm:text-lg font-sans leading-snug group-hover:text-white transition-colors duration-300">
                             Corner Sofa Manufacturing
                         </h3>
-                        <p class="text-white/45 group-hover:text-white/60 text-xs sm:text-[13px] font-light leading-relaxed transition-colors duration-300">
-                            Stylish and practical corner sofas tailored to maximize comfort while enhancing your interior with a contemporary touch.
+                        <p
+                            class="text-white/45 group-hover:text-white/60 text-xs sm:text-[13px] font-light leading-relaxed transition-colors duration-300">
+                            Stylish and practical corner sofas tailored to maximize comfort while enhancing your
+                            interior with a contemporary touch.
                         </p>
                     </div>
                 </div>
@@ -870,13 +887,18 @@
                 <div class="flex flex-col items-start gap-5">
                     <h3 class="text-white text-lg font-bold font-sans tracking-wide">Quick Links</h3>
                     <ul class="flex flex-col items-start gap-3 text-[13px] sm:text-sm font-light w-full font-sans">
-                        <li><a href="#" class="hover:text-[#A6A182] transition-colors duration-300">Home</a></li>
-                        <li><a href="#" class="hover:text-[#A6A182] transition-colors duration-300">About Us</a></li>
-                        <li><a href="#" class="hover:text-[#A6A182] transition-colors duration-300">Our Services</a>
+                        <li><a href="index.html" class="hover:text-[#A6A182] transition-colors duration-300">Home</a>
                         </li>
-                        <li><a href="#" class="hover:text-[#A6A182] transition-colors duration-300">Latest Designs</a>
+                        <li><a href="about-us.html"
+                                class="hover:text-[#A6A182] transition-colors duration-300">About Us</a></li>
+                        <li><a href="our-service.html" class="hover:text-[#A6A182] transition-colors duration-300">Our
+                                Services</a>
                         </li>
-                        <li><a href="#" class="hover:text-[#A6A182] transition-colors duration-300">Contact Us</a></li>
+                        <li><a href="our-furniture.html"
+                                class="hover:text-[#A6A182] transition-colors duration-300">Latest Designs</a>
+                        </li>
+                        <li><a href="contact-us.html"
+                                class="hover:text-[#A6A182] transition-colors duration-300">Contact Us</a></li>
                     </ul>
                 </div>
             </div>

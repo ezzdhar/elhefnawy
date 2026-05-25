@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khalid El-Hefnawy - Timeless Elegance & Premium Furniture</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <meta name="description"
+        content="Explore our premium furniture services including interior design, custom furniture, bedroom sets, living rooms, and more — by Khaled El-Hefnawy.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Cairo:wght@400;600;700;800&family=Playfair+Display:ital,wght@1,300;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        customBg: '#0A0B08',
+                        customBtn: '#252B20',
+                        customOlive: '#131610',
+                        customGold: '#A6A182',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+    <style>
+        /* ============================================
+           SERVICES PAGE — LOCAL STYLES
+           ============================================ */
+
+
+
+        /* --- GALLERY STYLES --- */
+        .filter-btn.active {
+            color: #A6A182;
+            background: rgba(166, 161, 130, 0.05);
+        }
+
+        .gallery-item {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(19, 22, 16, 0.5);
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 20;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.08);
+        }
+
+        .gallery-img {
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .customize-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(4px);
+            padding: 7px 14px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: white;
+            z-index: 30;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .gallery-item:hover .customize-tag {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-box {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #131610;
+            padding: 1.5rem;
+            text-align: center;
+            z-index: 25;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .gallery-item:hover .info-box {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- LIGHTBOX ANIMATIONS --- */
+        #lightbox.visible {
+            display: flex;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .active-category {
+            color: #A6A182 !important;
+        }
+
+
+
+        /* --- HERO SECTION --- */
+        #services-hero {
+            position: relative;
+            height: 45vh;
+            min-height: 320px;
+            max-height: 480px;
+            overflow: hidden;
+            background: #0A0B08;
+        }
+
+        /* Background image layer */
+        #services-hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-position: center 40%;
+            transform-origin: center;
+        }
+
+        /* Content positioned at bottom-left */
+        #services-hero-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-bottom: 2.5rem;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+        /* Breadcrumb label */
+        .hero-label {
+            font-size: 0.78rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.55);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.6rem;
+            opacity: 0;
+            transform: translateY(12px);
+        }
+
+        /* Main hero title */
+        .hero-title {
+            font-size: 60px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            line-height: 1;
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        @media (max-width: 640px) {
+            #services-hero-content {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+                padding-bottom: 2rem;
+            }
+
+            #services-hero {
+                max-height: 380px;
+                height: 50vh;
+            }
+        }
+
+        /* --- ABOUT INTRO SECTION --- */
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background-color: #A6A182;
+            margin-left: 4px;
+            vertical-align: middle;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .about-text-box {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border-left: 2px solid #A6A182;
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-image-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .about-image-container.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* --- DESIGN LIVING SECTION --- */
+        .ghost-text {
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            text-transform: uppercase;
+            line-height: 0.8;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .vision-card {
+            background: #131610;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 4rem 3rem;
+            transition: all 0.5s ease;
+            height: 100%;
+        }
+
+        .vision-card:hover {
+            border-color: rgba(166, 161, 130, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .vision-border-l {
+            border-left: 1px solid #A6A182;
+            padding-left: 1.5rem;
+        }
+
+        .center-image-box {
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body class="bg-customBg text-white font-sans antialiased">
+
+    <!-- Header Navigation -->
+    <header
+        class="fixed top-0 left-0 w-full z-[1001] transition-all duration-500 py-4 bg-customBg border-b border-white/[0.03]"
+        id="main-header">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+
+            <!-- Logo Section -->
+            <a href="index.html" class="flex items-center space-x-2 header-item group relative overflow-hidden"
+                id="logo-container">
+                <div
+                    class="bg-black/90 px-3.5 py-1.5 border border-white/5 rounded-sm shadow-xl transition-all duration-300 group-hover:border-customBtn/50">
+                    <img src="images/logo.png" alt="Khalid El-Hefnawy Furniture Logo"
+                        class="h-7 md:h-7.5 object-contain w-auto transition-transform duration-500 group-hover:scale-105">
+                </div>
+            </a>
+
+            <!-- Center Navigation Links -->
+            <nav class="hidden lg:flex items-center space-x-8 xl:space-x-10 header-item" id="desktop-nav">
+                <a href="index.html"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="0">Home</a>
+                <a href="about-us.html"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="1">About Us</a>
+                <a href="our-service.html"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="2">Our Services</a>
+                <a href="our-furniture.html"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/95 active"
+                    data-index="3">Furniture</a>
+                <a href="contact-us.html"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="4">Contact Us</a>
+            </nav>
+
+            <!-- Right CTA Button (Desktop) -->
+            <div class="hidden lg:block header-item" id="desktop-cta">
+                <a href="contact-us.html"
+                    class="btn-premium px-6 py-2.5 rounded-sm text-[11px] font-semibold uppercase tracking-[0.2em] border border-customBtn text-white/90 block hover:text-white">
+                    Request Your Design
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button
+                class="lg:hidden flex flex-col justify-between items-end w-8 h-5 focus:outline-none z-[1000] header-item cursor-pointer"
+                id="menu-toggle" aria-label="Toggle Navigation">
+                <span class="w-8 h-[2px] bg-white rounded-full transition-all duration-300 origin-center"></span>
+                <span class="w-6 h-[2px] bg-white rounded-full transition-all duration-300 origin-center"></span>
+                <span class="w-7 h-[2px] bg-white rounded-full transition-all duration-300 origin-center"></span>
+            </button>
+
+        </div>
+    </header>
+
+    <!-- Mobile Fullscreen Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <div class="flex flex-col items-center justify-between h-[75%] px-6 py-12">
+            <!-- Mobile Navigation Links -->
+            <nav class="flex flex-col items-center text-center mt-8">
+                <a href="index.html" class="mobile-menu-link opacity-0 text-xl" data-index="0">Home</a>
+                <a href="about-us.html" class="mobile-menu-link opacity-0 text-xl" data-index="1">About Us</a>
+                <a href="our-service.html" class="mobile-menu-link opacity-0 text-xl" data-index="2">Our Services</a>
+                <a href="our-furniture.html" class="mobile-menu-link opacity-0 text-xl active" data-index="3">Furniture</a>
+                <a href="contact-us.html" class="mobile-menu-link opacity-0 text-xl" data-index="4">Contact Us</a>
+            </nav>
+            <!-- Mobile CTA Button -->
+            <a href="contact-us.html"
+                class="btn-premium px-8 py-3 rounded-sm text-xs font-semibold uppercase tracking-[0.2em] border border-customBtn text-white opacity-0 mt-8"
+                id="mobile-menu-cta">
+                Request Your Design
+            </a>
+        </div>
+    </div>
+
+    <!-- ============================
+         HERO SECTION
+    ================================ -->
+    <section id="services-hero" aria-label="Services Page Hero">
+        <!-- Background Image -->
+        <img src="images/Frame 2147224995 (2).png" alt="Luxury Furniture Interior" id="services-hero-bg">
+
+        <!-- Dark overlay -->
+        <div id="services-hero-overlay"></div>
+
+        <!-- Hero Text Content (bottom-left) -->
+        <div id="services-hero-content">
+            <p class="hero-label" id="hero-label">Business Models you Can Consider</p>
+            <h1 class="hero-title" id="hero-title">OUR FURNITURE</h1>
+        </div>
+    </section>
+
+    <!-- Section 2: Our Furniture Collection -->
+    <section id="our-furniture-section" class="py-16 md:py-28 bg-[#0A0B08]">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div
+                class="furniture-box bg-[#131610] rounded-[24px] md:rounded-[40px] p-10 md:p-20 text-center relative overflow-hidden ring-1 ring-white/5 shadow-2xl">
+                <div class="relative mb-12 flex flex-col items-center">
+                    <!-- Shadow Text (Smaller & Positioned Above) -->
+                    <div class="pointer-events-none select-none mb-[-12px] md:mb-[-20px] reveal-up">
+                        <span
+                            class="text-white/[0.03] text-[28px] md:text-[52px] font-black uppercase tracking-[0.15em] whitespace-nowrap"
+                            style="font-family: 'Outfit', sans-serif;">
+                            Choose Carefully
+                        </span>
+                    </div>
+
+                    <h2 class="relative z-10 text-white leading-tight tracking-tight reveal-up"
+                        style="font-size: 44px; font-weight: 700;  letter-spacing: 0.02em; font-family: 'Outfit', sans-serif;">
+                        Discover Our Luxury Furniture Collection
+                    </h2>
+                </div>
+
+                <div class="flex items-start justify-center gap-4 md:gap-10 max-w-5xl mx-auto reveal-up">
+                    <div class="shrink-0 mt-1">
+                        <img src="images/oi_double-quote-serif-right (3).png" alt="quote"
+                            class="w-5 md:w-9 h-auto opacity-80">
+                    </div>
+                    <div class="flex-1">
+                        <p id="typing-furniture"
+                            class="text-[#9E9572]/80 text-[14px] leading-relaxed font-light font-sans text-center">
+                            <!-- Text will be typed here word by word -->
+                        </p>
+                    </div>
+                    <div class="shrink-0 self-end mb-1">
+                        <img src="images/oi_double-quote-serif-right (2).png" alt="quote"
+                            class="w-5 md:w-9 h-auto opacity-80">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Furniture Gallery with Filtering -->
+    <section id="furniture-gallery" class="py-20 bg-[#0A0B08]">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <!-- Filter Bar -->
+            <div
+                class="filter-bar flex flex-wrap items-center justify-center border border-white/10 mb-16 overflow-hidden rounded-md bg-black/40">
+                <button
+                    class="filter-btn active px-8 py-4 text-sm font-medium transition-all duration-300 border-r border-white/10 hover:bg-white/5 active-category"
+                    data-filter="all">All</button>
+                <button
+                    class="filter-btn px-8 py-4 text-sm font-medium transition-all duration-300 border-r border-white/10 hover:bg-white/5"
+                    data-filter="dining">Dining Collection</button>
+                <button
+                    class="filter-btn px-8 py-4 text-sm font-medium transition-all duration-300 border-r border-white/10 hover:bg-white/5"
+                    data-filter="bedroom">Elegant Bedrooms</button>
+                <button
+                    class="filter-btn px-8 py-4 text-sm font-medium transition-all duration-300 border-r border-white/10 hover:bg-white/5"
+                    data-filter="salon">Luxury Salons</button>
+                <button
+                    class="filter-btn px-8 py-4 text-sm font-medium transition-all duration-300 border-r border-white/10 hover:bg-white/5"
+                    data-filter="living">Living Room</button>
+                <button class="filter-btn px-8 py-4 text-sm font-medium transition-all duration-300 hover:bg-white/5"
+                    data-filter="corners">Stylish Corners</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Items will be generated by JS -->
+            </div>
+
+            <!-- Show More -->
+            <div id="show-more-wrapper" class="flex justify-end mt-16 hidden">
+                <button id="show-more-btn"
+                    class="flex items-center gap-3 text-[#A6A182] font-medium tracking-wide hover:opacity-80 transition-all duration-300 group">
+                    <span class="text-sm">Show More</span>
+                    <img src="images/image 469.png" alt="arrow"
+                        class="w-4 h-4 transition-transform group-hover:translate-y-1">
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox"
+        class="fixed inset-0 z-[2000] bg-black/95 hidden flex-col items-center justify-center p-4 md:p-10 backdrop-blur-md">
+        <!-- Close Button -->
+        <button id="close-lightbox"
+            class="absolute top-6 right-6 md:top-10 md:right-10 text-white/50 hover:text-white transition-colors z-[2001]">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-8 h-8 md:w-10 md:h-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+        <!-- Navigation -->
+        <button id="prev-btn"
+            class="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-all bg-white/5 hover:bg-white/10 p-4 rounded-full backdrop-blur-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor" class="w-6 h-6 md:w-8 md:h-8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+        </button>
+        <button id="next-btn"
+            class="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-all bg-white/5 hover:bg-white/10 p-4 rounded-full backdrop-blur-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor" class="w-6 h-6 md:w-8 md:h-8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+        </button>
+
+        <!-- Content Container -->
+        <div class="max-w-[95vw] w-full h-full flex items-center justify-center">
+            <img id="lightbox-img" src="" alt="Full view"
+                class="max-w-full max-h-[92vh] object-contain shadow-2xl rounded-sm">
+        </div>
+    </div>
+
+    <!-- Section 5: Stats Section -->
+    <section class="relative py-20 md:py-28 overflow-hidden" style="background-color: #050604;" id="stats-section">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+
+                <!-- Stat Column 1 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #F9F9F9;">
+                        <span class="stat-number" data-target="30">0</span><span>+</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #F9F9F9;">
+                        Years of Experience in<br />the Furniture Industry
+                    </p>
+                </div>
+
+                <!-- Stat Column 2 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #F9F9F9;">
+                        <span class="stat-number" data-target="100">0</span><span>%</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #F9F9F9;">
+                        Quality and Excellence<br />We Always Guarantee
+                    </p>
+                </div>
+
+                <!-- Stat Column 3 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #F9F9F9;">
+                        <span class="stat-number" data-target="90">0</span><span>+</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #F9F9F9;">
+                        Customers Trust the<br />Quality of Our Products
+                    </p>
+                </div>
+
+                <!-- Stat Column 4 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #F9F9F9;">
+                        <span class="stat-number" data-target="24">0</span><span>/7</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #F9F9F9;">
+                        Always Available<br />to Support You
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Cinematic CTA Banner -->
+    <section class="relative w-full overflow-hidden" id="cta-section" style="height: 540px;">
+
+        <!-- Cinematic letterbox bars -->
+        <!--          
+        <div class="absolute top-0 left-0 w-full z-20" style="height: 42px; background: #0A0B08;"></div>
+        <div class="absolute bottom-0 left-0 w-full z-20" style="height: 42px; background: #0A0B08;"></div> -->
+
+        <!-- Background Image with dark overlay -->
+        <div class="absolute inset-0 bg-cover bg-center" id="cta-bg"
+            style="background-image: url('images/Card\ \(11\).png');"></div>
+        <!-- <div class="absolute inset-0"
+            style="background: linear-gradient(to bottom, rgba(10,11,8,0.65) 0%, rgba(10,11,8,0.52) 50%, rgba(10,11,8,0.72) 100%);">
+        </div> -->
+
+        <!-- Content — centered -->
+        <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 md:px-12"
+            id="cta-content">
+
+            <!-- Pill Tag -->
+            <div class="mb-6 opacity-0" id="cta-tag">
+                <span
+                    class="inline-block px-6 py-2 rounded-full border border-white/30 text-white/90 text-[11px] sm:text-xs tracking-[0.18em] font-normal uppercase backdrop-blur-sm">
+                    we care About Environment
+                </span>
+            </div>
+
+            <!-- Main Title -->
+            <h2 class="text-white font-bold font-sans leading-[1.18] mb-5 opacity-0" id="cta-title"
+                style="font-size: clamp(1.8rem, 4.5vw, 3.5rem); max-width: 800px;">
+                Create the Space<br />You've Always Imagined
+            </h2>
+
+            <!-- Subtitle -->
+            <p class="text-white/55 font-light font-sans leading-relaxed mb-10 opacity-0" id="cta-desc"
+                style="font-size: clamp(0.75rem, 1.4vw, 0.92rem); max-width: 480px;">
+                From bedrooms to salons and custom furniture pieces, we bring your<br class="hidden sm:inline" />
+                vision to life with elegance and precision.
+            </p>
+
+            <!-- CTA Button -->
+            <div class="opacity-0" id="cta-btn">
+                <a href="#contact"
+                    class="inline-block font-semibold font-sans tracking-widest uppercase transition-all duration-300 transform hover:scale-[1.04]"
+                    style="background:#0A0B08; color:#fff; font-size:0.78rem; padding: 1rem 2.4rem; border-radius: 0.35rem; letter-spacing: 0.12em;">
+                    Get Your Design Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="relative bg-customBg pt-32 pb-8 overflow-hidden" id="main-footer">
+        <!-- Background Sketch Overlay -->
+        <div class="absolute inset-0 z-0 pointer-events-none bg-cover bg-center"
+            style="background-image: url('images/banner (8).png'); opacity: 1;"></div>
+
+        <!-- Top Center Logo Block -->
+        <div id="footer-logo-block"
+            class="absolute top-[2px] left-1/2 -translate-x-1/2 z-20 flex justify-center items-center"
+            style="opacity: 0; transform: translate(-50%, -100%);">
+            <img src="images/ChatGPT Image May 20, 2026, 04_06_22 AM 1 (2).png" alt="Khaled El-Hefnawy Furniture"
+                class="h-20 md:h-40 w-auto object-contain" id="footer-logo">
+        </div>
+
+        <!-- Main Footer Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20 text-white/70 mt-16"
+            id="footer-content">
+
+            <!-- Column 1: About Us -->
+            <div class="flex flex-col gap-5 footer-col" style="opacity: 0; transform: translateY(40px);">
+                <h3 class="text-white text-lg font-bold font-sans tracking-wide">About us</h3>
+                <p class="text-[13px] sm:text-sm font-light leading-relaxed max-w-sm font-sans">
+                    At Khaled El Hefnawy Furniture, we design premium furniture that combines modern elegance, comfort,
+                    and lasting quality to transform your home into a stylish masterpiece.
+                </p>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="flex flex-col md:items-center gap-5 footer-col"
+                style="opacity: 0; transform: translateY(40px);">
+                <div class="flex flex-col items-start gap-5">
+                    <h3 class="text-white text-lg font-bold font-sans tracking-wide">Quick Links</h3>
+                    <ul class="flex flex-col items-start gap-3 text-[13px] sm:text-sm font-light w-full font-sans">
+                        <li><a href="index.html" class="hover:text-[#A6A182] transition-colors duration-300">Home</a>
+                        </li>
+                        <li><a href="about-us.html"
+                                class="hover:text-[#A6A182] transition-colors duration-300">About Us</a></li>
+                        <li><a href="our-service.html" class="hover:text-[#A6A182] transition-colors duration-300">Our
+                                Services</a>
+                        </li>
+                        <li><a href="our-furniture.html"
+                                class="hover:text-[#A6A182] transition-colors duration-300">Latest Designs</a>
+                        </li>
+                        <li><a href="contact-us.html"
+                                class="hover:text-[#A6A182] transition-colors duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Column 3: Get In Touch -->
+            <div class="flex flex-col gap-5 footer-col" style="opacity: 0; transform: translateY(40px);">
+                <h3 class="text-white text-lg font-bold font-sans tracking-wide">Get In Touch</h3>
+                <ul class="flex flex-col gap-5 text-[13px] sm:text-sm font-light">
+                    <li class="flex items-center gap-4 group">
+                        <div class="w-6 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                            <img src="images/mdi-light_email (1).png" alt="Email"
+                                class="w-6 h-auto transition-transform duration-300 group-hover:scale-110">
+                        </div>
+                        <a href="mailto:info@khaledelhefnawy.com"
+                            class="hover:text-[#A6A182] underline underline-offset-4 decoration-white/20 hover:decoration-[#A6A182]/50 transition-all duration-300">info@khaledelhefnawy.com</a>
+                    </li>
+                    <li class="flex items-center gap-4 group">
+                        <div class="w-6 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                            <!-- Use handset icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5 text-[#A6A182]">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.48-4.18-7.076-7.076l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                            </svg>
+                        </div>
+                        <a href="tel:+201000000000"
+                            class="hover:text-[#A6A182] transition-colors duration-300 font-sans">+20 100 000 0000</a>
+                    </li>
+                    <li class="flex items-start gap-4 group">
+                        <div class="w-6 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                            <img src="images/Text input (1).png" alt="Location"
+                                class="w-6 h-auto transition-transform duration-300 group-hover:scale-110">
+                        </div>
+                        <span class="hover:text-white transition-colors duration-300">Cairo, Egypt,New Damietta</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/[0.04]"
+            id="footer-bottom" style="opacity: 0; transform: translateY(20px);">
+            <p class="text-[11px] sm:text-xs text-white/40 font-light tracking-wide font-sans">© 2026 Khaled El Hefnawy
+                Furniture. All Rights Reserved.</p>
+            <div class="flex gap-6 items-center">
+                <a href="#"
+                    class="w-5 h-5 flex items-center justify-center opacity-80 hover:opacity-100 transition-all hover:-translate-y-1 transform duration-300">
+                    <img src="images/Group (18).png" alt="Facebook" class="w-6 h-auto">
+                </a>
+                <a href="#"
+                    class="w-5 h-5 flex items-center justify-center opacity-80 hover:opacity-100 transition-all hover:-translate-y-1 transform duration-300">
+                    <img src="images/Group (17).png" alt="TikTok" class="w-6 h-auto">
+                </a>
+                <a href="#"
+                    class="w-5 h-5 flex items-center justify-center opacity-80 hover:opacity-100 transition-all hover:-translate-y-1 transform duration-300">
+                    <img src="images/Group (16).png" alt="WhatsApp" class="w-6 h-auto">
+                </a>
+                <a href="#"
+                    class="w-5 h-5 flex items-center justify-center opacity-80 hover:opacity-100 transition-all hover:-translate-y-1 transform duration-300">
+                    <img src="images/Group (15).png" alt="YouTube" class="w-6 h-auto">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================
+         JAVASCRIPT
+    ================================ -->
+    <script>
+
+        // ── Hero entrance animations (GSAP)
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof gsap === 'undefined') {
+                // Fallback: just show elements if GSAP not loaded yet
+                setTimeout(() => {
+                    document.getElementById('hero-label').style.opacity = 1;
+                    document.getElementById('hero-label').style.transform = 'none';
+                    document.getElementById('hero-title').style.opacity = 1;
+                    document.getElementById('hero-title').style.transform = 'none';
+                }, 100);
+                return;
+            }
+
+            const tl = gsap.timeline({ delay: 0.2 });
+
+            // Subtle Ken Burns on background
+            tl.to('#services-hero-bg', {
+                scale: 1.06,
+                duration: 8,
+                ease: 'power1.inOut'
+            }, 0);
+
+            // Label slides up + fades in
+            tl.to('#hero-label', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power3.out'
+            }, 0.3);
+
+            // Title slides up + fades in (slightly after label)
+            tl.to('#hero-title', {
+                opacity: 1,
+                y: 0,
+                duration: 1.0,
+                ease: 'power4.out'
+            }, 0.55);
+
+            // ── Services Cards Section Animations (IntersectionObserver — more reliable)
+            const scItems = document.querySelectorAll('.sc-header-block, .sc-card');
+            scItems.forEach((el, i) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(36px)';
+                el.style.transition = `opacity 0.75s ease ${i * 0.08}s, transform 0.75s ease ${i * 0.08}s`;
+            });
+
+            const scObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        scObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            scItems.forEach(el => scObserver.observe(el));
+
+            // ── Typing Animation Logic ──
+            const typingTarget = document.getElementById('typing-content');
+            const fullText = "At Khaled El Hefnawy, we believe that furniture is more than just pieces placed inside a home — it is a reflection of style, comfort, and personality. We specialize in crafting premium furniture with exceptional quality, combining timeless elegance with modern designs to create spaces that inspire |";
+            let charIndex = 0;
+            let isTypingStarted = false;
+
+            function typeWriter() {
+                if (charIndex < fullText.length) {
+                    // If the character is the cursor, check if it's the last one
+                    if (fullText.charAt(charIndex) === '|') {
+                        typingTarget.innerHTML += '<span class="typing-cursor"></span>';
+                    } else {
+                        typingTarget.innerHTML += fullText.charAt(charIndex);
+                    }
+                    charIndex++;
+                    setTimeout(typeWriter, 15); // Adjust typing speed here
+                }
+            }
+
+            const typingObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !isTypingStarted) {
+                        isTypingStarted = true;
+                        typeWriter();
+                        typingObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            if (typingTarget) typingObserver.observe(typingTarget);
+
+            // ── Reveal Animations for About Section ──
+            const aboutImage = document.querySelector('.about-image-container');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            if (aboutImage) revealObserver.observe(aboutImage);
+
+            // ── Our Furniture Typing Animation ──
+            const furnitureText = "Browse our carefully selected furniture collections featuring luxurious bedrooms, elegant dining sets, modern sofas, salons, and corner units designed with exceptional quality and timeless style.";
+            const furnitureTypingTarget = document.getElementById('typing-furniture');
+            let isFurnitureTypingStarted = false;
+
+            function typeFurnitureWords() {
+                const words = furnitureText.split(' ');
+                furnitureTypingTarget.innerHTML = '';
+
+                words.forEach((word) => {
+                    const span = document.createElement('span');
+                    span.innerText = word + ' ';
+                    span.style.opacity = '0';
+                    span.style.display = 'inline-block';
+                    span.style.transform = 'translateY(10px)';
+                    furnitureTypingTarget.appendChild(span);
+                });
+
+                gsap.to(furnitureTypingTarget.querySelectorAll('span'), {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    stagger: 0.1,
+                    ease: "power3.out"
+                });
+            }
+
+            const furnitureObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !isFurnitureTypingStarted) {
+                        isFurnitureTypingStarted = true;
+                        setTimeout(typeFurnitureWords, 400);
+                        furnitureObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.4 });
+
+            if (furnitureTypingTarget) furnitureObserver.observe(document.getElementById('our-furniture-section'));
+
+            // ── Furniture Gallery Logic ──
+            const galleryData = [
+                { id: 1, type: 'bedroom', img: 'images/Frame 2147225456.png', title: 'Elegant Bedrooms', sub: 'Soft comfort, timeless elegance' },
+                { id: 2, type: 'bedroom', img: 'images/Frame 2147225456 (1).png', title: 'Elegant Bedrooms', sub: 'The pinnacle of cozy design' },
+                { id: 3, type: 'bedroom', img: 'images/Frame 2147225456 (2).png', title: 'Elegant Bedrooms', sub: 'Serene and modern atmosphere' },
+                { id: 4, type: 'bedroom', img: 'images/Frame 2147225456 (3).png', title: 'Elegant Bedrooms', sub: 'Classic touches for your rest' },
+                { id: 5, type: 'dining', img: 'images/Frame 2147225458.png', title: 'Dining Collection', sub: 'Elegance for every meal' },
+                { id: 6, type: 'dining', img: 'images/Frame 2147225458 (1).png', title: 'Dining Collection', sub: 'Modern dining experience' },
+                { id: 7, type: 'dining', img: 'images/Frame 2147225458 (2).png', title: 'Dining Collection', sub: 'Classic luxury at your table' },
+                { id: 8, type: 'living', img: 'images/Frame 2147225459.png', title: 'Living Room', sub: 'Spacious and inviting layouts' },
+                { id: 9, type: 'living', img: 'images/Frame 2147225459 (1).png', title: 'Living Room', sub: 'Premium sofas for premium comfort' },
+                { id: 10, type: 'salon', img: 'images/Frame 2147225405.png', title: 'Luxury Salons', sub: 'Where class meets comfort' },
+                { id: 11, type: 'corners', img: 'images/Frame 2147225406.png', title: 'Stylish Corners', sub: 'Maximize your space with style' },
+                { id: 12, type: 'bedroom', img: 'images/Frame 2147225407.png', title: 'Elegant Bedrooms', sub: 'Minimalist luxury redefined' }
+            ];
+
+            const galleryGrid = document.getElementById('gallery-grid');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const showMoreWrapper = document.getElementById('show-more-wrapper');
+            const showMoreBtn = document.getElementById('show-more-btn');
+
+            let currentFilteredItems = [...galleryData];
+            let showingAll = false;
+
+            function renderGallery(filter = 'all', showAll = false) {
+                galleryGrid.innerHTML = '';
+                const baseItems = filter === 'all' ? galleryData : galleryData.filter(item => item.type === filter);
+                currentFilteredItems = baseItems;
+
+                const itemsToDisplay = showAll ? baseItems : baseItems.slice(0, 9);
+
+                itemsToDisplay.forEach((item, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'gallery-item reveal-up';
+                    card.innerHTML = `
+                        <div class="relative overflow-hidden aspect-[4/5]">
+                            <img src="${item.img}" alt="${item.title}" class="gallery-img w-full h-full object-cover">
+                            
+                            <!-- Customize Button -->
+                            <a href="contact.html" class="customize-tag">
+                                <span>Customize</span>
+                                <img src="images/iconcontaact.png" class="w-4 h-4">
+                            </a>
+
+                            <!-- Overlay -->
+                            <div class="gallery-overlay">
+                                <button class="view-full-btn flex items-center gap-3  px-6 py-3 rounded-md transition-all group" data-index="${index}">
+                                    <span class="text-white text-sm font-medium">View Full Design</span>
+                                    <img src="images/typcn_eye.png" class="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity">
+                                </button>
+                            </div>
+
+                            <div class="info-box">
+                                <h3 class="text-white text-lg font-bold mb-1">${item.title}</h3>
+                                <p class="text-white/40 text-[10px] uppercase tracking-widest font-medium">${item.sub}</p>
+                            </div>
+                        </div>
+                    `;
+                    galleryGrid.appendChild(card);
+                });
+
+                // Show/Hide "Show More" button
+                if (baseItems.length > 9 && !showAll) {
+                    showMoreWrapper.classList.remove('hidden');
+                } else {
+                    showMoreWrapper.classList.add('hidden');
+                }
+
+                // Attach Lightbox Listeners
+                document.querySelectorAll('.view-full-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const idx = parseInt(e.currentTarget.getAttribute('data-index'));
+                        openLightbox(idx);
+                    });
+                });
+            }
+
+            // Show More Click
+            showMoreBtn.addEventListener('click', () => {
+                showingAll = true;
+                const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+                renderGallery(activeFilter, true);
+            });
+
+            // Lightbox Logic
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeLightbox = document.getElementById('close-lightbox');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            let currentIdx = 0;
+
+            function openLightbox(index) {
+                currentIdx = index;
+                lightboxImg.src = currentFilteredItems[currentIdx].img;
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('visible');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightboxModal() {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('visible');
+                document.body.style.overflow = '';
+            }
+
+            function navigateLightbox(dir) {
+                currentIdx = (currentIdx + dir + currentFilteredItems.length) % currentFilteredItems.length;
+
+                // Fade effect during navigation
+                gsap.to(lightboxImg, {
+                    opacity: 0,
+                    duration: 0.2,
+                    onComplete: () => {
+                        lightboxImg.src = currentFilteredItems[currentIdx].img;
+                        gsap.to(lightboxImg, { opacity: 1, duration: 0.3 });
+                    }
+                });
+            }
+
+            closeLightbox.addEventListener('click', closeLightboxModal);
+            prevBtn.addEventListener('click', () => navigateLightbox(-1));
+            nextBtn.addEventListener('click', () => navigateLightbox(1));
+
+            // Close on escape
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeLightboxModal();
+                if (e.key === 'ArrowLeft') navigateLightbox(-1);
+                if (e.key === 'ArrowRight') navigateLightbox(1);
+            });
+
+            // Filter Click Handler
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    filterBtns.forEach(b => b.classList.remove('active', 'active-category'));
+                    e.currentTarget.classList.add('active', 'active-category');
+                    const filter = e.currentTarget.getAttribute('data-filter');
+
+                    showingAll = false; // Reset show more state
+                    // Animate out then back in
+                    gsap.to(galleryGrid, {
+                        opacity: 0,
+                        y: 10,
+                        duration: 0.3,
+                        onComplete: () => {
+                            renderGallery(filter);
+                            gsap.to(galleryGrid, { opacity: 1, y: 0, duration: 0.5 });
+                        }
+                    });
+                });
+            });
+
+            // Initial Render
+            renderGallery();
+
+            // ── Reveal Animations for Design Living Section ──
+            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+            const elementObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const type = entry.target.classList.contains('reveal-left') ? 'left'
+                            : entry.target.classList.contains('reveal-right') ? 'right'
+                                : 'up';
+
+                        gsap.to(entry.target, {
+                            opacity: 1,
+                            x: 0,
+                            y: 0,
+                            duration: 1.2,
+                            ease: 'power4.out'
+                        });
+                        elementObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealElements.forEach(el => {
+                const isLeft = el.classList.contains('reveal-left');
+                const isRight = el.classList.contains('reveal-right');
+                gsap.set(el, {
+                    opacity: 0,
+                    y: (isLeft || isRight) ? 0 : 40,
+                    x: isLeft ? -40 : isRight ? 40 : 0
+                });
+                elementObserver.observe(el);
+            });
+        });
+    </script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

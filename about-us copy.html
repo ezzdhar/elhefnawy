@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khalid El-Hefnawy - Timeless Elegance & Premium Furniture</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <title>Contact Us - Khaled El-Hefnawy Furniture</title>
     <meta name="description"
         content="Explore our premium furniture services including interior design, custom furniture, bedroom sets, living rooms, and more — by Khaled El-Hefnawy.">
 
@@ -49,7 +48,62 @@
            SERVICES PAGE — LOCAL STYLES
            ============================================ */
 
+        /* --- NAVBAR --- */
+        #services-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: transparent;
+            transition: background 0.4s ease, box-shadow 0.4s ease;
+        }
 
+        #services-navbar.scrolled {
+            background: rgba(10, 11, 8, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-link {
+            font-size: 0.82rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.75);
+            letter-spacing: 0.04em;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #ffffff;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 1.5px;
+            background: #A6A182;
+        }
+
+        .nav-cta {
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            padding: 0.55rem 1.4rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.7);
+        }
 
         /* --- HERO SECTION --- */
         #services-hero {
@@ -96,8 +150,8 @@
 
         /* Main hero title */
         .hero-title {
-            font-size: 60px;
-            font-weight: 700;
+            font-size: clamp(2.4rem, 7vw, 5rem);
+            font-weight: 800;
             color: #ffffff;
             letter-spacing: 0.04em;
             text-transform: uppercase;
@@ -204,87 +258,57 @@
 
 <body class="bg-customBg text-white font-sans antialiased">
 
-    <!-- Header Navigation -->
-    <header
-        class="fixed top-0 left-0 w-full z-[1001] transition-all duration-500 py-4 bg-customBg border-b border-white/[0.03]"
-        id="main-header">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
-
-            <!-- Logo Section -->
-            <a href="index.html" class="flex items-center space-x-2 header-item group relative overflow-hidden"
-                id="logo-container">
-                <div
-                    class="bg-black/90 px-3.5 py-1.5 border border-white/5 rounded-sm shadow-xl transition-all duration-300 group-hover:border-customBtn/50">
-                    <img src="images/logo.png" alt="Khalid El-Hefnawy Furniture Logo"
-                        class="h-7 md:h-7.5 object-contain w-auto transition-transform duration-500 group-hover:scale-105">
-                </div>
+    <!-- ============================
+         NAVBAR
+    ================================ -->
+    <nav id="services-navbar" aria-label="Main Navigation">
+        <div class="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-[68px]">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center shrink-0">
+                <img src="images/ChatGPT Image May 20, 2026, 04_06_22 AM 1 (2).png"
+                    alt="Khaled El-Hefnawy Furniture Logo" class="h-8 w-auto object-contain">
             </a>
 
-            <!-- Center Navigation Links -->
-            <nav class="hidden lg:flex items-center space-x-8 xl:space-x-10 header-item" id="desktop-nav">
-                <a href="index.html"
-                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
-                    data-index="0">Home</a>
-                <a href="about-us.html"
-                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/95 active"
-                    data-index="1">About Us</a>
-                <a href="our-service.html"
-                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
-                    data-index="2">Our Services</a>
-                <a href="our-furniture.html"
-                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
-                    data-index="3">Furniture</a>
-                <a href="contact-us.html"
-                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
-                    data-index="4">Contact Us</a>
-            </nav>
+            <!-- Desktop Nav Links -->
+            <ul class="hidden md:flex items-center gap-8 lg:gap-10">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="#" class="nav-link active">About Us</a></li>
+                <li><a href="our-service.html" class="nav-link">Our Services</a></li>
+                <li><a href="#" class="nav-link">Latest Designs</a></li>
+                <li><a href="#" class="nav-link">Contact Us</a></li>
+            </ul>
 
-            <!-- Right CTA Button (Desktop) -->
-            <div class="hidden lg:block header-item" id="desktop-cta">
-                <a href="contact-us.html"
-                    class="btn-premium px-6 py-2.5 rounded-sm text-[11px] font-semibold uppercase tracking-[0.2em] border border-customBtn text-white/90 block hover:text-white">
-                    Request Your Design
-                </a>
-            </div>
-
-            <!-- Mobile Menu Toggle Button -->
-            <button
-                class="lg:hidden flex flex-col justify-between items-end w-8 h-5 focus:outline-none z-[1000] header-item cursor-pointer"
-                id="menu-toggle" aria-label="Toggle Navigation">
-                <span class="w-8 h-[2px] bg-white rounded-full transition-all duration-300 origin-center"></span>
-                <span class="w-6 h-[2px] bg-white rounded-full transition-all duration-300 origin-center"></span>
-                <span class="w-7 h-[2px] bg-white rounded-full transition-all duration-300 origin-center"></span>
-            </button>
-
-        </div>
-    </header>
-
-    <!-- Mobile Fullscreen Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobile-menu">
-        <div class="flex flex-col items-center justify-between h-[75%] px-6 py-12">
-            <!-- Mobile Navigation Links -->
-            <nav class="flex flex-col items-center text-center mt-8">
-                <a href="index.html" class="mobile-menu-link opacity-0 text-xl" data-index="0">Home</a>
-                <a href="about-us.html" class="mobile-menu-link opacity-0 text-xl active" data-index="1">About Us</a>
-                <a href="our-service.html" class="mobile-menu-link opacity-0 text-xl" data-index="2">Our Services</a>
-                <a href="our-furniture.html" class="mobile-menu-link opacity-0 text-xl" data-index="3">Furniture</a>
-                <a href="contact-us.html" class="mobile-menu-link opacity-0 text-xl" data-index="4">Contact Us</a>
-            </nav>
-            <!-- Mobile CTA Button -->
-            <a href="contact-us.html"
-                class="btn-premium px-8 py-3 rounded-sm text-xs font-semibold uppercase tracking-[0.2em] border border-customBtn text-white opacity-0 mt-8"
-                id="mobile-menu-cta">
+            <!-- CTA Button -->
+            <a href="#" class="hidden md:inline-block nav-cta">
                 Request Your Design
             </a>
+
+            <!-- Mobile Hamburger -->
+            <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-[5px] p-2" aria-label="Toggle menu">
+                <span class="block w-6 h-[1.5px] bg-white/80 transition-all duration-300" id="hb-line1"></span>
+                <span class="block w-6 h-[1.5px] bg-white/80 transition-all duration-300" id="hb-line2"></span>
+                <span class="block w-4 h-[1.5px] bg-white/80 transition-all duration-300" id="hb-line3"></span>
+            </button>
         </div>
-    </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="md:hidden hidden flex-col bg-customBg/98 backdrop-blur-sm px-6 pb-6 pt-2 gap-4 border-t border-white/5">
+            <a href="index.html" class="nav-link py-2 border-b border-white/5">Home</a>
+            <a href="#" class="nav-link py-2 border-b border-white/5">About Us</a>
+            <a href="our-service.html" class="nav-link active py-2 border-b border-white/5">Our Services</a>
+            <a href="#" class="nav-link py-2 border-b border-white/5">Latest Designs</a>
+            <a href="#" class="nav-link py-2 border-b border-white/5">Contact Us</a>
+            <a href="#" class="nav-cta text-center mt-2">Request Your Design</a>
+        </div>
+    </nav>
 
     <!-- ============================
          HERO SECTION
     ================================ -->
     <section id="services-hero" aria-label="Services Page Hero">
         <!-- Background Image -->
-        <img src="images/Frame 2147225407.png" alt="Luxury Furniture Interior" id="services-hero-bg">
+        <img src="images/Frame 2147224995 (3).png" alt="Luxury Furniture Interior" id="services-hero-bg">
 
         <!-- Dark overlay -->
         <div id="services-hero-overlay"></div>
@@ -292,7 +316,7 @@
         <!-- Hero Text Content (bottom-left) -->
         <div id="services-hero-content">
             <p class="hero-label" id="hero-label">Business Models you Can Consider</p>
-            <h1 class="hero-title" id="hero-title">ABOUT US</h1>
+            <h1 class="hero-title" id="hero-title">REQUEST YOUR DESIGN</h1>
         </div>
     </section>
 
@@ -305,10 +329,10 @@
             <!-- Header Block -->
             <div class="space-y-4">
                 <span
-                    class="text-white/30 uppercase tracking-[0.2em] text-[10px] md:text-xs font-medium block reveal-text">Our
-                    Services</span>
-                <h2 class=" font-bold text-white leading-[1.1] max-w-2xl reveal-text"
-                    style="font-size:35px; font-weight: 700;">
+                    class="text-white/30 uppercase tracking-[0.2em] text-[10px] md:text-xs font-medium block reveal-text">
+
+                    Contact Us</span>
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] max-w-2xl reveal-text">
                     What We Create for Your Perfect Space
                 </h2>
             </div>
@@ -316,7 +340,7 @@
             <!-- Typing Description Box -->
             <div class="about-text-box mt-4 md:mt-8">
                 <p id="typing-content"
-                    class="text-[#CDBF9F] leading-relaxed text-sm md:text-[15px] font-sans font-light"></p>
+                    class="text-white/60 leading-relaxed text-sm md:text-[15px] font-sans font-light"></p>
             </div>
 
             <!-- Secondary Image -->
@@ -536,18 +560,13 @@
                 <div class="flex flex-col items-start gap-5">
                     <h3 class="text-white text-lg font-bold font-sans tracking-wide">Quick Links</h3>
                     <ul class="flex flex-col items-start gap-3 text-[13px] sm:text-sm font-light w-full font-sans">
-                        <li><a href="index.html" class="hover:text-[#A6A182] transition-colors duration-300">Home</a>
+                        <li><a href="#" class="hover:text-[#A6A182] transition-colors duration-300">Home</a></li>
+                        <li><a href="#" class="hover:text-[#A6A182] transition-colors duration-300">About Us</a></li>
+                        <li><a href="#" class="hover:text-[#A6A182] transition-colors duration-300">Our Services</a>
                         </li>
-                        <li><a href="about-us.html"
-                                class="hover:text-[#A6A182] transition-colors duration-300">About Us</a></li>
-                        <li><a href="our-service.html" class="hover:text-[#A6A182] transition-colors duration-300">Our
-                                Services</a>
+                        <li><a href="#" class="hover:text-[#A6A182] transition-colors duration-300">Latest Designs</a>
                         </li>
-                        <li><a href="our-furniture.html"
-                                class="hover:text-[#A6A182] transition-colors duration-300">Latest Designs</a>
-                        </li>
-                        <li><a href="contact-us.html"
-                                class="hover:text-[#A6A182] transition-colors duration-300">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-[#A6A182] transition-colors duration-300">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -616,7 +635,161 @@
     <!-- ============================
          JAVASCRIPT
     ================================ -->
+    <script>
+        // ── Navbar scroll effect
+        const navbar = document.getElementById('services-navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 30);
+        });
 
+        // ── Mobile menu toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const line1 = document.getElementById('hb-line1');
+        const line3 = document.getElementById('hb-line3');
+
+        menuBtn.addEventListener('click', () => {
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            line1.style.width = isOpen ? '24px' : '24px';
+            line3.style.width = isOpen ? '16px' : '24px';
+        });
+
+        // ── Hero entrance animations (GSAP)
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof gsap === 'undefined') {
+                // Fallback: just show elements if GSAP not loaded yet
+                setTimeout(() => {
+                    document.getElementById('hero-label').style.opacity = 1;
+                    document.getElementById('hero-label').style.transform = 'none';
+                    document.getElementById('hero-title').style.opacity = 1;
+                    document.getElementById('hero-title').style.transform = 'none';
+                }, 100);
+                return;
+            }
+
+            const tl = gsap.timeline({ delay: 0.2 });
+
+            // Subtle Ken Burns on background
+            tl.to('#services-hero-bg', {
+                scale: 1.06,
+                duration: 8,
+                ease: 'power1.inOut'
+            }, 0);
+
+            // Label slides up + fades in
+            tl.to('#hero-label', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power3.out'
+            }, 0.3);
+
+            // Title slides up + fades in (slightly after label)
+            tl.to('#hero-title', {
+                opacity: 1,
+                y: 0,
+                duration: 1.0,
+                ease: 'power4.out'
+            }, 0.55);
+
+            // ── Services Cards Section Animations (IntersectionObserver — more reliable)
+            const scItems = document.querySelectorAll('.sc-header-block, .sc-card');
+            scItems.forEach((el, i) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(36px)';
+                el.style.transition = `opacity 0.75s ease ${i * 0.08}s, transform 0.75s ease ${i * 0.08}s`;
+            });
+
+            const scObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        scObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            scItems.forEach(el => scObserver.observe(el));
+
+            // ── Typing Animation Logic ──
+            const typingTarget = document.getElementById('typing-content');
+            const fullText = "At Khaled El Hefnawy, we believe that furniture is more than just pieces placed inside a home — it is a reflection of style, comfort, and personality. We specialize in crafting premium furniture with exceptional quality, combining timeless elegance with modern designs to create spaces that inspire |";
+            let charIndex = 0;
+            let isTypingStarted = false;
+
+            function typeWriter() {
+                if (charIndex < fullText.length) {
+                    // If the character is the cursor, check if it's the last one
+                    if (fullText.charAt(charIndex) === '|') {
+                        typingTarget.innerHTML += '<span class="typing-cursor"></span>';
+                    } else {
+                        typingTarget.innerHTML += fullText.charAt(charIndex);
+                    }
+                    charIndex++;
+                    setTimeout(typeWriter, 15); // Adjust typing speed here
+                }
+            }
+
+            const typingObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !isTypingStarted) {
+                        isTypingStarted = true;
+                        typeWriter();
+                        typingObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            if (typingTarget) typingObserver.observe(typingTarget);
+
+            // ── Reveal Animations for About Section ──
+            const aboutImage = document.querySelector('.about-image-container');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            if (aboutImage) revealObserver.observe(aboutImage);
+
+            // ── Reveal Animations for Design Living Section ──
+            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+            const elementObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const type = entry.target.classList.contains('reveal-left') ? 'left'
+                            : entry.target.classList.contains('reveal-right') ? 'right'
+                                : 'up';
+
+                        gsap.to(entry.target, {
+                            opacity: 1,
+                            x: 0,
+                            y: 0,
+                            duration: 1.2,
+                            ease: 'power4.out'
+                        });
+                        elementObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealElements.forEach(el => {
+                const isLeft = el.classList.contains('reveal-left');
+                const isRight = el.classList.contains('reveal-right');
+                gsap.set(el, {
+                    opacity: 0,
+                    y: (isLeft || isRight) ? 0 : 40,
+                    x: isLeft ? -40 : isRight ? 40 : 0
+                });
+                elementObserver.observe(el);
+            });
+        });
+    </script>
     <script src="js/script.js"></script>
 </body>
 

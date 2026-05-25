@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khalid El-Hefnawy - Timeless Elegance & Premium Furniture</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <meta name="description"
+        content="Explore our premium furniture services including interior design, custom furniture, bedroom sets, living rooms, and more — by Khaled El-Hefnawy.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Cairo:wght@400;600;700;800&family=Playfair+Display:ital,wght@1,300;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        customBg: '#0A0B08',
+                        customBtn: '#252B20',
+                        customOlive: '#131610',
+                        customGold: '#A6A182',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+    <style>
+        /* ============================================
+           SERVICES PAGE — LOCAL STYLES
+           ============================================ */
+
+
+
+        /* --- HERO SECTION --- */
+        #services-hero {
+            position: relative;
+            height: 45vh;
+            min-height: 320px;
+            max-height: 480px;
+            overflow: hidden;
+            background: #0A0B08;
+        }
+
+        /* Background image layer */
+        #services-hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-position: center 40%;
+            transform-origin: center;
+        }
+
+        /* Content positioned at bottom-left */
+        #services-hero-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-bottom: 2.5rem;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+        /* Breadcrumb label */
+        .hero-label {
+            font-size: 0.78rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.55);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.6rem;
+            opacity: 0;
+            transform: translateY(12px);
+        }
+
+        /* Main hero title */
+        .hero-title {
+            font-size: 60px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            line-height: 1;
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        @media (max-width: 640px) {
+            #services-hero-content {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+                padding-bottom: 2rem;
+            }
+
+            #services-hero {
+                max-height: 380px;
+                height: 50vh;
+            }
+        }
+
+        /* --- ABOUT INTRO SECTION --- */
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background-color: #A6A182;
+            margin-left: 4px;
+            vertical-align: middle;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .about-text-box {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border-left: 2px solid #A6A182;
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-image-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .about-image-container.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* --- DESIGN LIVING SECTION --- */
+        .ghost-text {
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            text-transform: uppercase;
+            line-height: 0.8;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .vision-card {
+            background: #131610;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 4rem 3rem;
+            transition: all 0.5s ease;
+            height: 100%;
+        }
+
+        .vision-card:hover {
+            border-color: rgba(166, 161, 130, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .vision-border-l {
+            border-left: 1px solid #A6A182;
+            padding-left: 1.5rem;
+        }
+
+        .center-image-box {
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- CONTACT CARDS --- */
+        .contact-card {
+            background: #131610;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.4s ease;
+        }
+
+        .contact-card:hover {
+            border-color: rgba(166, 161, 130, 0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-icon-box {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .action-arrow {
+            width: 42px;
+            height: 42px;
+            background: #A6A182;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .action-arrow:hover {
+            background: #ffffff;
+            transform: rotate(-45deg);
+        }
+
+        /* --- CONTACT FORM --- */
+        .form-input {
+            width: 100%;
+            background: #131610;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.2rem 1.5rem;
+            border-radius: 4px;
+            color: white;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #A6A182;
+            background: #1a1e16;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .upload-area {
+            border: 1.5px dashed rgba(255, 255, 255, 0.15);
+            background: #0D0E0C;
+            border-radius: 8px;
+            padding: 3rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            border-color: #A6A182;
+            background: rgba(166, 161, 130, 0.02);
+        }
+
+        .submit-btn {
+            background: #252B20;
+            color: #ffffff;
+            width: 100%;
+            padding: 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .submit-btn:hover {
+            background: #A6A182;
+            color: #0A0B08;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body class="bg-customBg text-white font-sans antialiased">
+
+    <!-- Header Navigation -->
+    <header
+        class="fixed top-0 left-0 w-full z-[1001] transition-all duration-500 py-4 bg-customBg border-b border-white/[0.03]"
+        id="main-header">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+
+            <!-- Logo Section -->
+            <a href="index.html" class="flex items-center space-x-2 header-item group relative overflow-hidden"
+                id="logo-container">
+                <div
+                    class="bg-black/90 px-3.5 py-1.5 border border-white/5 rounded-sm shadow-xl transition-all duration-300 group-hover:border-customBtn/50">
+                    <img src="images/logo.png" alt="Khalid El-Hefnawy Furniture Logo"
+                        class="h-7 md:h-7.5 object-contain w-auto transition-transform duration-500 group-hover:scale-105">
+                </div>
+            </a>
+
+            <!-- Center Navigation Links -->
+            <nav class="hidden lg:flex items-center space-x-8 xl:space-x-10 header-item" id="desktop-nav">
+                <a href="index.html"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="0">Home</a>
+                <a href="about-us.html"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="1">About Us</a>
+                <a href="our-service.html"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="2">Our Services</a>
+                <a href="our-furniture.html"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/60 hover:text-white"
+                    data-index="3">Furniture</a>
+                <a href="contact-us.html"
+                    class="nav-link text-xs uppercase tracking-[0.2em] font-medium text-white/95 active"
+                    data-index="4">Contact Us</a>
+            </nav>
+
+            <!-- Right CTA Button (Desktop) -->
+            <div class="hidden lg:block header-item" id="desktop-cta">
+                <a href="contact-us.html"
+                    class="btn-premium px-6 py-2.5 rounded-sm text-[11px] font-semibold uppercase tracking-[0.2em] border border-customBtn text-white/90 block hover:text-white">
+                    Request Your Design
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button
+                class="lg:hidden flex flex-col justify-between items-end w-8 h-5 focus:outline-none z-[1000] header-item cursor-pointer"
+                id="menu-toggle" aria-label="Toggle Navigation">
+                <span class="w-8 h-[2px] bg-white rounded-full transition-all duration-300 origin-center"></span>
+                <span class="w-6 h-[2px] bg-white rounded-full transition-all duration-300 origin-center"></span>
+                <span class="w-7 h-[2px] bg-white rounded-full transition-all duration-300 origin-center"></span>
+            </button>
+
+        </div>
+    </header>
+
+    <!-- Mobile Fullscreen Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <div class="flex flex-col items-center justify-between h-[75%] px-6 py-12">
+            <!-- Mobile Navigation Links -->
+            <nav class="flex flex-col items-center text-center mt-8">
+                <a href="index.html" class="mobile-menu-link opacity-0 text-xl" data-index="0">Home</a>
+                <a href="about-us.html" class="mobile-menu-link opacity-0 text-xl" data-index="1">About Us</a>
+                <a href="our-service.html" class="mobile-menu-link opacity-0 text-xl" data-index="2">Our Services</a>
+                <a href="our-furniture.html" class="mobile-menu-link opacity-0 text-xl" data-index="3">Furniture</a>
+                <a href="contact-us.html" class="mobile-menu-link opacity-0 text-xl active" data-index="4">Contact Us</a>
+            </nav>
+            <!-- Mobile CTA Button -->
+            <a href="contact-us.html"
+                class="btn-premium px-8 py-3 rounded-sm text-xs font-semibold uppercase tracking-[0.2em] border border-customBtn text-white opacity-0 mt-8"
+                id="mobile-menu-cta">
+                Request Your Design
+            </a>
+        </div>
+    </div>
+
+    <!-- ============================
+         HERO SECTION
+    ================================ -->
+    <section id="services-hero" aria-label="Services Page Hero">
+        <!-- Background Image -->
+        <img src="images/Frame 2147224995 (3).png" alt="Luxury Furniture Interior" id="services-hero-bg">
+
+        <!-- Dark overlay -->
+        <div id="services-hero-overlay"></div>
+
+        <!-- Hero Text Content (bottom-left) -->
+        <div id="services-hero-content">
+            <p class="hero-label" id="hero-label">Business Models you Can Consider</p>
+            <h1 class="hero-title" id="hero-title">REQUEST YOUR DESIGN</h1>
+        </div>
+    </section>
+
+    <!-- ============================
+         ABOUT INTRO SECTION
+    ================================ -->
+    <section id="about-intro" class="py-24 px-6 md:px-12 bg-customBg overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-col gap-10">
+
+            <!-- Header Block -->
+            <div class="space-y-4">
+                <span
+                    class="text-white/30 uppercase tracking-[0.2em] text-[10px] md:text-xs font-medium block reveal-text">
+
+                    Contact Us</span>
+                <h2 class=" font-bold text-white leading-[1.1] max-w-2xl reveal-text"
+                    style="font-size:40px; font-weight: 700;">
+                    Have a furniture design you love ?
+                </h2>
+            </div>
+
+            <!-- Typing Description Box -->
+            <div class="about-text-box mt-4 md:mt-8">
+                <p id="typing-content"
+                    class="text-[#CDBF9F] leading-relaxed text-sm md:text-[15px] font-sans font-light"></p>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!-- ============================
+         CONTACT CARDS & FORM SECTION
+    ================================ -->
+    <section id="contact-section" class="py-20 px-6 md:px-12 bg-customBg">
+        <div class="max-w-6xl mx-auto">
+
+            <!-- Contact Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+                <!-- Call Us -->
+                <div class="contact-card reveal-up">
+                    <div class="flex items-center gap-5">
+                        <div class="contact-icon-box">
+                            <img src="images/Frame 2147225463.png" alt="Call" class="w-6 h-auto">
+                        </div>
+                        <div>
+                            <p class="text-[13px] text-white/40 mb-1">Call Us</p>
+                            <p class="text-sm font-medium">+20 11 000 - 000 - 00</p>
+                        </div>
+                    </div>
+                    <a href="tel:+201100000000" class="action-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                            stroke="currentColor" class="w-4 h-4 text-[#0A0B08]">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Email Us -->
+                <div class="contact-card reveal-up" style="transition-delay: 0.1s;">
+                    <div class="flex items-center gap-5">
+                        <div class="contact-icon-box">
+                            <img src="images/Frame 2147225463 (1).png" alt="Email" class="w-6 h-auto">
+                        </div>
+                        <div>
+                            <p class="text-[13px] text-white/40 mb-1">Email Us</p>
+                            <p class="text-sm font-medium truncate max-w-[170px]">Mohamed_Nasser2026@gmail.com</p>
+                        </div>
+                    </div>
+                    <a href="mailto:Mohamed_Nasser2026@gmail.com" class="action-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                            stroke="currentColor" class="w-4 h-4 text-[#0A0B08]">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Our Location -->
+                <div class="contact-card reveal-up" style="transition-delay: 0.2s;">
+                    <div class="flex items-center gap-5">
+                        <div class="contact-icon-box">
+                            <img src="images/Frame 2147225463 (2).png" alt="Location" class="w-6 h-auto">
+                        </div>
+                        <div>
+                            <p class="text-[13px] text-white/40 mb-1">Our Location</p>
+                            <p class="text-sm font-medium">New Damietta - Kafr El-batekh</p>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="action-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                            stroke="currentColor" class="w-4 h-4 text-[#0A0B08]">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <form id="design-request-form" class="space-y-10 reveal-up">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- F-Name -->
+                    <div class="space-y-3">
+                        <label class="form-label text-white/90">F - Name</label>
+                        <input type="text" placeholder="Muhamed"
+                            class="form-input bg-black/20 border-white/5 placeholder:text-white/20" required>
+                    </div>
+                    <!-- L-Name -->
+                    <div class="space-y-3">
+                        <label class="form-label text-white/90">L - Name</label>
+                        <input type="text" placeholder="Nasser |"
+                            class="form-input bg-black/20 border-white/5 placeholder:text-white/20" required>
+                    </div>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="space-y-3">
+                    <label class="form-label text-white/90">Phone Number</label>
+                    <input type="tel" placeholder="+ 20 11 -123-456"
+                        class="form-input bg-black/20 border-white/5 placeholder:text-white/20" required>
+                </div>
+
+                <!-- Email Address -->
+                <div class="space-y-3">
+                    <label class="form-label text-white/90">Email Address</label>
+                    <input type="email" placeholder="Support @ gmail.com"
+                        class="form-input bg-black/20 border-white/5 placeholder:text-white/20" required>
+                </div>
+
+                <!-- Upload Area -->
+                <div class="space-y-3">
+                    <label class="form-label text-white/90">Upload and Attach Files</label>
+                    <div class="upload-area border-dashed border-white/10" id="drop-zone">
+                        <div class="flex flex-col items-center gap-4">
+                            <div class="relative">
+                                <!-- File Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"
+                                    stroke-linejoin="round" class="text-white/10">
+                                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z">
+                                    </path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                                <!-- Plus Button Overlay -->
+                                <div
+                                    class="absolute -bottom-1 -right-1 bg-customGold rounded-full p-1 border-[3px] border-[#0D0E0C]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="3" stroke="currentColor" class="w-3 h-3 text-[#0A0B08]">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="space-y-1">
+                                <p class="text-sm font-medium"><span
+                                        class="text-customGold cursor-pointer hover:underline">Click to Upload</span> or
+                                    drag and drop</p>
+                                <p class="text-[10px] text-white/20 uppercase tracking-[0.1em]">Maximum File Size 50 MB
+                                </p>
+                            </div>
+                        </div>
+                        <input type="file" class="hidden" id="file-input" multiple>
+                    </div>
+                </div>
+
+                <!-- Describe Your Request -->
+                <div class="space-y-3">
+                    <label class="form-label text-white/90">Describe Your Request</label>
+                    <textarea rows="6"
+                        placeholder="I'm looking for a modern luxury dining room design similar to the uploaded reference image, with elegant finishes and soft neutral colors. The furniture should be crafted using high-quality materials with a premium modern style that matches my home interior. Please customize the dimensions to fit my space and include comfortable chairs with stylish details."
+                        class="form-input bg-black/20 border-white/5 placeholder:text-white/20 resize-none leading-relaxed"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit"
+                    class="submit-btn bg-[#252B20] text-white/90 py-5 text-sm font-bold tracking-[0.12em] hover:bg-customGold hover:text-[#0A0B08]">
+                    Request Your Design
+                </button>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- Section 5: Stats Section -->
+    <section class="relative py-20 md:py-28 overflow-hidden" style="background-color: #050604;" id="stats-section">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+
+                <!-- Stat Column 1 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #F9F9F9;">
+                        <span class="stat-number" data-target="30">0</span><span>+</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #F9F9F9;">
+                        Years of Experience in<br />the Furniture Industry
+                    </p>
+                </div>
+
+                <!-- Stat Column 2 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #F9F9F9;">
+                        <span class="stat-number" data-target="100">0</span><span>%</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #F9F9F9;">
+                        Quality and Excellence<br />We Always Guarantee
+                    </p>
+                </div>
+
+                <!-- Stat Column 3 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #F9F9F9;">
+                        <span class="stat-number" data-target="90">0</span><span>+</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #F9F9F9;">
+                        Customers Trust the<br />Quality of Our Products
+                    </p>
+                </div>
+
+                <!-- Stat Column 4 -->
+                <div class="stat-item flex flex-col items-center text-center">
+                    <div class="text-5xl sm:text-6xl font-bold tracking-tight mb-4 font-sans" style="color: #F9F9F9;">
+                        <span class="stat-number" data-target="24">0</span><span>/7</span>
+                    </div>
+                    <p class="text-[13px] sm:text-[14px] leading-relaxed max-w-[220px] font-normal font-sans"
+                        style="color: #F9F9F9;">
+                        Always Available<br />to Support You
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- سكشن 8: آراء العملاء -->
+    <section class="relative py-24 overflow-hidden" id="testimonials-section"
+        style="background-color: var(--color-bg);">
+
+        <!-- Section Header -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 text-center mb-16" id="testimonials-header">
+            <!-- Watermark -->
+            <div
+                class="absolute left-1/2 -translate-x-1/2 top-[-1rem] sm:top-[-2.5rem] md:top-[-3.5rem] z-[-1] w-full flex justify-center pointer-events-none select-none">
+                <span id="bg-text-testimonials"
+                    style="font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 800; color: rgba(255,255,255,0.03); white-space: nowrap; letter-spacing: 0.05em; font-family: 'Outfit', sans-serif; line-height: 1;">
+                    our testimonials
+                </span>
+            </div>
+
+            <h2 class="text-white font-bold font-sans leading-[1.1] relative z-10" id="testimonials-title"
+                style="font-size: clamp(2.5rem, 5vw, 4rem);">
+                What Our Clients Say
+            </h2>
+            <p class="mt-5 mx-auto max-w-3xl text-white/50 font-light font-sans leading-relaxed relative z-10"
+                id="testimonials-sub" style="font-size: clamp(0.9rem, 1.1vw, 1.05rem);">
+                Discover why our customers trust Khaled El Hefnawy Furniture for premium quality, elegant<br
+                    class="hidden md:block" /> craftsmanship, and custom-made furniture designed to elevate every space
+                with comfort and style.
+            </p>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+            <!-- Content Wrapper -->
+            <div class="relative flex flex-col lg:flex-row items-end lg:h-[580px]">
+
+                <!-- Image Panel (Right side) -->
+                <div class="w-full lg:w-[68%] h-[350px] lg:h-[520px] rounded-2xl overflow-hidden relative lg:absolute lg:right-0 lg:bottom-0 z-0 shadow-2xl"
+                    id="testimonials-img-panel">
+                    <img src="images/WhatsApp Image 2026-05-23 at 5.09.14 AM.jpeg" alt="Luxury interior background"
+                        class="w-full h-full object-cover">
+                </div>
+
+                <!-- Slider Card (Overlapping left side) -->
+                <div class="w-full lg:w-[48%] relative z-10 mt-[-50px] lg:mt-0 mx-auto lg:mx-0 lg:mb-10"
+                    id="testimonials-slider-area">
+
+                    <!-- Card Outer -->
+                    <div class="overflow-hidden" id="testimonials-track-outer" style="border-radius: 0.75rem;">
+
+                        <!-- Sliding Track -->
+                        <div class="flex" id="testimonials-track"
+                            style="will-change: transform; transition: transform 0.72s cubic-bezier(0.77,0,0.175,1);">
+
+                            <!-- Card 1 -->
+                            <div class="testimonial-card min-w-full" data-image="images/WhatsApp Image 2026-05-23 at 5.09.14 AM.jpeg"
+                                style="background: rgba(14,15,12,0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.06); border-radius: 0.75rem; padding: 2.5rem 2.8rem 2.2rem; box-sizing: border-box;">
+                                <p
+                                    style="color: rgba(255,255,255,0.75); font-size: clamp(0.88rem, 1.2vw, 1rem); line-height: 1.85; font-weight: 300; margin-bottom: 2.2rem;">
+                                    "The quality exceeded my expectations. The finishing details are incredibly elegant,
+                                    and the delivery was right on time. Highly recommended & I sent them a reference
+                                    image for a dining room, and the final result looked even better than the picture.
+                                    Amazing craftsmanship and professional service."
+                                </p>
+                                <div style="display:flex; align-items:center; gap: 0.85rem;">
+                                    <div
+                                        style="width:38px; height:38px; border-radius:50%; overflow:hidden; flex-shrink:0; border: 1.5px solid rgba(255,255,255,0.12); background:#111;">
+                                        <img src="images/WhatsApp Image 2026-05-23 at 5.09.14 AM.jpeg"
+                                            alt="Shahd Mohamed"
+                                            style="width:100%; height:100%; object-fit:cover; object-position:center top; filter:grayscale(60%) brightness(0.75);">
+                                    </div>
+                                    <span
+                                        style="color: rgba(255,255,255,0.88); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.02em;">Shahd
+                                        Mohamed</span>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="testimonial-card min-w-full" data-image="images/Frame 2147225456.png"
+                                style="background: rgba(14,15,12,0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.06); border-radius: 0.75rem; padding: 2.5rem 2.8rem 2.2rem; box-sizing: border-box;">
+                                <p
+                                    style="color: rgba(255,255,255,0.75); font-size: clamp(0.88rem, 1.2vw, 1rem); line-height: 1.85; font-weight: 300; margin-bottom: 2.2rem;">
+                                    "Khalid transformed our living room into an absolute masterpiece. The attention to
+                                    detail, the choice of materials, and the overall design exceeded everything we had
+                                    imagined."
+                                </p>
+                                <div style="display:flex; align-items:center; gap: 0.85rem;">
+                                    <div
+                                        style="width:38px; height:38px; border-radius:50%; overflow:hidden; flex-shrink:0; border: 1.5px solid rgba(255,255,255,0.12); background:#1a1b18; display:flex; align-items:center; justify-content:center;">
+                                        <span style="color:#fff; font-size:0.72rem; font-weight:600;">SM</span>
+                                    </div>
+                                    <span
+                                        style="color: rgba(255,255,255,0.88); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.02em;">Sarah
+                                        Mahmoud</span>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="testimonial-card min-w-full" data-image="images/Frame 2147225456 (2).png"
+                                style="background: rgba(14,15,12,0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.06); border-radius: 0.75rem; padding: 2.5rem 2.8rem 2.2rem; box-sizing: border-box;">
+                                <p
+                                    style="color: rgba(255,255,255,0.75); font-size: clamp(0.88rem, 1.2vw, 1rem); line-height: 1.85; font-weight: 300; margin-bottom: 2.2rem;">
+                                    "Working with Khalid El-Hefnawy was an experience unlike any other. Every material,
+                                    every finish, every curve was executed with a precision that speaks to true mastery
+                                    of the craft."
+                                </p>
+                                <div style="display:flex; align-items:center; gap: 0.85rem;">
+                                    <div
+                                        style="width:38px; height:38px; border-radius:50%; overflow:hidden; flex-shrink:0; border: 1.5px solid rgba(255,255,255,0.12); background:#1a1b18; display:flex; align-items:center; justify-content:center;">
+                                        <span style="color:#fff; font-size:0.72rem; font-weight:600;">OR</span>
+                                    </div>
+                                    <span
+                                        style="color: rgba(255,255,255,0.88); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.02em;">Omar
+                                        Rashad</span>
+                                </div>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="testimonial-card min-w-full"
+                                style="background: rgba(14,15,12,0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.06); border-radius: 0.75rem; padding: 2.5rem 2.8rem 2.2rem; box-sizing: border-box;">
+                                <p
+                                    style="color: rgba(255,255,255,0.75); font-size: clamp(0.88rem, 1.2vw, 1rem); line-height: 1.85; font-weight: 300; margin-bottom: 2.2rem;">
+                                    "From the first consultation to the final reveal, the journey with Khalid was
+                                    seamless, creative, and deeply personal. Our home now feels like a 5-star
+                                    sanctuary."
+                                </p>
+                                <div style="display:flex; align-items:center; gap: 0.85rem;">
+                                    <div
+                                        style="width:38px; height:38px; border-radius:50%; overflow:hidden; flex-shrink:0; border: 1.5px solid rgba(255,255,255,0.12); background:#1a1b18; display:flex; align-items:center; justify-content:center;">
+                                        <span style="color:#fff; font-size:0.72rem; font-weight:600;">NH</span>
+                                    </div>
+                                    <span
+                                        style="color: rgba(255,255,255,0.88); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.02em;">Nadia
+                                        Hassan</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    <div class="flex items-center gap-6 mt-6">
+                        <div class="flex items-center gap-3" id="testimonials-nav">
+                        <!-- Prev — dark filled circle -->
+                        <button id="testi-prev"
+                            style="width:46px; height:46px; border-radius:50%; border:1px solid rgba(255,255,255,0.1); background:rgba(30,31,27,0.9); color:rgba(255,255,255,0.8); display:flex; align-items:center; justify-content:center; cursor:pointer; transition: background 0.3s, border-color 0.3s;"
+                            aria-label="Previous testimonial">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
+                                stroke="currentColor" style="width:18px;height:18px;">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                            </svg>
+                        </button>
+                        <!-- Next — transparent circle outline -->
+                        <button id="testi-next"
+                            style="width:46px; height:46px; border-radius:50%; border:1px solid rgba(255,255,255,0.18); background:transparent; color:rgba(255,255,255,0.5); display:flex; align-items:center; justify-content:center; cursor:pointer; transition: background 0.3s, border-color 0.3s, color 0.3s;"
+                            aria-label="Next testimonial">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
+                                stroke="currentColor" style="width:18px;height:18px;">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="relative bg-customBg pt-32 pb-8 overflow-hidden" id="main-footer">
+        <!-- Background Sketch Overlay -->
+        <div class="absolute inset-0 z-0 pointer-events-none bg-cover bg-center"
+            style="background-image: url('images/banner (8).png'); opacity: 1;"></div>
+
+        <!-- Top Center Logo Block -->
+        <div id="footer-logo-block"
+            class="absolute top-[2px] left-1/2 -translate-x-1/2 z-20 flex justify-center items-center"
+            style="opacity: 0; transform: translate(-50%, -100%);">
+            <img src="images/ChatGPT Image May 20, 2026, 04_06_22 AM 1 (2).png" alt="Khaled El-Hefnawy Furniture"
+                class="h-20 md:h-40 w-auto object-contain" id="footer-logo">
+        </div>
+
+        <!-- Main Footer Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20 text-white/70 mt-16"
+            id="footer-content">
+
+            <!-- Column 1: About Us -->
+            <div class="flex flex-col gap-5 footer-col" style="opacity: 0; transform: translateY(40px);">
+                <h3 class="text-white text-lg font-bold font-sans tracking-wide">About us</h3>
+                <p class="text-[13px] sm:text-sm font-light leading-relaxed max-w-sm font-sans">
+                    At Khaled El Hefnawy Furniture, we design premium furniture that combines modern elegance, comfort,
+                    and lasting quality to transform your home into a stylish masterpiece.
+                </p>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="flex flex-col md:items-center gap-5 footer-col"
+                style="opacity: 0; transform: translateY(40px);">
+                <div class="flex flex-col items-start gap-5">
+                    <h3 class="text-white text-lg font-bold font-sans tracking-wide">Quick Links</h3>
+                    <ul class="flex flex-col items-start gap-3 text-[13px] sm:text-sm font-light w-full font-sans">
+                        <li><a href="index.html" class="hover:text-[#A6A182] transition-colors duration-300">Home</a>
+                        </li>
+                        <li><a href="about-us.html"
+                                class="hover:text-[#A6A182] transition-colors duration-300">About Us</a></li>
+                        <li><a href="our-service.html" class="hover:text-[#A6A182] transition-colors duration-300">Our
+                                Services</a>
+                        </li>
+                        <li><a href="our-furniture.html"
+                                class="hover:text-[#A6A182] transition-colors duration-300">Latest Designs</a>
+                        </li>
+                        <li><a href="contact-us.html"
+                                class="hover:text-[#A6A182] transition-colors duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Column 3: Get In Touch -->
+            <div class="flex flex-col gap-5 footer-col" style="opacity: 0; transform: translateY(40px);">
+                <h3 class="text-white text-lg font-bold font-sans tracking-wide">Get In Touch</h3>
+                <ul class="flex flex-col gap-5 text-[13px] sm:text-sm font-light">
+                    <li class="flex items-center gap-4 group">
+                        <div class="w-6 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                            <img src="images/mdi-light_email (1).png" alt="Email"
+                                class="w-6 h-auto transition-transform duration-300 group-hover:scale-110">
+                        </div>
+                        <a href="mailto:info@khaledelhefnawy.com"
+                            class="hover:text-[#A6A182] underline underline-offset-4 decoration-white/20 hover:decoration-[#A6A182]/50 transition-all duration-300">info@khaledelhefnawy.com</a>
+                    </li>
+                    <li class="flex items-center gap-4 group">
+                        <div class="w-6 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                            <!-- Use handset icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5 text-[#A6A182]">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.48-4.18-7.076-7.076l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                            </svg>
+                        </div>
+                        <a href="tel:+201000000000"
+                            class="hover:text-[#A6A182] transition-colors duration-300 font-sans">+20 100 000 0000</a>
+                    </li>
+                    <li class="flex items-start gap-4 group">
+                        <div class="w-6 flex justify-center transition-transform duration-300 group-hover:scale-110">
+                            <img src="images/Text input (1).png" alt="Location"
+                                class="w-6 h-auto transition-transform duration-300 group-hover:scale-110">
+                        </div>
+                        <span class="hover:text-white transition-colors duration-300">Cairo, Egypt,New Damietta</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/[0.04]"
+            id="footer-bottom" style="opacity: 0; transform: translateY(20px);">
+            <p class="text-[11px] sm:text-xs text-white/40 font-light tracking-wide font-sans">© 2026 Khaled El Hefnawy
+                Furniture. All Rights Reserved.</p>
+            <div class="flex gap-6 items-center">
+                <a href="#"
+                    class="w-5 h-5 flex items-center justify-center opacity-80 hover:opacity-100 transition-all hover:-translate-y-1 transform duration-300">
+                    <img src="images/Group (18).png" alt="Facebook" class="w-6 h-auto">
+                </a>
+                <a href="#"
+                    class="w-5 h-5 flex items-center justify-center opacity-80 hover:opacity-100 transition-all hover:-translate-y-1 transform duration-300">
+                    <img src="images/Group (17).png" alt="TikTok" class="w-6 h-auto">
+                </a>
+                <a href="#"
+                    class="w-5 h-5 flex items-center justify-center opacity-80 hover:opacity-100 transition-all hover:-translate-y-1 transform duration-300">
+                    <img src="images/Group (16).png" alt="WhatsApp" class="w-6 h-auto">
+                </a>
+                <a href="#"
+                    class="w-5 h-5 flex items-center justify-center opacity-80 hover:opacity-100 transition-all hover:-translate-y-1 transform duration-300">
+                    <img src="images/Group (15).png" alt="YouTube" class="w-6 h-auto">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================
+         JAVASCRIPT
+    ================================ -->
+    <script>
+
+        // ── Hero entrance animations (GSAP)
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof gsap === 'undefined') {
+                // Fallback: just show elements if GSAP not loaded yet
+                setTimeout(() => {
+                    document.getElementById('hero-label').style.opacity = 1;
+                    document.getElementById('hero-label').style.transform = 'none';
+                    document.getElementById('hero-title').style.opacity = 1;
+                    document.getElementById('hero-title').style.transform = 'none';
+                }, 100);
+                return;
+            }
+
+            const tl = gsap.timeline({ delay: 0.2 });
+
+            // Subtle Ken Burns on background
+            tl.to('#services-hero-bg', {
+                scale: 1.06,
+                duration: 8,
+                ease: 'power1.inOut'
+            }, 0);
+
+            // Label slides up + fades in
+            tl.to('#hero-label', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power3.out'
+            }, 0.3);
+
+            // Title slides up + fades in (slightly after label)
+            tl.to('#hero-title', {
+                opacity: 1,
+                y: 0,
+                duration: 1.0,
+                ease: 'power4.out'
+            }, 0.55);
+
+            // ── Services Cards Section Animations (IntersectionObserver — more reliable)
+            const scItems = document.querySelectorAll('.sc-header-block, .sc-card');
+            scItems.forEach((el, i) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(36px)';
+                el.style.transition = `opacity 0.75s ease ${i * 0.08}s, transform 0.75s ease ${i * 0.08}s`;
+            });
+
+            const scObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        scObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            scItems.forEach(el => scObserver.observe(el));
+
+            // ── Typing Animation Logic ──
+            const typingTarget = document.getElementById('typing-content');
+            const fullText = "Send us your favorite furniture photo or design inspiration, and the expert craftsmen at Khaled El Hefnawy Furniture will transform it into a luxurious custom-made piece with premium materials, elegant finishes, and exceptional attention to every detail — perfectly crafted to match your style and space. |";
+            let charIndex = 0;
+            let isTypingStarted = false;
+
+            function typeWriter() {
+                if (charIndex < fullText.length) {
+                    // If the character is the cursor, check if it's the last one
+                    if (fullText.charAt(charIndex) === '|') {
+                        typingTarget.innerHTML += '<span class="typing-cursor"></span>';
+                    } else {
+                        typingTarget.innerHTML += fullText.charAt(charIndex);
+                    }
+                    charIndex++;
+                    setTimeout(typeWriter, 15); // Adjust typing speed here
+                }
+            }
+
+            const typingObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !isTypingStarted) {
+                        isTypingStarted = true;
+                        typeWriter();
+                        typingObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            if (typingTarget) typingObserver.observe(typingTarget);
+
+            // ── Reveal Animations for About Section ──
+            const aboutImage = document.querySelector('.about-image-container');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            if (aboutImage) revealObserver.observe(aboutImage);
+
+            // ── Reveal Animations for Design Living Section ──
+            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+            const elementObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const type = entry.target.classList.contains('reveal-left') ? 'left'
+                            : entry.target.classList.contains('reveal-right') ? 'right'
+                                : 'up';
+
+                        gsap.to(entry.target, {
+                            opacity: 1,
+                            x: 0,
+                            y: 0,
+                            duration: 1.2,
+                            ease: 'power4.out'
+                        });
+                        elementObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealElements.forEach(el => {
+                const isLeft = el.classList.contains('reveal-left');
+                const isRight = el.classList.contains('reveal-right');
+                gsap.set(el, {
+                    opacity: 0,
+                    y: (isLeft || isRight) ? 0 : 40,
+                    x: isLeft ? -40 : isRight ? 40 : 0
+                });
+                elementObserver.observe(el);
+            });
+
+            // ── Form & Upload Logic ──
+            const dropZone = document.getElementById('drop-zone');
+            const fileInput = document.getElementById('file-input');
+            const form = document.getElementById('design-request-form');
+
+            dropZone.addEventListener('click', () => fileInput.click());
+
+            dropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropZone.style.borderColor = '#A6A182';
+                dropZone.style.background = 'rgba(166, 161, 130, 0.05)';
+            });
+
+            dropZone.addEventListener('dragleave', () => {
+                dropZone.style.borderColor = '';
+                dropZone.style.background = '';
+            });
+
+            dropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropZone.style.borderColor = '';
+                dropZone.style.background = '';
+                const files = e.dataTransfer.files;
+                if (files.length) {
+                    alert(`${files.length} file(s) selected.`);
+                }
+            });
+
+            fileInput.addEventListener('change', () => {
+                if (fileInput.files.length) {
+                    alert(`${fileInput.files.length} file(s) selected.`);
+                }
+            });
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you! Your request has been sent. (Email integration will be added once provided)');
+                form.reset();
+            });
+        });
+    </script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

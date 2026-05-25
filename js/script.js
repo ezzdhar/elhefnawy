@@ -98,8 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 3. BACKGROUND HERO SLIDER (INTERACTIVE)
     // ==========================================
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot-indicator');
+    const heroSliderContainer = document.getElementById('slider-container');
+    const heroSliderDotsContainer = document.getElementById('slider-dots');
+    
+    const slides = heroSliderContainer ? heroSliderContainer.querySelectorAll('.slide') : [];
+    const dots = heroSliderDotsContainer ? heroSliderDotsContainer.querySelectorAll('.dot-indicator') : [];
     const prevBtn = document.getElementById('prev-slide');
     const nextBtn = document.getElementById('next-slide');
     const heroTitle = document.getElementById('hero-title');
@@ -110,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize/Reset slide timer
     function startSlideTimer() {
+        if (slides.length <= 1) return;
         clearInterval(slideTimer);
         slideTimer = setInterval(() => {
             changeSlide(currentSlide + 1);
@@ -118,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Main slide changing function
     function changeSlide(nextIndex) {
+        if (slides.length <= 1) return;
         // Calculate bounded index
         let newIndex = nextIndex;
         if (nextIndex >= slides.length) {
@@ -777,37 +782,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let testiAutoTimer = null;
         
         function getVisibleCount() {
-            const w = window.innerWidth;
-            if (w >= 1024) return 3;
-            if (w >= 768) return 2;
+            // For this specific design, we always show 1 card regardless of screen size
+            // because the cards overlap the main image and are set to min-w-full.
             return 1;
         }
 
         let visibleCount = getVisibleCount();
 
-        function renderDots() {
-            if (!testiDotsContainer) return;
-            testiDotsContainer.innerHTML = '';
-            const pages = Math.ceil(testiTotal / visibleCount);
-            for (let i = 0; i < pages; i++) {
-                const btn = document.createElement('button');
-                btn.className = 'testi-dot rounded-full bg-white/80';
-                btn.setAttribute('data-index', i);
-                btn.setAttribute('aria-label', `Slide ${i+1}`);
-                btn.addEventListener('click', () => {
-                    resetAutoPlay();
-                    goToTesti(i * visibleCount);
-                });
-                testiDotsContainer.appendChild(btn);
-            }
-            testiDots = document.querySelectorAll('.testi-dot');
-        }
-
-        function updateDotsActive() {
-            if (!testiDots) return;
-            const activePage = Math.floor(testiCurrent / visibleCount);
-            testiDots.forEach((dot, i) => dot.classList.toggle('is-active', i === activePage));
-        }
 
         function goToTesti(index) {
             // index is the starting card index for the page
@@ -816,18 +797,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (index > maxStart) index = maxStart;
             testiCurrent = index;
 
-            // Pixel-perfect shift based on outer width
             const outer = document.getElementById('testimonials-track-outer');
             if (outer) {
-                const cardWidth = outer.clientWidth / visibleCount;
-                const shiftPx = Math.round(testiCurrent * cardWidth);
+                const cardWidth = outer.clientWidth;
+                const shiftPx = testiCurrent * cardWidth;
                 testiTrack.style.transform = `translateX(-${shiftPx}px)`;
-            } else {
-                const percent = (testiCurrent * 100) / visibleCount;
-                testiTrack.style.transform = `translateX(-${percent}%)`;
             }
 
-            updateDotsActive();
 
             if (typeof gsap !== 'undefined') {
                 const activeCard = testiCards[testiCurrent];
@@ -841,8 +817,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Init
-        renderDots();
-        updateDotsActive();
+        goToTesti(0);
 
         // Arrows — move by a page (visibleCount)
         if (testiPrev) {
@@ -871,7 +846,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const currentPage = Math.floor(testiCurrent / visibleCount);
                 const nextPage = (currentPage + 1) % pages;
                 goToTesti(nextPage * visibleCount);
-            }, 5000);
+            }, 4000); // 4 seconds interval
         }
         function resetAutoPlay() {
             clearInterval(testiAutoTimer);
@@ -879,12 +854,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         startAutoPlay();
 
-        // Pause auto-play on hover
-        const testiSection = document.getElementById('testimonials-section');
-        if (testiSection) {
-            testiSection.addEventListener('mouseenter', () => clearInterval(testiAutoTimer));
-            testiSection.addEventListener('mouseleave', startAutoPlay);
-        }
 
         // Touch swipe support
         let touchStartX = 0;
@@ -904,7 +873,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (oldVisible !== visibleCount) {
                 const maxStart = Math.max(0, testiTotal - visibleCount);
                 if (testiCurrent > maxStart) testiCurrent = maxStart;
-                renderDots();
                 goToTesti(testiCurrent);
             }
         });
