@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof gsap === 'undefined') return;
 
         // Make elements visible after loader fades
-        gsap.set('.text-line-content', { y: '100%' });
+        gsap.set('#hero-title .text-line-content', { y: '100%' });
         
         const tl = gsap.timeline();
 
@@ -440,15 +440,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Initial states
         gsap.set('#crafted-ghost-title', { opacity: 0, y: -15 });
-        gsap.set('#crafted-title .text-line-content', { y: '110%' });
+        gsap.set('#crafted-title .text-line-content', { y: '110%', opacity: 0 });
         gsap.set('#crafted-desc', { opacity: 0, y: 28 });
         gsap.set('.crafted-card[data-crafted="left"]', { opacity: 0, x: -70 });
         gsap.set('.crafted-card[data-crafted="right"]', { opacity: 0, x: 70 });
 
         const craftedTimeline = gsap.timeline({
             scrollTrigger: {
-                trigger: '#crafted-section',
-                start: 'top 80%',
+                trigger: '#crafted-header',
+                start: 'top 85%',
                 toggleActions: 'play none none none'
             }
         });
@@ -464,7 +464,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Main bold title unmasked from clip
             .to('#crafted-title .text-line-content', {
                 y: '0%',
+                opacity: 1,
                 duration: 1.1,
+                stagger: 0.1,
+                overwrite: 'auto',
+                clearProps: 'y,opacity',
                 ease: 'power4.out'
             }, '-=1.2')
             // Description fades and rises
