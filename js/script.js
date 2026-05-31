@@ -1236,4 +1236,92 @@ document.addEventListener('DOMContentLoaded', () => {
             }, '-=0.7');
     }
 
+    // ==========================================
+    // 18. SUB-PAGES — HERO ENTRANCE ANIMATIONS
+    // ==========================================
+    if (document.getElementById('hero-label') || document.getElementById('hero-title')) {
+        const subHeroTl = gsap.timeline();
+        subHeroTl.to('#hero-label', { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.4 })
+                 .to('#hero-title', { opacity: 1, y: 0, duration: 1, ease: 'power4.out' }, '-=0.7');
+    }
+
+    // ==========================================
+    // 19. ABOUT US PAGE — SPECIFIC LOGIC
+    // ==========================================
+    if (document.getElementById('about-intro')) {
+        // Typing effect for description
+        const typingEl = document.getElementById('typing-content');
+        if (typingEl) {
+            const fullText = "At Khaled El Hefnawy, we believe that furniture is not just about utility; it's about telling a story of luxury, comfort, and heritage. Our journey began with a passion for transforming raw timber into timeless masterpieces, blending traditional Egyptian craftsmanship with modern design philosophies. Every curve we carve and every joint we secure is a testament to our commitment to excellence.";
+            let charIndex = 0;
+            
+            function typeLine() {
+                if (charIndex < fullText.length) {
+                    typingEl.textContent += fullText.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeLine, 15);
+                }
+            }
+
+            ScrollTrigger.create({
+                trigger: '#about-intro',
+                start: 'top 80%',
+                onEnter: () => {
+                    typeLine();
+                    document.querySelector('.about-image-container')?.classList.add('visible');
+                },
+                once: true
+            });
+        }
+    }
+
+    // ==========================================
+    // 19. GENERIC SCROLL REVEALS
+    // ==========================================
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        // Generic reveal-up
+        document.querySelectorAll('.reveal-up').forEach((el) => {
+            gsap.fromTo(el, 
+                { opacity: 0, y: 50 },
+                { 
+                    opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
+        });
+
+        // Generic reveal-text (opacity/blur)
+        document.querySelectorAll('.reveal-text').forEach((el) => {
+            gsap.fromTo(el, 
+                { opacity: 0, filter: 'blur(10px)' },
+                { 
+                    opacity: 1, filter: 'blur(0px)', duration: 1.2, ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
+        });
+
+        // Generic side reveals
+        document.querySelectorAll('.reveal-left').forEach((el) => {
+            gsap.fromTo(el, { opacity: 0, x: -60 }, { 
+                opacity: 1, x: 0, duration: 1.2, ease: 'power3.out',
+                scrollTrigger: { trigger: el, start: 'top 85%' }
+            });
+        });
+        document.querySelectorAll('.reveal-right').forEach((el) => {
+            gsap.fromTo(el, { opacity: 0, x: 60 }, { 
+                opacity: 1, x: 0, duration: 1.2, ease: 'power3.out',
+                scrollTrigger: { trigger: el, start: 'top 85%' }
+            });
+        });
+    }
+
 });

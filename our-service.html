@@ -180,9 +180,9 @@
 
     <!-- Mobile Fullscreen Menu Overlay -->
     <div class="mobile-menu-overlay" id="mobile-menu">
-        <div class="flex flex-col items-center justify-between h-[75%] px-6 py-12">
+        <div class="flex flex-col items-center justify-center gap-10 w-full h-full px-6 py-20 overflow-y-auto">
             <!-- Mobile Navigation Links -->
-            <nav class="flex flex-col items-center text-center mt-8">
+            <nav class="flex flex-col items-center text-center">
                 <a href="index.html" class="mobile-menu-link opacity-0 text-xl" data-index="0">Home</a>
                 <a href="about-us.html" class="mobile-menu-link opacity-0 text-xl" data-index="1">About Us</a>
                 <a href="our-service.html" class="mobile-menu-link opacity-0 text-xl active" data-index="2">Our Services</a>
@@ -191,7 +191,7 @@
             </nav>
             <!-- Mobile CTA Button -->
             <a href="contact-us.html"
-                class="btn-premium px-8 py-3 rounded-sm text-xs font-semibold uppercase tracking-[0.2em] border border-customBtn text-white opacity-0 mt-8"
+                class="btn-premium px-8 py-3 rounded-sm text-xs font-semibold uppercase tracking-[0.2em] border border-customBtn text-white opacity-0 mt-4"
                 id="mobile-menu-cta">
                 Request Your Design
             </a>
@@ -736,12 +736,12 @@
 
                             <!-- Main Title -->
                             <h2
-                                class="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sans tracking-wide leading-[1.15] max-w-2xl mb-4">
+                                class="text-white text-[1.75rem] xs:text-[2.2rem] sm:text-4xl md:text-5xl lg:text-[64px] font-bold font-sans tracking-wide leading-[1.15] max-w-2xl mb-4">
                                 Transform Your<br />Space With<br />Timeless Elegance.
                             </h2>
 
                             <!-- Subtitle -->
-                            <p class="text-white/70 text-sm sm:text-base tracking-[0.05em] font-light mb-8">
+                            <p class="text-white/70 text-xs sm:text-base tracking-[0.05em] font-light mb-6 sm:mb-8">
                                 Furniture For the Modern Home.
                             </p>
 
@@ -770,7 +770,7 @@
                             </div>
 
                             <h2
-                                class="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sans tracking-wide leading-[1.15] max-w-2xl mb-4">
+                                class="text-white text-[1.75rem] xs:text-[2.2rem] sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sans tracking-wide leading-[1.15] max-w-2xl mb-4">
                                 Crafted To<br />Reflect Your<br />Timeless Taste.
                             </h2>
 
@@ -802,7 +802,7 @@
                             </div>
 
                             <h2
-                                class="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sans tracking-wide leading-[1.15] max-w-2xl mb-4">
+                                class="text-white text-[1.75rem] xs:text-[2.2rem] sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sans tracking-wide leading-[1.15] max-w-2xl mb-4">
                                 Personalized<br />Luxury For<br />Modern Living.
                             </h2>
 
@@ -821,35 +821,41 @@
 
                 </div>
 
-                <!-- Left/Right Nav Arrows (thin border circles matching the image) -->
-                <button
-                    class="absolute left-6 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/30 hover:border-white flex items-center justify-center text-white/70 hover:text-white bg-black/15 hover:bg-white/10 transition-all duration-300 z-20"
-                    id="s6-prev" aria-label="Previous slide">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
-                        stroke="currentColor" class="w-5 h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                    </svg>
-                </button>
-                <button
-                    class="absolute right-6 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/30 hover:border-white flex items-center justify-center text-white/70 hover:text-white bg-black/15 hover:bg-white/10 transition-all duration-300 z-20"
-                    id="s6-next" aria-label="Next slide">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
-                        stroke="currentColor" class="w-5 h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                </button>
+                <!-- Professional Navigation Cluster (Dots + Arrows) -->
+                <div class="absolute bottom-8 right-8 md:right-12 flex items-center gap-6 z-30">
+                    <!-- Dots -->
+                    <div class="flex items-center gap-2.5" id="s6-dots">
+                        <button class="w-2 h-2 rounded-full bg-white transition-all duration-300 s6-dot" data-index="0"
+                            aria-label="Go to slide 1"></button>
+                        <button
+                            class="w-1.5 h-1.5 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300 s6-dot"
+                            data-index="1" aria-label="Go to slide 2"></button>
+                        <button
+                            class="w-1.5 h-1.5 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300 s6-dot"
+                            data-index="2" aria-label="Go to slide 3"></button>
+                    </div>
 
-                <!-- Bottom Dot Navigation -->
-                <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3.5 z-20" id="s6-dots">
-                    <button class="w-2.5 h-2.5 rounded-full bg-white transition-all duration-300 s6-dot" data-index="0"
-                        aria-label="Go to slide 1"></button>
-                    <button
-                        class="w-2 h-2 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300 s6-dot"
-                        data-index="1" aria-label="Go to slide 2"></button>
-                    <button
-                        class="w-2 h-2 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300 s6-dot"
-                        data-index="2" aria-label="Go to slide 3"></button>
+                    <!-- Arrows -->
+                    <div class="flex items-center gap-2">
+                        <button
+                            class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/5 hover:border-white/30 transition-all duration-400 cursor-pointer"
+                            id="s6-prev" aria-label="Previous slide">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                            </svg>
+                        </button>
+                        <button
+                            class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/5 hover:border-white/30 transition-all duration-400 cursor-pointer"
+                            id="s6-next" aria-label="Next slide">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -970,9 +976,11 @@
     <script>
         // ── Navbar scroll effect
         const navbar = document.getElementById('services-navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 30);
-        });
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                navbar.classList.toggle('scrolled', window.scrollY > 30);
+            });
+        }
 
         // ── Mobile menu toggle
         const menuBtn = document.getElementById('mobile-menu-btn');
@@ -980,58 +988,46 @@
         const line1 = document.getElementById('hb-line1');
         const line3 = document.getElementById('hb-line3');
 
-        menuBtn.addEventListener('click', () => {
-            const isOpen = !mobileMenu.classList.contains('hidden');
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-            line1.style.width = isOpen ? '24px' : '24px';
-            line3.style.width = isOpen ? '16px' : '24px';
-        });
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                if (line1) line1.style.width = isOpen ? '24px' : '24px';
+                if (line3) line3.style.width = isOpen ? '16px' : '24px';
+            });
+        }
 
-        // ── Hero entrance animations (GSAP)
+        // ── Typing Animation Logic ──
         document.addEventListener('DOMContentLoaded', () => {
-            if (typeof gsap === 'undefined') {
-                // Fallback: just show elements if GSAP not loaded yet
-                setTimeout(() => {
-                    document.getElementById('hero-label').style.opacity = 1;
-                    document.getElementById('hero-label').style.transform = 'none';
-                    document.getElementById('hero-title').style.opacity = 1;
-                    document.getElementById('hero-title').style.transform = 'none';
-                }, 100);
-                return;
+            const typingTarget = document.getElementById('typing-content');
+            if (typingTarget) {
+                const fullText = "At Khaled El Hefnawy, we believe that furniture is more than just pieces placed inside a home — it is a reflection of style, comfort, and personality. We specialize in crafting premium furniture with exceptional quality, combining timeless elegance with modern designs to create spaces that inspire |";
+                let charIndex = 0;
+                function type() {
+                    if (charIndex < fullText.length) {
+                        typingTarget.innerHTML += fullText.charAt(charIndex);
+                        charIndex++;
+                        setTimeout(type, 15);
+                    }
+                }
+                
+                // Trigger typing when section is visible
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        type();
+                        observer.disconnect();
+                    }
+                }, { threshold: 0.1 });
+                observer.observe(typingTarget);
             }
 
-            const tl = gsap.timeline({ delay: 0.2 });
-
-            // Subtle Ken Burns on background
-            tl.to('#services-hero-bg', {
-                scale: 1.06,
-                duration: 8,
-                ease: 'power1.inOut'
-            }, 0);
-
-            // Label slides up + fades in
-            tl.to('#hero-label', {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                ease: 'power3.out'
-            }, 0.3);
-
-            // Title slides up + fades in (slightly after label)
-            tl.to('#hero-title', {
-                opacity: 1,
-                y: 0,
-                duration: 1.0,
-                ease: 'power4.out'
-            }, 0.55);
-
-            // ── Services Cards Section Animations (IntersectionObserver — more reliable)
+            // ── Services Cards Section Animations (IntersectionObserver)
             const scItems = document.querySelectorAll('.sc-header-block, .sc-card');
             scItems.forEach((el, i) => {
                 el.style.opacity = '0';
-                el.style.transform = 'translateY(36px)';
-                el.style.transition = `opacity 0.75s ease ${i * 0.08}s, transform 0.75s ease ${i * 0.08}s`;
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = `opacity 0.6s ease ${i * 0.05}s, transform 0.6s ease ${i * 0.05}s`;
             });
 
             const scObserver = new IntersectionObserver((entries) => {
@@ -1042,7 +1038,7 @@
                         scObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.12 });
+            }, { threshold: 0.1 });
 
             scItems.forEach(el => scObserver.observe(el));
         });

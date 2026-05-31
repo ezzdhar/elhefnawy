@@ -91,13 +91,53 @@
 
 /* Image Ken Burns Zoom Effect */
 .slide-bg {
-  background-size: 100% 100%;
-  transform: scale(1);
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.1);
   transition: transform 1.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .slide.active .slide-bg {
   transform: scale(1);
+}
+
+/* Comprehensive Hero Title Responsive Sizing */
+#hero-title {
+  font-size: 1.55rem !important; /* Significantly smaller for mobile < 425px */
+  line-height: 1.2 !important;
+  letter-spacing: -0.01em !important;
+}
+
+@media (min-width: 425px) {
+  #hero-title {
+    font-size: 2.1rem !important; /* Scaled down size starting at 425px */
+    line-height: 1.15 !important;
+  }
+}
+
+@media (min-width: 450px) {
+  #hero-title {
+    font-size: 2.8rem !important; /* Scaled down size starting at 450px */
+    line-height: 1.1 !important;
+  }
+}
+
+@media (min-width: 640px) {
+  #hero-title {
+    font-size: 4.5rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  #hero-title {
+    font-size: 5.5rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  #hero-title {
+    font-size: 6.2rem !important;
+  }
 }
 
 /* Magnetic Button Hover Glow */
@@ -155,6 +195,32 @@
   background: var(--color-btn);
   box-shadow: 0 0 15px rgba(37, 43, 32, 0.6);
   transform: scale(1.05);
+}
+
+.testi-glass-card {
+  background: rgba(14, 15, 12, 0.85) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 1.5rem !important;
+  padding: 2.8rem 3rem !important;
+  box-sizing: border-box;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease;
+}
+
+@media (max-width: 450px) {
+  .testi-glass-card {
+    padding: 2rem 1.5rem !important;
+    border-radius: 1.2rem !important;
+    margin: 0 10px !important;
+  }
+  
+  .testi-glass-card p {
+    font-size: 0.9rem !important;
+    line-height: 1.7 !important;
+    margin-bottom: 1.5rem !important;
+  }
 }
 
 /* Indicator dots styling */
@@ -220,11 +286,11 @@
 
 .text-line-content {
   display: block;
-  font-family: 'Outfit', sans-serif;
-  font-size: 64px;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #FFFFFF;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
 }
 
 /* Custom Gradients on Hero Backgrounds to match design precisely */

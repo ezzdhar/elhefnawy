@@ -364,9 +364,9 @@
 
     <!-- Mobile Fullscreen Menu Overlay -->
     <div class="mobile-menu-overlay" id="mobile-menu">
-        <div class="flex flex-col items-center justify-between h-[75%] px-6 py-12">
+        <div class="flex flex-col items-center justify-center gap-10 w-full h-full px-6 py-20 overflow-y-auto">
             <!-- Mobile Navigation Links -->
-            <nav class="flex flex-col items-center text-center mt-8">
+            <nav class="flex flex-col items-center text-center">
                 <a href="index.html" class="mobile-menu-link opacity-0 text-xl" data-index="0">Home</a>
                 <a href="about-us.html" class="mobile-menu-link opacity-0 text-xl" data-index="1">About Us</a>
                 <a href="our-service.html" class="mobile-menu-link opacity-0 text-xl" data-index="2">Our Services</a>
@@ -375,7 +375,7 @@
             </nav>
             <!-- Mobile CTA Button -->
             <a href="contact-us.html"
-                class="btn-premium px-8 py-3 rounded-sm text-xs font-semibold uppercase tracking-[0.2em] border border-customBtn text-white opacity-0 mt-8"
+                class="btn-premium px-8 py-3 rounded-sm text-xs font-semibold uppercase tracking-[0.2em] border border-customBtn text-white opacity-0 mt-4"
                 id="mobile-menu-cta">
                 Request Your Design
             </a>
@@ -1031,37 +1031,6 @@
 
             // Initial Render
             renderGallery();
-
-            // ── Reveal Animations for Design Living Section ──
-            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
-            const elementObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const type = entry.target.classList.contains('reveal-left') ? 'left'
-                            : entry.target.classList.contains('reveal-right') ? 'right'
-                                : 'up';
-
-                        gsap.to(entry.target, {
-                            opacity: 1,
-                            x: 0,
-                            y: 0,
-                            duration: 1.2,
-                            ease: 'power4.out'
-                        });
-                        elementObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15 });
-            revealElements.forEach(el => {
-                const isLeft = el.classList.contains('reveal-left');
-                const isRight = el.classList.contains('reveal-right');
-                gsap.set(el, {
-                    opacity: 0,
-                    y: (isLeft || isRight) ? 0 : 40,
-                    x: isLeft ? -40 : isRight ? 40 : 0
-                });
-                elementObserver.observe(el);
-            });
         });
     </script>
     <script src="js/script.js"></script>
