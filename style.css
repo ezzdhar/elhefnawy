@@ -103,21 +103,24 @@
 
 /* Comprehensive Hero Title Responsive Sizing */
 #hero-title {
-  font-size: 1.55rem !important; /* Significantly smaller for mobile < 425px */
+  font-size: 1.55rem !important;
+  /* Significantly smaller for mobile < 425px */
   line-height: 1.2 !important;
   letter-spacing: -0.01em !important;
 }
 
 @media (min-width: 425px) {
   #hero-title {
-    font-size: 2.1rem !important; /* Scaled down size starting at 425px */
+    font-size: 2.1rem !important;
+    /* Scaled down size starting at 425px */
     line-height: 1.15 !important;
   }
 }
 
 @media (min-width: 450px) {
   #hero-title {
-    font-size: 2.8rem !important; /* Scaled down size starting at 450px */
+    font-size: 2.8rem !important;
+    /* Scaled down size starting at 450px */
     line-height: 1.1 !important;
   }
 }
@@ -215,7 +218,7 @@
     border-radius: 1.2rem !important;
     margin: 0 10px !important;
   }
-  
+
   .testi-glass-card p {
     font-size: 0.9rem !important;
     line-height: 1.7 !important;
@@ -287,10 +290,28 @@
 .text-line-content {
   display: block;
   font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
+  font-size: 42px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
   color: inherit;
+}
+
+#hero-title .text-line-content {
+  font-size: inherit !important;
+  font-weight: inherit !important;
+}
+
+/* Responsive adjustment for general text-line-content on smaller screens */
+@media (max-width: 768px) {
+  .text-line-content {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-line-content {
+    font-size: 22px;
+  }
 }
 
 /* Custom Gradients on Hero Backgrounds to match design precisely */
@@ -488,19 +509,39 @@
   margin: 0;
   padding: 0;
   border: none;
+  touch-action: none;
+  cursor: grab;
+}
+
+#slider-range:active {
+  cursor: grabbing;
+}
+
+#slider-range::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 100%;
+  cursor: ew-resize;
+  background: transparent;
+}
+
+#slider-range::-moz-range-track {
+  width: 100%;
+  height: 100%;
+  cursor: ew-resize;
+  background: transparent;
 }
 
 #slider-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 48px;
+  width: 60px;
   height: 100%;
   cursor: ew-resize;
   background: transparent;
 }
 
 #slider-range::-moz-range-thumb {
-  width: 48px;
+  width: 60px;
   height: 100%;
   cursor: ew-resize;
   background: transparent;

@@ -674,16 +674,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const beforeImage = document.getElementById('before-image');
     const sliderHandle = document.getElementById('slider-handle');
     const sliderHandleBtn = document.getElementById('slider-handle-button');
+    const container = sliderRange ? sliderRange.parentElement : null;
 
-    if (sliderRange && beforeImage && sliderHandle) {
-        // Track the user dragging the range slider
-        sliderRange.addEventListener('input', (e) => {
-            const val = e.target.value;
+    if (sliderRange && beforeImage && sliderHandle && container) {
+        const updateSlider = (val) => {
             // Update clipped path of Before Image
             beforeImage.style.clipPath = `polygon(0 0, ${val}% 0, ${val}% 100%, 0 100%)`;
             // Move vertical line & button
             sliderHandle.style.left = `${val}%`;
+            sliderRange.value = val;
+        };
+
+        // Standard input event for accessibility and desktop
+        sliderRange.addEventListener('input', (e) => {
+            updateSlider(e.target.value);
         });
+
+        // Robust touch/mouse dragging for mobile
+        const handleDrag = (e) => {
+            const rect = container.getBoundingClientRect();
+            let xPos;
+            if (e.touches && e.touches.length > 0) {
+                xPos = e.touches[0].clientX;
+            } else {
+                xPos = e.clientX;
+            }
+            
+            const x = xPos - rect.left;
+            let percent = (x / rect.width) * 100;
+            percent = Math.max(0, Math.min(100, percent));
+            updateSlider(percent);
+        };
+
+        // Handle both touch start and move to make it feel responsive
+        container.addEventListener('touchstart', (e) => {
+            if (e.target === sliderRange) {
+                handleDrag(e);
+            }
+        }, { passive: true });
+
+        container.addEventListener('touchmove', (e) => {
+            if (e.target === sliderRange) {
+                handleDrag(e);
+            }
+        }, { passive: true });
 
         // Add premium GSAP animations to the handle button on hover/interaction
         if (typeof gsap !== 'undefined') {
@@ -786,16 +820,14 @@ document.addEventListener('DOMContentLoaded', () => {
         let testiAutoTimer = null;
         
         function getVisibleCount() {
-            // For this specific design, we always show 1 card regardless of screen size
-            // because the cards overlap the main image and are set to min-w-full.
+            if (window.innerWidth >= 1024) return 3;
+            if (window.innerWidth >= 768) return 2;
             return 1;
         }
 
         let visibleCount = getVisibleCount();
 
-
         function goToTesti(index) {
-            // index is the starting card index for the page
             const maxStart = Math.max(0, testiTotal - visibleCount);
             if (index < 0) index = 0;
             if (index > maxStart) index = maxStart;
@@ -803,11 +835,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const outer = document.getElementById('testimonials-track-outer');
             if (outer) {
-                const cardWidth = outer.clientWidth;
+                const cardWidth = outer.clientWidth / visibleCount;
                 const shiftPx = testiCurrent * cardWidth;
                 testiTrack.style.transform = `translateX(-${shiftPx}px)`;
             }
-
 
             if (typeof gsap !== 'undefined') {
                 const activeCard = testiCards[testiCurrent];
@@ -823,14 +854,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Init
         goToTesti(0);
 
-        // Arrows — move by a page (visibleCount)
+        // Arrows — SWAPPED as requested
         if (testiPrev) {
             testiPrev.addEventListener('click', () => {
                 resetAutoPlay();
                 const pages = Math.ceil(testiTotal / visibleCount);
                 const currentPage = Math.floor(testiCurrent / visibleCount);
-                const prevPage = (currentPage - 1 + pages) % pages;
-                goToTesti(prevPage * visibleCount);
+                // testiPrev (Left) now goes NEXT
+                const nextPage = (currentPage + 1) % pages;
+                goToTesti(nextPage * visibleCount);
             });
         }
         if (testiNext) {
@@ -838,8 +870,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 resetAutoPlay();
                 const pages = Math.ceil(testiTotal / visibleCount);
                 const currentPage = Math.floor(testiCurrent / visibleCount);
-                const nextPage = (currentPage + 1) % pages;
-                goToTesti(nextPage * visibleCount);
+                // testiNext (Right) now goes PREV
+                const prevPage = (currentPage - 1 + pages) % pages;
+                goToTesti(prevPage * visibleCount);
             });
         }
 
@@ -1168,7 +1201,6 @@ document.addEventListener('DOMContentLoaded', () => {
         footerTl.to('#footer-logo-block', {
             opacity: 1,
             y: 0,
-            xPercent: -50,
             duration: 1.0,
             ease: 'power3.out'
         });
