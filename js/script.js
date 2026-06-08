@@ -692,10 +692,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Robust touch/mouse dragging for mobile
         const handleDrag = (e) => {
+            // Prevent scrolling on mobile during drag
+            if (e.cancelable) e.preventDefault();
+            
             const rect = container.getBoundingClientRect();
             let xPos;
             if (e.touches && e.touches.length > 0) {
                 xPos = e.touches[0].clientX;
+            } else if (e.changedTouches && e.changedTouches.length > 0) {
+                xPos = e.changedTouches[0].clientX;
             } else {
                 xPos = e.clientX;
             }
@@ -711,13 +716,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target === sliderRange) {
                 handleDrag(e);
             }
-        }, { passive: true });
+        }, { passive: false });
 
         container.addEventListener('touchmove', (e) => {
             if (e.target === sliderRange) {
                 handleDrag(e);
             }
-        }, { passive: true });
+        }, { passive: false });
 
         // Add premium GSAP animations to the handle button on hover/interaction
         if (typeof gsap !== 'undefined') {
